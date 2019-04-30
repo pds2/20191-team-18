@@ -4,9 +4,9 @@ Grupo 18 - Truco
 
 ## User Stories ## 
 
-* Eu, enquanto jogador, quero visualizar um menu, para poder iniciar a partida.
+* Eu, enquanto jogador, quero visualizar o menu, para poder iniciar a partida.
 * Eu, enquanto jogador, quero visualizar minha pontuação, para que eu acompanhe meu progresso durante as rodadas.
-* Eu, enquanto Jogador, quero saber das cartas que tenho em mãos em tempo real, para me situar sobre o jogo.
+* Eu, enquanto jogador, quero saber das cartas que tenho em mãos em tempo real, para me situar sobre o jogo.
 * Eu, enquanto jogador, quero visualizar as cartas que foram jogadas na mesa, para decidir o que fazer.
 * Eu, enquanto jogador, quero ter a opção de pedir "truco", para ganhar 4 pontos.
 * Eu, enquanto jogador, quero ter a opção de pedir "seis" caso o oponente peça "truco", para ganhar 8 pontos.
