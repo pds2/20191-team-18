@@ -46,15 +46,5 @@ void MainScreen::showMenu() {
 
     } while(choice!=6); 
 
-    
-    Carta carta;
-    carta.setForca(10);
-    cout << carta.getForca();
-    carta.setNipe(0);
-    cout << carta.getNipe();
-    carta.setNipe("espadas");
-    cout << carta.getNipe();
-    carta.setForca(100);
-
 } 
 
