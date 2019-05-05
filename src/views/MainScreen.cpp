@@ -1,4 +1,5 @@
 #include "views/MainScreen.hpp"
+#include "../models/Carta.cpp"
 
 MainScreen::~MainScreen() {
 
@@ -18,7 +19,7 @@ void MainScreen::showMenu() {
 
     int choice = 0;
 
-    do {
+     do {
         this->clrscr();
         cout << "Menu Principal" << endl;
         cout << "Escolha uma opção" << endl;
@@ -28,7 +29,7 @@ void MainScreen::showMenu() {
         cout << "Escolha: ";
         
         choice = this->getInput();
-        
+
         switch(choice) {
             case 1:
                 cout << "Iniciando Jogo - Melhor de 1!" << endl;
@@ -41,8 +42,19 @@ void MainScreen::showMenu() {
                 break;
             default:
                 break;
-        }
+        } 
 
-    } while(choice!=6);
+    } while(choice!=6); 
+
+    
+    Carta carta;
+    carta.setForca(10);
+    cout << carta.getForca();
+    carta.setNipe(0);
+    cout << carta.getNipe();
+    carta.setNipe("espadas");
+    cout << carta.getNipe();
+    carta.setForca(100);
+
 } 
 
