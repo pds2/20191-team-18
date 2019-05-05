@@ -46,7 +46,7 @@ void Carta::setNipe(string nipe) {
         this->nipe = PAUS;
     }
     else {
-
+        throw Exception::NipeInvalido();
     }
 }
 
