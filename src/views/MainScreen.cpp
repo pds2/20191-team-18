@@ -1,5 +1,4 @@
 #include "views/MainScreen.hpp"
-#include "../models/Carta.cpp"
 
 MainScreen::~MainScreen() {
 
@@ -17,7 +16,7 @@ int MainScreen::getInput() {
 
 void MainScreen::showMenu() {
 
-    int choice = 0;
+     int choice = 0;
 
      do {
         this->clrscr();
@@ -42,9 +41,9 @@ void MainScreen::showMenu() {
                 break;
             default:
                 break;
-        } 
+        }  
 
-    } while(choice!=6); 
+    } while(choice!=6);  
 
 } 
 

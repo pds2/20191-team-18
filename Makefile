@@ -36,6 +36,10 @@ MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cp
 Carta.o: ${INCLUDE_DIR}/models/Carta.hpp ${SRC_DIR}/models/Carta.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Carta.cpp -o ${BUILD_DIR}/Carta.o
 
+# Carta
+Jogador.o: ${INCLUDE_DIR}/models/Jogador.hpp ${SRC_DIR}/models/Jogador.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Jogador.cpp -o ${BUILD_DIR}/Jogador.o
+
 
 ####################################################
 #                                                  #
