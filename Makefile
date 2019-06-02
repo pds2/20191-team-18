@@ -59,10 +59,10 @@ Exceptions.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${SRC_DIR}/exceptions/Exce
 
 # main
 main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/main.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o 
 
 # app
-main: Exceptions.o MainScreen.o main.o
+main: Exceptions.o MainScreen.o Carta.o Jogador.o main.o
 	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o
 
 

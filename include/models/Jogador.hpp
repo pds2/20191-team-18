@@ -15,17 +15,19 @@ class Jogador {
   public:
 
     Jogador(string nome);
-    Jogador(string nome, std::vector<Carta> cartas);
+    Jogador(string nome, std::vector<Carta*> cartas);
 
     string  getNome();
     void addCartaMao(Carta* carta);
     void removeCartaMao(Carta* carta);
+    void removeCartaMao(int posicao); 
     void setMao(std::vector<Carta> cartas);
-    std::vector<Carta> getMao();
+    Carta* getCartaMao(int posicao); 
+    std::vector<Carta*> getMao();
 
   private:
 
-    std::vector<Carta> mao;
+    std::vector<Carta*> mao;
     string nome; 
 
 };

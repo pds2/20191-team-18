@@ -3,8 +3,31 @@
 using std::string;
 using std::toupper;
 
-int  Carta::getNipe() {
-    return this->nipe;
+Carta::Carta(string  valor, int nipe,       int forca) {
+    setNipe(nipe);
+    setValor(valor);
+    setForca(forca);
+}
+
+Carta::Carta(string  valor,  string  nipe,   int forca) {
+    setNipe(nipe);
+    setValor(valor);
+    setForca(forca);
+}
+
+std::string Carta::getNipe() {
+    if(nipe == COPAS) {
+        return "Copas";
+    }
+    else if(nipe == OUROS) {
+        return "Ouros";
+    }
+    else if(nipe == ESPADAS) {
+        return "Espadas";
+    }
+    else if(nipe == PAUS) {
+        return "Paus";
+    }
 }
 
 void Carta::setNipe(int nipe) {

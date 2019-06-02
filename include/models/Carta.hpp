@@ -19,7 +19,10 @@ class Carta {
 
   public:
     
-    int  getNipe();
+    Carta(string  valor,  string  nipe,   int forca);
+    Carta(string  valor,  int     nipe,   int forca);
+
+    string  getNipe();
     void setNipe(int nipe);
     void setNipe(string nipe);
 
