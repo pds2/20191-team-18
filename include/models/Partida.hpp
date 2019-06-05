@@ -8,28 +8,25 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class Partida {
+class Partida
+{
 
-  
- private:
-	
-    int rodada;
-    int pontos; 
-    int mao;
-    
-  public:
-    
-    Partida(int rodada, int pontos, int mao);
+private:
+  int rodada;
+  int pontos;
+  int mao;
 
-    int  getRodada();
-    void setRodada(int rodada);
-    
-    int  getPontos();
-	void setPontos(int pontos);
+public:
+  Partida(int rodada, int pontos, int mao);
 
-	int  getMao();
-    void setMao(string mao); 
+  int getRodada();
+  void setRodada(int rodada);
 
+  int getPontos();
+  void setPontos(int pontos);
+
+  int getMao();
+  void setMao(string mao);
 };
 
 #endif
