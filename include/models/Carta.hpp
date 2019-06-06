@@ -19,6 +19,8 @@ class Carta {
 
   public:
     
+    Carta(string  valor,  string  nipe);
+    Carta(string  valor,  int     nipe);
     Carta(string  valor,  string  nipe,   int forca);
     Carta(string  valor,  int     nipe,   int forca);
 
@@ -36,7 +38,7 @@ class Carta {
 
     int nipe;
     string valor; 
-    int forca;
+    int forca = 0;
 
 };
 

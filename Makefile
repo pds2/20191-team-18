@@ -5,6 +5,7 @@ CFLAGS=-std=c++11 -Wall
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
+# TEST_DIR = ./test
 
 all: main
 
@@ -36,9 +37,19 @@ MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cp
 Carta.o: ${INCLUDE_DIR}/models/Carta.hpp ${SRC_DIR}/models/Carta.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Carta.cpp -o ${BUILD_DIR}/Carta.o
 
-# Carta
+# Jogador
 Jogador.o: ${INCLUDE_DIR}/models/Jogador.hpp ${SRC_DIR}/models/Jogador.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Jogador.cpp -o ${BUILD_DIR}/Jogador.o
+
+
+# Carta
+Bot.o: ${INCLUDE_DIR}/models/Bot.hpp ${SRC_DIR}/models/Bot.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Bot.cpp -o ${BUILD_DIR}/Bot.o
+
+# Carta
+Humano.o: ${INCLUDE_DIR}/models/Humano.hpp ${SRC_DIR}/models/Humano.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Humano.cpp -o ${BUILD_DIR}/Humano.o
+
 
 
 ####################################################
@@ -57,22 +68,48 @@ Exceptions.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${SRC_DIR}/exceptions/Exce
 #                                                  #
 ####################################################
 
+#test
+test.o: ${TEST_DIR}/main.cpp
+	make clean
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${TEST_DIR}/*.cpp
+	mv *.o ${TEST_DIR}
+
+test: test.o Carta.o Jogador.o Bot.o Humano.o
+	${CC} ${CFLAGS} -o ${TEST_DIR}/main ${TEST_DIR}/*.o ${BUILD_DIR}/*.o 
+
 # main
 main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/main.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o 
 
 # app
-main: Exceptions.o MainScreen.o Carta.o Jogador.o main.o
+main: Exceptions.o MainScreen.o 
 	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o
 
 
 # Rule for cleaning files generated during compilation.
 # Call 'make clean' to use it
-clean_linux:
-	rm -rf ${BUILD_DIR}/*.o 
+# Rule for cleaning files generated during compilation. 
+# Call 'make clean' to use it 
+clean: 
+	rm -rf ${BUILD_DIR}/*.o    
 
 clean_windows:
-	del /S "%dir%\build\*.o"
+	del /S "%dir%\build\*.o"    
 
 run:
+	./build/main
+
+run_windows:
 	./build/main.exe
+
+cleantest: 
+	rm -rf ${TEST_DIR}/*.o    
+
+cleantest_windows:
+	del /S "%dir%\test\*.o"  
+
+runtest:
+	./test/main
+
+runtest_windows:
+	./test/main.exe

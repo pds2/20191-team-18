@@ -24,10 +24,15 @@ class Jogador {
     void setMao(std::vector<Carta> cartas);
     Carta* getCartaMao(int posicao); 
     std::vector<Carta*> getMao();
+    
+    virtual Carta* jogar() = 0;
 
-  private:
+  protected:
 
     std::vector<Carta*> mao;
+    
+  private:
+
     string nome; 
 
 };

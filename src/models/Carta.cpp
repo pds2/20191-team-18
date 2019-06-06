@@ -3,6 +3,16 @@
 using std::string;
 using std::toupper;
 
+Carta::Carta(string valor, int nipe) {
+    setNipe(nipe);
+    setValor(valor);
+}
+
+Carta::Carta(string valor, string  nipe) {
+    setNipe(nipe);
+    setValor(valor);
+}
+
 Carta::Carta(string  valor, int nipe,       int forca) {
     setNipe(nipe);
     setValor(valor);
@@ -27,6 +37,9 @@ std::string Carta::getNipe() {
     }
     else if(nipe == PAUS) {
         return "Paus";
+    }
+    else {
+        throw Exception::NipeInvalido();
     }
 }
 
