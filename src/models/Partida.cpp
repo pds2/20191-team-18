@@ -1,4 +1,4 @@
-#include "models/Partida.hpp"
+#include "../../include/models/Partida.hpp"
 
 using std::string;
 using std::toupper;
