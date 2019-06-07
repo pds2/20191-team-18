@@ -25,7 +25,7 @@ class Partida {
     void setPontos(int pontos);
 
     int getMao();
-    void setMao(string mao);
+    void setMao(int mao);
 };
 
 #endif

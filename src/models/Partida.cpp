@@ -10,27 +10,27 @@ Partida::Partida(int rodada, int pontos, int mao) {
 }
 
 int Partida::getRodada() {
-    return this.rodada;
+    return this->rodada;
 }
 
 int Partida::getPontos() {
-    return this.pontos;
+    return this->pontos;
 }
 
 int Partida::getMao() {
-    return this.mao;
+    return this->mao;
 }
 
 void Partida::setRodada(int rodada) {
-    this.rodada = rodada;
+    this->rodada = rodada;
 }
 
 void Partida::setPontos(int pontos) {
-    this.pontos = pontos;
+    this->pontos = pontos;
 }
 
 void Partida::setMao(int mao) {
-    this.mao = mao;
+    this->mao = mao;
 }
 
 
