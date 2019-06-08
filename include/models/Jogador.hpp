@@ -18,21 +18,27 @@ class Jogador {
     Jogador(string nome, std::vector<Carta*> cartas);
 
     string  getNome();
+
     void addCartaMao(Carta* carta);
     void removeCartaMao(Carta* carta);
     void removeCartaMao(int posicao); 
     void setMao(std::vector<Carta> cartas);
     Carta* getCartaMao(int posicao); 
     std::vector<Carta*> getMao();
+
+    int getNumeroCartas();
+
+    void setTimeJogador(int timeJogador);
+    int getTimeJogador();
     
-    virtual Carta* jogar() = 0;
+    virtual int jogar(std::vector<std::string> opcoesAdicionais) = 0;
 
   protected:
 
     std::vector<Carta*> mao;
-    
-  private:
+    int timeJogador;
 
+  private:
     string nome; 
 
 };

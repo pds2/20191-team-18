@@ -1,37 +1,48 @@
-#include "../../include/models/Partida.hpp"
+#include "models/Partida.hpp"
+#include "models/Rodada.hpp" 
+#include "models/Jogador.hpp"
+#include <list>
+#include <iostream>
 
-using std::string;
-using std::toupper;
+Partida::Partida(std::list<Jogador*> jogadores) {
+    
+    this->jogadores = jogadores;
+    int count = 1, nRodada = 1;
+    for (auto const& jogador : jogadores) {
+        
+        if(count % 2 == 1) {
+            jogador->setTimeJogador(1);
+        }
+        else {
+            jogador->setTimeJogador(2);
+        }
+        count++;
+    }
 
-Partida::Partida(int rodada, int pontos, int mao) {
-    setRodada(rodada);
-    setPontos(pontos);
-    setMao(mao);
+    cout << "Partida Iniciada";
+
+    while(pontos_time1 != PONTOS_VITORIA && pontos_time2 != PONTOS_VITORIA) {
+        Rodada* rodada = new Rodada(nRodada, 2, jogadores, &pontos_time1, &pontos_time2);
+        this->rodadas.push_back(rodada);
+        nRodada++;
+    }
+
+    if(pontos_time1 == PONTOS_VITORIA) {
+        cout << "\n" << "O Time 1 foi o vencedor";
+    }
+    else {
+        cout << "\n" << "O Time 2 foi o vencedor";
+    }
 }
 
-int Partida::getRodada() {
-    return this->rodada;
+int Partida::getPontosTime1() {
+    return this->pontos_time1;
 }
 
-int Partida::getPontos() {
-    return this->pontos;
+int Partida::getPontosTime2() {
+    return this->pontos_time2;
 }
 
-int Partida::getMao() {
-    return this->mao;
-}
-
-void Partida::setRodada(int rodada) {
-    this->rodada = rodada;
-}
-
-void Partida::setPontos(int pontos) {
-    this->pontos = pontos;
-}
-
-void Partida::setMao(int mao) {
-    this->mao = mao;
-}
 
 
 

@@ -16,7 +16,7 @@ class Bot : public Jogador {
     Bot(string nome);
     Bot(string nome, std::vector<Carta*> cartas);
 
-    virtual Carta* jogar() override;
+    virtual int jogar(std::vector<std::string> opcoesAdicionais) override;
 
   private:
 

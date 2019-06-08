@@ -16,7 +16,11 @@ class Humano : public Jogador {
     Humano(string nome);
     Humano(string nome, std::vector<Carta*> cartas);
 
-    virtual Carta* jogar() override;
+    void pedirTruco();
+    void exibirCartas();
+    void exibirOpcoesAdicionais(std::vector<std::string> opcoesAdicionais, int nOpcao);
+
+    virtual int jogar(std::vector<std::string> opcoesAdicionais) override;
 
   private:
 

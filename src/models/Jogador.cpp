@@ -42,3 +42,15 @@ Carta* Jogador::getCartaMao(int posicao) {
 std::vector<Carta*> Jogador::getMao() {
     return this->mao;
 }
+
+int Jogador::getTimeJogador() {
+    return this->timeJogador;
+}
+
+void Jogador::setTimeJogador(int timeJogador) {
+    this->timeJogador = timeJogador;
+}
+
+int Jogador::getNumeroCartas() {
+    return this->mao.size();
+}
