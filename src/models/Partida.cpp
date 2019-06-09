@@ -23,7 +23,7 @@ Partida::Partida(std::list<Jogador*> jogadores) {
 
     cout << "Partida Iniciada";
 
-    while(pontos_time1 != PONTOS_VITORIA && pontos_time2 != PONTOS_VITORIA) {
+    while(pontos_time1 < PONTOS_VITORIA && pontos_time2 < PONTOS_VITORIA) {
         baralhoPartida.embaralhar();
         this->baralho = baralhoPartida.getCartas();
         for (auto const& jogador : jogadores) {
