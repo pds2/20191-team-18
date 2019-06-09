@@ -15,6 +15,7 @@ class Rodada {
   public:
 
     Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2);
+    string vencedorRodada();
 
   private:
   

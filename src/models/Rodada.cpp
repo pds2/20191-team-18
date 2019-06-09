@@ -26,3 +26,14 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
         baralho.erase(carta3);
     }
 }
+
+//Rodada::vencedorRodada(){
+ //   for (auto const& jogador : jogadores) {
+        //jogador->getCartaMao();
+        //jogador->addCartaMao(*carta2);
+        //jogador->addCartaMao(*carta3);
+        //baralho.erase(carta1);
+        //baralho.erase(carta2);
+        //baralho.erase(carta3);
+    //}
+//}
