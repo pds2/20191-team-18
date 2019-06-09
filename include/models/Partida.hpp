@@ -23,6 +23,7 @@ class Partida {
 
     std::list<Rodada*> rodadas;
     std::list<Jogador*> jogadores;
+    std::list<Carta*> baralho;
 
   public:
 
