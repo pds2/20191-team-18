@@ -43,7 +43,7 @@ Partida::Partida(std::list<Jogador*> jogadores) {
         nRodada++;
     }
 
-    if(pontos_time1 == PONTOS_VITORIA) {
+    if(pontos_time1 >= PONTOS_VITORIA) {
         cout << "\n" << "O Time 1 foi o vencedor";
     }
     else {

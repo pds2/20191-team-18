@@ -1,5 +1,5 @@
 #include "models/Humano.hpp"
-#include "models/Carta.hpp"
+#include <models/Carta.hpp>
 #include <cstdlib>
 
 template<class T, std::size_t n>
@@ -56,7 +56,6 @@ void Humano::exibirCartas() {
 
     for(int i = 0; i < (int) mao.size(); i++) {
         cout << "\n" << "Opcao [" << i << "]: " << mao[i]->getValor() << " de " << mao[i]->getNipe();
-        // cout << "\n" << "Carta [" << i << "]: " << mao[i]->getValor() << " Nipe: " << mao[i]->getNipe() <<  " Forca: " << mao[i]->getForca();
     }
 }
 

@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\include",
+    "\\include\\models",
+    "\\src",
+    "\\src\\exceptions",
+    "\\src\\models"
   ],
+  "SelectedNode": "\\src\\models\\Partida.cpp",
   "PreviewInSolutionExplorer": false
 }
