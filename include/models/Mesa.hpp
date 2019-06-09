@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include "exceptions/Exception.hpp"
+#include "models/CartaNaMesa.hpp"
 
 using std::cout;
 using std::endl;
@@ -13,10 +14,11 @@ class Mesa {
     private:
         std::list<CartaNaMesa*> cartasNaMesa;
         std::list<CartaNaMesa*> getCartasMesa();
-
+    
     public:
-        Mesa(std::list<CartaNaMesa*> cartasNaMesa);
-        Mesa::CartaNaMesa* ObterMaiorCarta();          
+        Mesa();
+        CartaNaMesa* obterMaiorCarta();          
+        void addCartaNaMesa(CartaNaMesa* cartaNaMesa);
 };
 
 #endif

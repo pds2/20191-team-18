@@ -14,7 +14,6 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
     this->pontos = pontos;
     this->jogadores = jogadores;            
     this->mao    = 1;    
-    *pontos_time1 = 12;
 
     for (auto const& jogador : this->jogadores) {
         auto carta1 = std::next(baralho.begin(), 0);
@@ -28,7 +27,7 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
         baralho.erase(carta3);
     }
 
-    std::list<CartaNaMesa*> cartasEscolhidas;
+    Mesa mesa = Mesa();
     for (auto const& jogador : jogadores) {
         std::vector<std::string> opcoesAdicionais;        
         opcoesAdicionais.push_back("Pedir Truco");
@@ -36,13 +35,18 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
         if(jogada < jogador->getNumeroCartas()) {
             Carta* c = jogador->getCartaMao(jogada);
             CartaNaMesa* cm = new CartaNaMesa(c, jogador);
-            cartasEscolhidas.push_back(cm);
+            mesa.addCartaNaMesa(cm);
             jogador->removeCartaMao(jogada);
-            cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << "" << c->getNipe();
+            cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
         }
     }
 
-    Mesa mesa(cartasEscolhidas);
-    CartaNaMesa* maiorCarta = mesa.ObterMaiorCarta();
-    cout << "\n" << maiorCarta->GetJogador() << " jogou a mairo carta e é o vencedor da rodada";
+    CartaNaMesa* maiorCartaNaMesa = mesa.obterMaiorCarta();
+    Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
+    
+    Carta* maiorCarta = maiorCartaNaMesa->getCarta();
+
+    cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada";
+
+    *pontos_time1 = 12;
 }

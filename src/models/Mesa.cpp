@@ -4,17 +4,19 @@
 #include <list>
 #include <iostream>
 
-Mesa::Mesa(std::list<CartaNaMesa*> cartasNaMesa) {
-    this->cartasNaMesa = cartasNaMesa;
+Mesa::Mesa() {
+    
 }
 
-CartaNaMesa* Mesa::ObterMaiorCarta(){
+CartaNaMesa* Mesa::obterMaiorCarta(){
     std::list<CartaNaMesa*> cartasNaMesa = this->getCartasMesa();
     CartaNaMesa* maiorCarta;
-    maiorCarta->setForca(0);
-    for (auto const& carta : cartasNaMesa) {
-        if(maiorCarta->getForca() < carta->getForca()){
-            maiorCarta = carta;
+    bool primeira = true;
+    for (auto const& cartaNaMesa : cartasNaMesa) {
+        Carta carta = *cartaNaMesa->getCarta();
+        if( primeira == true || (maiorCarta->getCarta()->getForca() < carta.getForca())){
+            maiorCarta = cartaNaMesa;
+            primeira = false;
         }
     }
 
@@ -24,3 +26,8 @@ CartaNaMesa* Mesa::ObterMaiorCarta(){
 std::list<CartaNaMesa*> Mesa::getCartasMesa(){
     return this->cartasNaMesa;
 }
+
+void Mesa::addCartaNaMesa(CartaNaMesa* cartaNaMesa) {
+    this->cartasNaMesa.push_back(cartaNaMesa);
+}
+

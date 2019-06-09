@@ -10,14 +10,16 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class CartaNaMesa : public Carta {
+class CartaNaMesa {
   public:
     CartaNaMesa(Carta* carta, Jogador* jogador);
 
-    string GetJogador();
+    Jogador* getJogador();
+    Carta* getCarta();
     
   private:
-    string nomeJogador;
+    Jogador* jogador;
+    Carta* carta;
     
 };
 

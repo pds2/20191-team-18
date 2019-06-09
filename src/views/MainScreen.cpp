@@ -50,32 +50,20 @@ void MainScreen::showMenu() {
 
     // } while(choice!=6);
     std::list<Jogador*> jogadores;
-    string nomeBot[10] = {"João", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
+    string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
 
     string nomeJogador = "";  
     std::cout << "Digite o seu nome para iniciar a partida: ";
     std::cin >> nomeJogador;
 
     Humano* player = new Humano(nomeJogador);
- 
-    // Função de jogar do humano
-    // Carta* c1 = new Carta("5", 0, 10);
-    // player->addCartaMao(c1);
-
-    // std::vector<std::string> opcoesAdicionais;
-    // opcoesAdicionais.push_back("Pedir Truco");
-    // int jogada = player->jogar(opcoesAdicionais);
-    // if(jogada < player->getNumeroCartas()) {
-    //     Carta* c = player->getCartaMao(jogada);
-    //     player->removeCartaMao(jogada);
-    //     cout << c->getValor() << c->getNipe();
-    // }
 
     jogadores.push_back(player);
 
     for(int i = 0; i < 3; i++) {
-        srand(time(NULL));
+        srand((unsigned)time(NULL));
         int posicaoNome = rand() % 10;
+        cout << posicaoNome;
         string nome = nomeBot[posicaoNome];
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);

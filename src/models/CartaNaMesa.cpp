@@ -4,13 +4,15 @@
 
 using std::string;
 
-CartaNaMesa::CartaNaMesa(Carta* carta, Jogador* jogador) : Carta(carta->getValor(), carta->getNipe(), carta->getForca()) {
-    this->setForca(carta->getForca());
-    this->setValor(carta->getValor());
-    this->setNipe(carta->getNipe());
-    this->nomeJogador = jogador->getNome();
+CartaNaMesa::CartaNaMesa(Carta* carta, Jogador* jogador)  {
+    this->jogador = jogador;
+    this->carta = carta;
 }
 
-string CartaNaMesa::GetJogador(){
-    return this->nomeJogador;
+Jogador* CartaNaMesa::getJogador(){
+    return this->jogador;
+}
+
+Carta* CartaNaMesa::getCarta() {
+    return this->carta;
 }
