@@ -33,6 +33,10 @@ MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cp
 #                                                  #
 ####################################################
 
+# Baralho
+Baralho.o: ${INCLUDE_DIR}/models/Baralho.hpp ${SRC_DIR}/models/Baralho.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Baralho.cpp -o ${BUILD_DIR}/Baralho.o
+
 # Carta
 Carta.o: ${INCLUDE_DIR}/models/Carta.hpp ${SRC_DIR}/models/Carta.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Carta.cpp -o ${BUILD_DIR}/Carta.o
@@ -87,7 +91,7 @@ main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o 
 
 # app
-main: Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Bot.o Jogador.o
+main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Baralho.o Carta.o Bot.o Jogador.o
 	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o
 
 
