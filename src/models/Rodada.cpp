@@ -14,7 +14,14 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
     this->pontos = pontos;
     this->jogadores = jogadores;            
     this->mao    = 1;    
+    this->pontos_time1 = pontos_time1;
+    this->pontos_time2 = pontos_time2;
+    this->maos_ganhas_time1 = 0;
+    this->maos_ganhas_time2 = 0;
+    controleRodada();
+}
 
+void Rodada::controleRodada() {
     for (auto const& jogador : this->jogadores) {
         auto carta1 = std::next(baralho.begin(), 0);
         auto carta2 = std::next(baralho.begin(), 1);
@@ -48,5 +55,5 @@ Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* ponto
 
     cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada";
 
-    *pontos_time1 = 12;
+    *this->pontos_time1 = 12;
 }

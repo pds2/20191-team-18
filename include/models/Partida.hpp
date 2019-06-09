@@ -28,6 +28,8 @@ class Partida {
 
     Partida(std::list<Jogador*> jogadores);
 
+    void controlaPartida();
+
     int getPontosTime1();
     int getPontosTime2();
 

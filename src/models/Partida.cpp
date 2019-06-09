@@ -9,9 +9,13 @@ Partida::Partida(std::list<Jogador*> jogadores) {
     
     this->jogadores = jogadores;
     
+}
+
+void Partida::controlaPartida() {
+    
     int count = 1, nRodada = 1;
 
-    for (auto const& jogador : jogadores) {
+    for (auto const& jogador : this->jogadores) {
         if(count % 2 == 1) {
             jogador->setTimeJogador(1);
         }
@@ -30,10 +34,10 @@ Partida::Partida(std::list<Jogador*> jogadores) {
     }
 
     if(pontos_time1 >= PONTOS_VITORIA) {
-        cout << "\n" << "O Time 1 foi o vencedor";
+        cout << "\n" << "O Time 1 foi o vencedor" << endl;
     }
     else {
-        cout << "\n" << "O Time 2 foi o vencedor";
+        cout << "\n" << "O Time 2 foi o vencedor" << endl;
     }
 }
 
