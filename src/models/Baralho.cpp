@@ -39,8 +39,9 @@ Baralho::Baralho() {
             else {
                 forca = i + 1;
             }
+
             Carta* c = new Carta(figura, nipe, forca);
-            cout << "\n" << "Figura: " << figura << " Nipe: " << nipe << " Forca:  " << forca; 
+
             cartas.push_back( c );
         }
     }
@@ -72,7 +73,6 @@ void Baralho::embaralhar() {
 
 Baralho::~Baralho() {
     for (auto const& i : this->cartas) {
-        cout << "TESTE";
         delete i;
     } 
 }
