@@ -58,7 +58,7 @@ void Rodada::controleRodada() {
         
         Carta* maiorCarta = maiorCartaNaMesa->getCarta();
 
-        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada";
+        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada !!!";
 
         if(jogadorMaiorCarta->getTimeJogador() == 1) {
             this->maos_ganhas_time1 ++;
@@ -69,10 +69,10 @@ void Rodada::controleRodada() {
     }
 
     if(maos_ganhas_time1 >= 2) {
-        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos." << endl;
+        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
     else {
-        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos." << endl;
+        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
 
     *this->pontos_time1 = 12;

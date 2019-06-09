@@ -34,10 +34,10 @@ void Partida::controlaPartida() {
     }
 
     if(pontos_time1 >= PONTOS_VITORIA) {
-        cout << "\n" << "O Time 1 foi o vencedor" << endl;
+        cout << "\n" << "O Time 1 foi o vencedor !!!" << endl;
     }
     else {
-        cout << "\n" << "O Time 2 foi o vencedor" << endl;
+        cout << "\n" << "O Time 2 foi o vencedor !!!" << endl;
     }
 }
 
