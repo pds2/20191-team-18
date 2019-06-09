@@ -22,6 +22,7 @@ class Rodada {
     int pontos;
     int mao;
     std::list<Jogador*> jogadores;
+    std::list<Carta*> baralho;
 
 };
 

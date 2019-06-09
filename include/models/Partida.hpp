@@ -22,8 +22,7 @@ class Partida {
     int pontos_time2;
 
     std::list<Rodada*> rodadas;
-    std::list<Jogador*> jogadores;
-    std::list<Carta*> baralho;
+    std::list<Jogador*> jogadores;    
 
   public:
 

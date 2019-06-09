@@ -8,7 +8,7 @@
 Partida::Partida(std::list<Jogador*> jogadores) {
     
     this->jogadores = jogadores;
-    Baralho baralhoPartida;
+    
     int count = 1, nRodada = 1;
 
     for (auto const& jogador : jogadores) {
@@ -23,21 +23,7 @@ Partida::Partida(std::list<Jogador*> jogadores) {
 
     cout << "Partida Iniciada";
 
-    while(pontos_time1 != PONTOS_VITORIA && pontos_time2 != PONTOS_VITORIA) {
-        baralhoPartida.embaralhar();
-        this->baralho = baralhoPartida.getCartas();
-        for (auto const& jogador : jogadores) {
-            auto carta1 = std::next(baralho.begin(), 0);
-            auto carta2 = std::next(baralho.begin(), 1);
-            auto carta3 = std::next(baralho.begin(), 2);
-            jogador->addCartaMao(*carta1);
-            jogador->addCartaMao(*carta2);
-            jogador->addCartaMao(*carta3);
-            baralho.erase(carta1);
-            baralho.erase(carta2);
-            baralho.erase(carta3);
-        }
-            
+    while(pontos_time1 != PONTOS_VITORIA && pontos_time2 != PONTOS_VITORIA) {            
         Rodada* rodada = new Rodada(nRodada, 2, jogadores, &pontos_time1, &pontos_time2);
         this->rodadas.push_back(rodada);
         nRodada++;
