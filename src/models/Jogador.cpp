@@ -54,3 +54,7 @@ void Jogador::setTimeJogador(int timeJogador) {
 int Jogador::getNumeroCartas() {
     return this->mao.size();
 }
+
+void Jogador::limparCartasMao() {
+    this->mao = {};
+}

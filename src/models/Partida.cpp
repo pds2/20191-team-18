@@ -6,7 +6,6 @@
 #include <iostream>
 
 Partida::Partida(std::list<Jogador*> jogadores) {
-    
     this->jogadores = jogadores;
     controlaPartida();
 }
@@ -26,14 +25,16 @@ void Partida::controlaPartida() {
     }
 
     cout << "Partida Iniciada";
-
-    while(pontos_time1 != PONTOS_VITORIA && pontos_time2 != PONTOS_VITORIA) {            
-        Rodada* rodada = new Rodada(nRodada, 2, jogadores, &pontos_time1, &pontos_time2);
+    cout << "\n" << "Pontos do time 1: " << this->pontos_time1; 
+    while(this->pontos_time1 < PONTOS_VITORIA && this->pontos_time2 < PONTOS_VITORIA) {            
+        Rodada* rodada = new Rodada(nRodada, 2, jogadores, &this->pontos_time1, &this->pontos_time2);
         this->rodadas.push_back(rodada);
         nRodada++;
+        this->jogadores = rodada->getOrdemJogadores();
+        cout << "\n" << "Pontos do time 1: " << this->pontos_time1; 
     }
 
-    if(pontos_time1 >= PONTOS_VITORIA) {
+    if(this->pontos_time1 >= PONTOS_VITORIA) {
         cout << "\n" << "O Time 1 foi o vencedor !!!" << endl;
     }
     else {

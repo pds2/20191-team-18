@@ -30,6 +30,8 @@ class Jogador {
 
     void setTimeJogador(int timeJogador);
     int getTimeJogador();
+
+    void limparCartasMao();
     
     virtual int jogar(std::vector<std::string> opcoesAdicionais) = 0;
 

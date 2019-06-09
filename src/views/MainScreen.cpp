@@ -64,11 +64,18 @@ void MainScreen::showMenu() {
         srand((unsigned)time(NULL));
         int posicaoNome = rand() % 10;
         string nome = nomeBot[posicaoNome];
+        nome += i;
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
     }
-
-    Partida p = Partida(jogadores);
-    p.getPontosTime1();
+    try {
+        
+        Partida p = Partida(jogadores);
+        p.getPontosTime1();
+    }
+     catch (exception& e)
+    {
+        cout << e.what() << '\n';
+    }
     system("pause");
 } 

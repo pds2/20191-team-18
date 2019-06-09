@@ -15,11 +15,10 @@ class Partida {
 
   const int PONTOS_VITORIA = 12;
 
-
   private:
     
-    int pontos_time1;
-    int pontos_time2;
+    int pontos_time1 = 0;
+    int pontos_time2 = 0;
 
     std::list<Rodada*> rodadas;
     std::list<Jogador*> jogadores;    
