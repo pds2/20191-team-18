@@ -19,6 +19,7 @@ class Mesa {
         Mesa();
         CartaNaMesa* obterMaiorCarta();          
         void addCartaNaMesa(CartaNaMesa* cartaNaMesa);
+        void limpaCartasNaMesa();
 };
 
 #endif

@@ -31,3 +31,6 @@ void Mesa::addCartaNaMesa(CartaNaMesa* cartaNaMesa) {
     this->cartasNaMesa.push_back(cartaNaMesa);
 }
 
+void Mesa::limpaCartasNaMesa() {
+    this->cartasNaMesa = {};
+}

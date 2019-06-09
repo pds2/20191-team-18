@@ -35,25 +35,45 @@ void Rodada::controleRodada() {
     }
 
     Mesa mesa = Mesa();
-    for (auto const& jogador : jogadores) {
-        std::vector<std::string> opcoesAdicionais;        
-        opcoesAdicionais.push_back("Pedir Truco");
-        int jogada = jogador->jogar(opcoesAdicionais);
-        if(jogada < jogador->getNumeroCartas()) {
-            Carta* c = jogador->getCartaMao(jogada);
-            CartaNaMesa* cm = new CartaNaMesa(c, jogador);
-            mesa.addCartaNaMesa(cm);
-            jogador->removeCartaMao(jogada);
-            cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
+
+    while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
+
+        mesa.limpaCartasNaMesa();
+
+        for (auto const& jogador : jogadores) {
+            std::vector<std::string> opcoesAdicionais;        
+            opcoesAdicionais.push_back("Pedir Truco");
+            int jogada = jogador->jogar(opcoesAdicionais);
+            if(jogada < jogador->getNumeroCartas()) {
+                Carta* c = jogador->getCartaMao(jogada);
+                CartaNaMesa* cm = new CartaNaMesa(c, jogador);
+                mesa.addCartaNaMesa(cm);
+                jogador->removeCartaMao(jogada);
+                cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
+            }
+        }
+
+        CartaNaMesa* maiorCartaNaMesa = mesa.obterMaiorCarta();
+        Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
+        
+        Carta* maiorCarta = maiorCartaNaMesa->getCarta();
+
+        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada";
+
+        if(jogadorMaiorCarta->getTimeJogador() == 1) {
+            this->maos_ganhas_time1 ++;
+        }
+        else {
+            this->maos_ganhas_time2 ++;
         }
     }
 
-    CartaNaMesa* maiorCartaNaMesa = mesa.obterMaiorCarta();
-    Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
-    
-    Carta* maiorCarta = maiorCartaNaMesa->getCarta();
-
-    cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada";
+    if(maos_ganhas_time1 >= 2) {
+        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos." << endl;
+    }
+    else {
+        cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos." << endl;
+    }
 
     *this->pontos_time1 = 12;
 }

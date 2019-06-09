@@ -8,7 +8,7 @@
 Partida::Partida(std::list<Jogador*> jogadores) {
     
     this->jogadores = jogadores;
-    
+    controlaPartida();
 }
 
 void Partida::controlaPartida() {

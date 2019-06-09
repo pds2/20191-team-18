@@ -63,7 +63,6 @@ void MainScreen::showMenu() {
     for(int i = 0; i < 3; i++) {
         srand((unsigned)time(NULL));
         int posicaoNome = rand() % 10;
-        cout << posicaoNome;
         string nome = nomeBot[posicaoNome];
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
