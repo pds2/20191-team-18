@@ -64,13 +64,17 @@ void MainScreen::showMenu() {
     int posicaoNome = rand() % 10;
     
     for(int i = 0; i < 3; i++) {
-        posicaoNome += i;
-        if(posicaoNome > 9) {
-            posicaoNome = 0;
-        }
-        srand((unsigned)time(NULL));
+        string nome = NULL;
+        do {
+            posicaoNome += i;
+            if(posicaoNome > 9) {
+                posicaoNome = 0;
+            }
+            srand((unsigned)time(NULL));
+            
+            nome = nomeBot[posicaoNome];
+        } while(nome == nomeJogador);
         
-        string nome = nomeBot[posicaoNome];
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
     }
