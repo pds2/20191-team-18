@@ -24,3 +24,7 @@ int Bot::jogar(std::vector<std::string> opcoesAdicionais) {
     
     return posicaoCarta;
 }
+
+int Bot::aceitarDesafio(Jogador* j, int pontos) {
+    return 0;
+}

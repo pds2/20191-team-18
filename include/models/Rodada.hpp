@@ -5,6 +5,7 @@
 #include <list>
 #include "exceptions/Exception.hpp"
 #include "models/Jogador.hpp"
+#include "models/Mesa.hpp"
 
 using std::cout;
 using std::endl;
@@ -17,21 +18,32 @@ class Rodada {
     Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2);
     void controleRodada();
     std::list<Jogador*> getOrdemJogadores();
+    void setPontos(int pontos);
     
   private:
   
     int numero;
     int pontos = 2;
     int mao;
+    int timeUltimoDesafiador = 0;
     int* pontos_time1 = nullptr;
     int* pontos_time2 = nullptr;
+    
+    int getValorDesafio();
+    
     int maos_ganhas_time1 = 0;
     int maos_ganhas_time2 = 0;
-    std::list<Jogador*> jogadores;
+    
     std::list<Carta*> baralho;
-    void reordenarListaJogadores();
+    
+    std::list<Jogador*> jogadores;
     Jogador* ultimoVencedor;
-
+    
+    std::list<Jogador*> getAdversarios(Jogador* jogador);
+    void desafiar(Jogador* jogador, Mesa* mesa);
+    void jogarCarta(Jogador* jogador, Mesa* mesa, int jogada);
+    void reordenarListaJogadores();
+    
 };
 
 #endif

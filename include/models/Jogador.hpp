@@ -34,6 +34,7 @@ class Jogador {
     void limparCartasMao();
     
     virtual int jogar(std::vector<std::string> opcoesAdicionais) = 0;
+    virtual int aceitarDesafio(Jogador* jogadorDesafiante, int pontos) = 0;
 
   protected:
 

@@ -34,11 +34,11 @@ void Rodada::controleRodada() {
         baralho.erase(carta3);
     }
 
-    Mesa mesa = Mesa();
+    Mesa* mesa = new Mesa();
 
     while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
         cout << "\n";
-        mesa.limpaCartasNaMesa();
+        mesa->limpaCartasNaMesa();
         
         for (auto const& jogador : this->jogadores) {
             std::vector<std::string> opcoesAdicionais;        
@@ -46,15 +46,13 @@ void Rodada::controleRodada() {
             
             int jogada = jogador->jogar(opcoesAdicionais);
             if(jogada < jogador->getNumeroCartas()) {
-                Carta* c = jogador->getCartaMao(jogada);
-                CartaNaMesa* cm = new CartaNaMesa(c, jogador);
-                mesa.addCartaNaMesa(cm);
-                jogador->removeCartaMao(jogada);
-                cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
+                jogarCarta(jogador, mesa, jogada);
+            } else {
+                desafiar(jogador, mesa);
             }
         }
 
-        CartaNaMesa* maiorCartaNaMesa = mesa.obterMaiorCarta();
+        CartaNaMesa* maiorCartaNaMesa = mesa->obterMaiorCarta();
         Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
         
         Carta* maiorCarta = maiorCartaNaMesa->getCarta();
@@ -114,4 +112,83 @@ void Rodada::reordenarListaJogadores() {
 std::list<Jogador*> Rodada::getOrdemJogadores() {
     
     return this->jogadores;
+}
+
+void Rodada::setPontos(int pontos) {
+    this->pontos = pontos;
+}
+
+void Rodada::jogarCarta(Jogador* jogador, Mesa* mesa, int jogada) {
+    Carta* c = jogador->getCartaMao(jogada);
+    CartaNaMesa* cm = new CartaNaMesa(c, jogador);
+    mesa->addCartaNaMesa(cm);
+    jogador->removeCartaMao(jogada);
+    cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
+}
+
+void Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
+    cout << "\n Jogador " << jogador->getNome() << " está trucando: "; 
+    cout << "TRUCO SEU RATO! "; 
+    std::list<Jogador*> adversarios = getAdversarios(jogador);
+    this->timeUltimoDesafiador = jogador->getTimeJogador();
+    
+    int escolhaDupla = 0;
+    
+    do {
+        escolhaDupla = 0;
+        int valorDesafio = getValorDesafio();
+        
+        for (auto const& adversario : adversarios) {
+            int result = adversario->aceitarDesafio(jogador, valorDesafio);
+            if(result > escolhaDupla) {
+                escolhaDupla = result;  
+            }
+        }
+        
+        if(escolhaDupla != 3) {
+            this->setPontos(valorDesafio);
+            
+            if(escolhaDupla == 2) {
+                std::list<Jogador*>::iterator itJogadorAdversario = adversarios.begin();
+                Jogador* jogadorAdversario = *itJogadorAdversario;
+                this->timeUltimoDesafiador = jogadorAdversario->getTimeJogador();
+                adversarios = getAdversarios(jogadorAdversario);
+            }
+        }
+    } while(escolhaDupla == 2);
+    
+    std::vector<std::string> opcoesAdicionais;
+    
+    if(jogador->getTimeJogador() != this->timeUltimoDesafiador) {
+
+        if(this->pontos == 4) {
+            opcoesAdicionais.push_back("Pedir Seis!");     
+        } else if(this->pontos == 8) {
+            opcoesAdicionais.push_back("Pedir Nove!"); 
+        } else if(this->pontos == 10) {
+            opcoesAdicionais.push_back("Pedir Doze!"); 
+        }
+    }
+    
+    jogador->jogar(opcoesAdicionais);
+}
+
+int Rodada::getValorDesafio() {
+    if(this->pontos != 4) {
+        return this->pontos + 2;
+    } else {
+        return this->pontos * 2;
+    }
+}
+
+std::list<Jogador*> Rodada::getAdversarios(Jogador* jogador) {
+    std::list<Jogador*> adversarios;
+    
+    for (auto const& jogadorIt : this->jogadores) {
+        if(jogadorIt->getTimeJogador() != jogador->getTimeJogador()) {
+            adversarios.push_back(jogadorIt);
+        }   
+    }
+    
+    return adversarios;
 }

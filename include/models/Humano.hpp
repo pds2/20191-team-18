@@ -21,6 +21,7 @@ class Humano : public Jogador {
     void exibirOpcoesAdicionais(std::vector<std::string> opcoesAdicionais, int nOpcao);
 
     virtual int jogar(std::vector<std::string> opcoesAdicionais) override;
+    virtual int aceitarDesafio(Jogador* jogadorDesafiante, int pontos) override;
 
   private:
 

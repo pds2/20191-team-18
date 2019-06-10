@@ -62,3 +62,45 @@ void Humano::exibirCartas() {
 void Humano::pedirTruco() {
     cout << "TRUCO NA MENTE";
 }
+
+int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
+    int choice;
+    do {
+        switch(pontos) {
+            case 4:
+                cout << jogadorDesafiante->getNome() << " está pedindo truco!" << endl;
+                break;
+            case 8:
+                cout << jogadorDesafiante->getNome() << " está pedindo seis!" << endl;
+                break;
+            case 10:
+                cout << jogadorDesafiante->getNome() << " está pedindo nove!" << endl;
+                break;
+            case 12:
+                cout << jogadorDesafiante->getNome() << " está pedindo doze!" << endl;
+                break;
+        }
+        
+        cout << "\n O que deseja fazer?" << endl;
+        cout << "\n 1 - Aceitar" << endl;
+        
+        switch(pontos) {
+            case 4:
+                cout << "2 - Pedir seis!" << endl;
+                break;
+            case 8:
+                cout << "2 - Pedir nove!" << endl;
+                break;
+            case 10:
+                cout << "2 - Pedir doze!" << endl;
+                break;
+        }
+        
+        cout << "\n 3 - Correr!" << endl;
+        cout << "\n" << "Digite a opcao selecionada: " << endl;
+        
+        std::cin >> choice;    
+    } while(choice < 1 || choice > 3);
+    
+    return choice;
+}
