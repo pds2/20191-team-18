@@ -4,6 +4,22 @@
  * 
  * @description: Classe que gerencia toda a interação com o
  *  usuário. Imprime telas e elementos.
+ * 
+ * @example: 
+ *  unique_ptr<UIManager> uim(new UIManager(true));
+ *  vector<string> menu = {
+ *       "1. teste 1",
+ *       "2. teste 2",
+ *       "3. teste 3",
+ *       "4. teste 4",
+ *       "5. teste 5"
+ *   };
+ *
+ *   uim->initScreen();
+ *   uim->drawMenu(menu, MENU_BEGIN);
+ * 
+ *   Tamanho da string do menu: MENU_STRING_ITEM_LENGTH
+ *   Numero de itens por menu: MENU_NUMBER_OF_ITEM
  */
 
 #include "../../include/views/UIManager.hpp"
