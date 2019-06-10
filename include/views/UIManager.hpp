@@ -45,9 +45,10 @@ class UIManager{
         int getY_Size();
         int getX_Position();
         int getY_Position();
+        void initScreenActionListener();
 
         void drawMenu(vector<string> menu, int startingAt);
-        void initScreenActionListener();
+        int getSelectedMenuItem();
 };
 
 #endif

@@ -4,22 +4,6 @@
  * 
  * @description: Classe que gerencia toda a interação com o
  *  usuário. Imprime telas e elementos.
- * 
- * @example: 
- *  unique_ptr<UIManager> uim(new UIManager(true));
- *  vector<string> menu = {
- *       "1. teste 1",
- *       "2. teste 2",
- *       "3. teste 3",
- *       "4. teste 4",
- *       "5. teste 5"
- *   };
- *
- *   uim->initScreen();
- *   uim->drawMenu(menu, MENU_BEGIN);
- * 
- *   Tamanho da string do menu: MENU_STRING_ITEM_LENGTH
- *   Numero de itens por menu: MENU_NUMBER_OF_ITEM
  */
 
 #include "../../include/views/UIManager.hpp"
@@ -223,6 +207,9 @@ void UIManager::menuNavigate(int pressedKey){
         case KEY_DOWN:
             this->menuNavigateDown();
             break;
+        case '\n':
+            this->stopListener();
+            break;
     }
 }
 
@@ -309,4 +296,11 @@ void UIManager::unhighlightMenuEntry(int entryNum){
     mvwaddstr(this->win, yPos, xPos, this->curMenu[entryNum].c_str());
     wattroff(this->win, COLOR_PAIR(0));
     wrefresh(this->win);
+}
+
+/**
+* Retorna entrada selecionada pelo usuário.
+*/
+int UIManager::getSelectedMenuItem(){
+    return this->_menuEntryPos;
 }
