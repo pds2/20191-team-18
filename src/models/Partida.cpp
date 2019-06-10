@@ -25,13 +25,14 @@ void Partida::controlaPartida() {
     }
 
     cout << "Partida Iniciada";
-    cout << "\n" << "Pontos do time 1: " << this->pontos_time1; 
+
     while(this->pontos_time1 < PONTOS_VITORIA && this->pontos_time2 < PONTOS_VITORIA) {            
         Rodada* rodada = new Rodada(nRodada, 2, jogadores, &this->pontos_time1, &this->pontos_time2);
         this->rodadas.push_back(rodada);
         nRodada++;
         this->jogadores = rodada->getOrdemJogadores();
         cout << "\n" << "Pontos do time 1: " << this->pontos_time1; 
+        cout << "\n" << "Pontos do time 2: " << this->pontos_time2; 
     }
 
     if(this->pontos_time1 >= PONTOS_VITORIA) {
