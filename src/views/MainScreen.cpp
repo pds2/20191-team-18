@@ -49,6 +49,7 @@ void MainScreen::showMenu() {
     //     }  
 
     // } while(choice!=6);
+
     std::list<Jogador*> jogadores;
     string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
 
@@ -68,14 +69,9 @@ void MainScreen::showMenu() {
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
     }
-    try {
         
-        Partida p = Partida(jogadores);
-        p.getPontosTime1();
-    }
-     catch (exception& e)
-    {
-        cout << e.what() << '\n';
-    }
+    Partida p = Partida(jogadores);
+    p.getPontosTime1();
+    
     system("pause");
 } 

@@ -43,6 +43,7 @@ void Rodada::controleRodada() {
         for (auto const& jogador : this->jogadores) {
             std::vector<std::string> opcoesAdicionais;        
             opcoesAdicionais.push_back("Pedir Truco");
+            cout << "\n" << "Dei pau aqui";
             int jogada = jogador->jogar(opcoesAdicionais);
             if(jogada < jogador->getNumeroCartas()) {
                 Carta* c = jogador->getCartaMao(jogada);
@@ -67,7 +68,10 @@ void Rodada::controleRodada() {
             this->maos_ganhas_time2 += 1;
         }
         this->ultimoVencedor = jogadorMaiorCarta;
-        reordenarListaJogadores();
+        if(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
+            reordenarListaJogadores();
+        }
+        
     }
 
     if(this->maos_ganhas_time1 >= 2) {
@@ -76,7 +80,7 @@ void Rodada::controleRodada() {
     else {
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
-    
+
     *this->pontos_time1 += 6;
 }
 

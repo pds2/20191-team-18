@@ -12,12 +12,15 @@ Bot::Bot(string nome, std::vector<Carta*> cartas) : Jogador(nome, cartas) {};
 * Retorna uma carta da mão do bot realizando a jogada.
 **/
 int Bot::jogar(std::vector<std::string> opcoesAdicionais) {
-
+    int posicaoCarta = 0;
     if(this->mao.size() == 0) {
         throw Exception::JogadorSemCartas();
     }
 
     srand ( time(NULL) );
-    int posicaoCarta = rand() % (this->mao.size() - 1);
+    if(this->mao.size() != 1) {
+        posicaoCarta = rand() % (this->mao.size() - 1);
+    }
+    
     return posicaoCarta;
 }
