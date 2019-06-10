@@ -42,9 +42,7 @@ void Rodada::controleRodada() {
         mesa->limpaCartasNaMesa();
         
         for (auto const& jogador : this->jogadores) {
-            std::vector<std::string> opcoesAdicionais;        
-            opcoesAdicionais.push_back("Pedir Truco");
-            
+            std::vector<std::string> opcoesAdicionais = getOpcoesAdicionais(jogador);   
             int jogada = jogador->jogar(opcoesAdicionais);
             alguemCorreu = consolidaJogada(jogador, mesa, jogada);
             
@@ -163,23 +161,29 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
     } while(escolhaDupla > 2 && alguemCorreu == false);
     
     if(alguemCorreu == false) {
-        std::vector<std::string> opcoesAdicionais;
-    
-        if(jogador->getTimeJogador() != this->timeUltimoDesafiador) {
-    
-            if(this->pontos == 4) {
-                opcoesAdicionais.push_back("Pedir Seis!");     
-            } else if(this->pontos == 8) {
-                opcoesAdicionais.push_back("Pedir Nove!"); 
-            } else if(this->pontos == 10) {
-                opcoesAdicionais.push_back("Pedir Doze!"); 
-            }
-        }
-        
+        std::vector<std::string> opcoesAdicionais = getOpcoesAdicionais(jogador);
         int jogada = jogador->jogar(opcoesAdicionais);
         consolidaJogada(jogador, mesa, jogada);
     }   
     return alguemCorreu;
+}
+
+std::vector<std::string> Rodada::getOpcoesAdicionais(Jogador* jogador) {
+    std::vector<std::string> opcoesAdicionais;
+    
+    if(jogador->getTimeJogador() != this->timeUltimoDesafiador) {
+        if(this->pontos == 2) {
+            opcoesAdicionais.push_back("Pedir Truco!");       
+        } else if(this->pontos == 4){
+            opcoesAdicionais.push_back("Pedir Seis!");
+        } else if(this->pontos == 8) {
+            opcoesAdicionais.push_back("Pedir Nove!"); 
+        } else if(this->pontos == 10) {
+            opcoesAdicionais.push_back("Pedir Doze!"); 
+        }
+    } 
+    
+    return opcoesAdicionais;
 }
 
 int Rodada::getValorDesafio() {
@@ -213,9 +217,11 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
     
         if(jogadorMaiorCarta->getTimeJogador() == 1) {
             this->maos_ganhas_time1 += 1;
+            this->pontos_time1 += this->pontos;
         }
         else {
             this->maos_ganhas_time2 += 1;
+            this->pontos_time2 += this->pontos;
         }
         
         this->ultimoVencedor = jogadorMaiorCarta;
@@ -225,13 +231,11 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
     }
     else {
         if(this->timeUltimoDesafiador == 1) {
-            this->maos_ganhas_time1 = 2;
-            this->maos_ganhas_time2 = 0;
+            this->maos_ganhas_time1 += 1;
             *this->pontos_time1 += this->pontos;
         }
         else {
-            this->maos_ganhas_time1 = 0;
-            this->maos_ganhas_time2 = 2;
+            this->maos_ganhas_time2 += 1;
             *this->pontos_time2 += this->pontos;
         }
     }

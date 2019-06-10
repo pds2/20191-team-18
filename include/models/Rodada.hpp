@@ -44,6 +44,7 @@ class Rodada {
     void jogarCarta(Jogador* jogador, Mesa* mesa, int jogada);
     void reordenarListaJogadores();
     bool consolidaJogada(Jogador* jogador, Mesa* mesa, int jogada);
+    std::vector<std::string> getOpcoesAdicionais(Jogador* jogador);
     
     void computaVencedorRodada(Mesa* mesa, bool desafioRecusado);
 };
