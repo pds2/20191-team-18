@@ -66,13 +66,13 @@ void MainScreen::showMenu() {
     int posicaoNome = rand() % 10;
     
     for(int i = 0; i < 3; i++) {
-        string nome = NULL;
+        string nome;
         do {
             posicaoNome += i;
             if(posicaoNome > 9) {
                 posicaoNome = 0;
             }
-            srand((unsigned)time(NULL));
+            srand( (unsigned) time(NULL));
             
             nome = nomeBot[posicaoNome];
         } while(nome == nomeJogador);
