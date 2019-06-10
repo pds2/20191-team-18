@@ -5,6 +5,7 @@ CFLAGS=-std=c++11 -Wall
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
+NCURSES_COMPILE_PARAMS = -I./libs/include -I./libs/include/ncurses -L./libs/lib -lncurses
 # TEST_DIR = ./test
 
 all: main
