@@ -55,7 +55,7 @@ void Humano::exibirCartas() {
     cout << "\n\n" << this->getNome() << ", voce possui as seguintes cartas:" << endl;
 
     for(int i = 0; i < (int) mao.size(); i++) {
-        cout << "\n" << "Opcao [" << i << "]: " << mao[i]->getValor() << " de " << mao[i]->getNipe();
+        cout << "\n" << "Opcao [" << i << "]: " << mao[i]->getValor() << " " << mao[i]->getNipe();
     }
 }
 

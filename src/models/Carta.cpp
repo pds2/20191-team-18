@@ -27,16 +27,16 @@ Carta::Carta(string  valor,  string  nipe,   int forca) {
 
 std::string Carta::getNipe() {
     if(nipe == COPAS) {
-        return "Copas";
+        return "\u2665\ufe0f";
     }
     else if(nipe == OUROS) {
-        return "Ouros";
+        return "\u2666\ufe0f";
     }
     else if(nipe == ESPADAS) {
-        return "Espadas";
+        return "\u2660\ufe0f";
     }
     else if(nipe == PAUS) {
-        return "Paus";
+        return "\u2663\ufe0f";
     }
     else {
         throw Exception::NipeInvalido();

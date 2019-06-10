@@ -43,7 +43,7 @@ void Rodada::controleRodada() {
         for (auto const& jogador : this->jogadores) {
             std::vector<std::string> opcoesAdicionais;        
             opcoesAdicionais.push_back("Pedir Truco");
-            cout << "\n" << "Dei pau aqui";
+            
             int jogada = jogador->jogar(opcoesAdicionais);
             if(jogada < jogador->getNumeroCartas()) {
                 Carta* c = jogador->getCartaMao(jogada);
@@ -59,8 +59,8 @@ void Rodada::controleRodada() {
         
         Carta* maiorCarta = maiorCartaNaMesa->getCarta();
 
-        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " de " << maiorCarta->getNipe() << " e venceu a rodada !!!";
-        cout << "\n\n" << "Time do Jogador" << jogadorMaiorCarta->getTimeJogador();
+        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
+
         if(jogadorMaiorCarta->getTimeJogador() == 1) {
             this->maos_ganhas_time1 += 1;
         }
