@@ -8,9 +8,9 @@
 
 #include "../../include/views/UIManager.hpp"
 #include <iostream>
-#include <ncurses.h>
 #include <vector>
 #include <string>
+#include <ncurses.h>
 
 using namespace std;
 
@@ -19,10 +19,19 @@ using namespace std;
  */
 UIManager::UIManager(bool shouldInitScr){
     if(shouldInitScr){
+
         initscr();
+        noecho();
+        cbreak();
+        keypad(stdscr, TRUE);
+
+        start_color();
+        init_pair(0, COLOR_WHITE, COLOR_BLACK);
+        init_pair(1, COLOR_BLACK, COLOR_WHITE);
 
         this->win = stdscr;
         this->_initializedScreen = false;
+        this->_stopListener = false;
         getmaxyx(this->win, this->_screenSizeY, this->_screenSizeX);
 
     } else {
@@ -85,6 +94,51 @@ int UIManager::getY_Position(){
 }
 
 /**
+ * Desenha bordas de acordo com os parametros.
+ * 
+ * @param char vChar caractere a ser usado para
+ * linhas verticais.
+ * @param char hChar caractere a ser usado para
+ * linhas horizontais.
+ */
+void UIManager::drawBorders(char vChar, char hChar){
+    box(this->win, vChar, hChar);
+    wrefresh(this->win);
+}
+
+/**
+ * Inicia listener de ações da tela. 
+ * Espera por ações do teclado e executa funções
+ * definidas a ela.
+ */
+void UIManager::initScreenActionListener(){
+    int ch;
+    while(!this->_stopListener){
+        ch = wgetch(this->win);
+
+        if(this->_screenMode==SCR_MODE_MENU){
+            this->menuNavigate(ch);
+        }
+    }
+}
+
+/**
+ * Define variavel que permite executação
+ * do listener;
+*/
+void UIManager::startListener(){
+    this->_stopListener = false;
+}
+
+/**
+ * Define variavel que bloqueia executação
+ * do listener;
+*/
+void UIManager::stopListener(){
+    this->_stopListener = true;
+}
+
+/**
  * Desenha menu padrão de acordo com string
  * recebido utilizando o meio da tela como referência. 
  */
@@ -94,6 +148,8 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
     this->getMenuDrawPosition(yPos, xPos);
 
     this->curMenu = menu;
+    this->_menuStartDrawPos = startingAt;
+
     if(!startingAt){
         this->_menuEntryPos = 0;
     } else if(startingAt>(menu.size()-MENU_NUMBER_OF_ITEM)){
@@ -101,6 +157,7 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
     } 
     
     if(startingAt<=(menu.size()-MENU_NUMBER_OF_ITEM)){
+        this->_screenMode = SCR_MODE_MENU;
 
         if(menu.size()<=MENU_NUMBER_OF_ITEM){
             menuEntriesToDraw = menu.size();
@@ -111,9 +168,15 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
             mvwaddstr(this->win, yPos+i, xPos, menu[i+startingAt].c_str());
         }
 
+        
+        if(!startingAt){
+            this->highlightMenuEntry(0);
+            move(yPos, xPos);
+        } else {
+            wrefresh(this->win);
+        }
 
-        move(yPos, xPos);
-        wrefresh(this->win);
+        this->initScreenActionListener();
     }
 
 }
@@ -133,14 +196,101 @@ void UIManager::getMenuDrawPosition(int &y, int &x){
 }
 
 /**
- * Desenha bordas de acordo com os parametros.
- * 
- * @param char vChar caractere a ser usado para
- * linhas verticais.
- * @param char hChar caractere a ser usado para
- * linhas horizontais.
- */
-void UIManager::drawBorders(char vChar, char hChar){
-    box(this->win, vChar, hChar);
+ * Navega pelo menu desenhado na tela
+ * de acordo com a tecla pressionada.
+*/
+void UIManager::menuNavigate(int pressedKey){
+    switch(pressedKey){
+        case KEY_UP:
+            this->menuNavigateUp();
+            break;
+        case KEY_DOWN:
+            this->menuNavigateDown();
+            break;
+    }
+}
+
+/**
+ * Navega para o registro superior
+ * ao selecionado atualmente no menu
+*/
+void UIManager::menuNavigateUp(){
+    if(this->_menuEntryPos > MENU_BEGIN){
+        this->_menuEntryPos--;
+        int curX = this->getX_Position();
+        int curY = this->getY_Position();
+        
+        if(this->_menuStartDrawPos!=0 && this->_menuEntryPos==this->_menuStartDrawPos-1){
+            int startingDraw = this->_menuStartDrawPos-1;
+
+            this->stopListener();
+            this->drawMenu(this->curMenu, startingDraw);
+            this->startListener();
+
+        } else {
+            curY--;
+        }
+
+        this->unhighlightMenuEntry(this->_menuEntryPos+1);
+        this->highlightMenuEntry(this->_menuEntryPos);
+        move(curY, curX);
+    }   
+}
+
+/**
+ * Navega para o registro inferior
+ * ao selecionado atualmente no menu
+*/
+void UIManager::menuNavigateDown(){
+    if(this->_menuEntryPos < this->curMenu.size()-1){
+        this->_menuEntryPos++;
+        int curX = this->getX_Position();
+        int curY = this->getY_Position();
+        
+        if(this->_menuEntryPos>MENU_NUMBER_OF_ITEM-1){
+
+            int startingDraw = this->_menuEntryPos-MENU_NUMBER_OF_ITEM+1;
+
+            this->stopListener();
+            this->drawMenu(this->curMenu, startingDraw);
+            this->startListener();
+
+        } else {
+            curY++;
+        }
+        
+        this->unhighlightMenuEntry(this->_menuEntryPos-1);
+        this->highlightMenuEntry(this->_menuEntryPos);
+        move(curY, curX);
+    }
+}
+
+/**
+ * Destaca linha selecionada pelo 
+ * usuario no menu,
+*/
+void UIManager::highlightMenuEntry(int entryNum){
+    int xPos, yPos;
+    this->getMenuDrawPosition(yPos, xPos);
+
+    yPos = yPos+entryNum-this->_menuStartDrawPos;
+    wattron(this->win, COLOR_PAIR(1));
+    mvwaddstr(this->win, yPos, xPos, this->curMenu[entryNum].c_str());
+    wattroff(this->win, COLOR_PAIR(1));
+    wrefresh(this->win);
+}
+
+/**
+ * Destaca linha selecionada pelo 
+ * usuario no menu,
+*/
+void UIManager::unhighlightMenuEntry(int entryNum){
+    int xPos, yPos;
+    this->getMenuDrawPosition(yPos, xPos);
+
+    yPos = yPos+entryNum-this->_menuStartDrawPos;
+    wattron(this->win, COLOR_PAIR(0));
+    mvwaddstr(this->win, yPos, xPos, this->curMenu[entryNum].c_str());
+    wattroff(this->win, COLOR_PAIR(0));
     wrefresh(this->win);
 }
