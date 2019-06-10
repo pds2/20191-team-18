@@ -46,13 +46,10 @@ void Rodada::controleRodada() {
             opcoesAdicionais.push_back("Pedir Truco");
             
             int jogada = jogador->jogar(opcoesAdicionais);
-            if(jogada < jogador->getNumeroCartas()) {
-                jogarCarta(jogador, mesa, jogada);
-            } else {
-                alguemCorreu = desafiar(jogador, mesa);
-                if(alguemCorreu) {
-                    break;
-                }
+            alguemCorreu = consolidaJogada(jogador, mesa, jogada);
+            
+            if(alguemCorreu) {
+                break;
             }
         }
         cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << "Maos ganhas time 2: " << this->maos_ganhas_time2;
@@ -67,6 +64,16 @@ void Rodada::controleRodada() {
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
 
+}
+
+bool Rodada::consolidaJogada(Jogador* jogador, Mesa* mesa, int jogada) {
+    if(jogada < jogador->getNumeroCartas()) {
+        jogarCarta(jogador, mesa, jogada);
+        return false;
+    } else {
+        bool alguemCorreu = desafiar(jogador, mesa);
+        return alguemCorreu;
+    }
 }
 
 void Rodada::reordenarListaJogadores() {
@@ -169,7 +176,8 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
             }
         }
         
-        jogador->jogar(opcoesAdicionais);
+        int jogada = jogador->jogar(opcoesAdicionais);
+        consolidaJogada(jogador, mesa, jogada);
     }   
     return alguemCorreu;
 }

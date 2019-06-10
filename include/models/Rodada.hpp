@@ -43,6 +43,7 @@ class Rodada {
     bool desafiar(Jogador* jogador, Mesa* mesa);
     void jogarCarta(Jogador* jogador, Mesa* mesa, int jogada);
     void reordenarListaJogadores();
+    bool consolidaJogada(Jogador* jogador, Mesa* mesa, int jogada);
     
     void computaVencedorRodada(Mesa* mesa, bool desafioRecusado);
 };
