@@ -35,6 +35,7 @@ void Rodada::controleRodada() {
     }
 
     Mesa* mesa = new Mesa();
+    bool alguemCorreu = false;
 
     while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
         cout << "\n";
@@ -48,27 +49,14 @@ void Rodada::controleRodada() {
             if(jogada < jogador->getNumeroCartas()) {
                 jogarCarta(jogador, mesa, jogada);
             } else {
-                desafiar(jogador, mesa);
+                alguemCorreu = desafiar(jogador, mesa);
+                if(alguemCorreu) {
+                    break;
+                }
             }
         }
-
-        CartaNaMesa* maiorCartaNaMesa = mesa->obterMaiorCarta();
-        Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
-        
-        Carta* maiorCarta = maiorCartaNaMesa->getCarta();
-
-        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
-
-        if(jogadorMaiorCarta->getTimeJogador() == 1) {
-            this->maos_ganhas_time1 += 1;
-        }
-        else {
-            this->maos_ganhas_time2 += 1;
-        }
-        this->ultimoVencedor = jogadorMaiorCarta;
-        if(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
-            reordenarListaJogadores();
-        }
+        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << "Maos ganhas time 2: " << this->maos_ganhas_time2;
+        this->computaVencedorRodada(mesa, alguemCorreu);
         
     }
 
@@ -79,7 +67,6 @@ void Rodada::controleRodada() {
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
 
-    *this->pontos_time1 += 6;
 }
 
 void Rodada::reordenarListaJogadores() {
@@ -126,51 +113,65 @@ void Rodada::jogarCarta(Jogador* jogador, Mesa* mesa, int jogada) {
     cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
 }
 
-void Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
-    cout << "\n Jogador " << jogador->getNome() << " está trucando: "; 
+bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
+    cout << "\nJogador " << jogador->getNome() << " está trucando: "; 
     cout << "TRUCO SEU RATO! "; 
     std::list<Jogador*> adversarios = getAdversarios(jogador);
     this->timeUltimoDesafiador = jogador->getTimeJogador();
     
-    int escolhaDupla = 0;
+    int escolhaDupla  = 0;
+    bool alguemCorreu = false;
     
     do {
         escolhaDupla = 0;
+        
         int valorDesafio = getValorDesafio();
         
         for (auto const& adversario : adversarios) {
             int result = adversario->aceitarDesafio(jogador, valorDesafio);
-            if(result > escolhaDupla) {
-                escolhaDupla = result;  
+            if(result == 0) {
+                alguemCorreu = true;
             }
+            escolhaDupla += result;
         }
         
-        if(escolhaDupla != 3) {
+        std::list<Jogador*>::iterator itJogadorAdversario = adversarios.begin();
+        Jogador* jogadorAdversario = *itJogadorAdversario;
+        
+        if(!alguemCorreu) {
             this->setPontos(valorDesafio);
             
-            if(escolhaDupla == 2) {
-                std::list<Jogador*>::iterator itJogadorAdversario = adversarios.begin();
-                Jogador* jogadorAdversario = *itJogadorAdversario;
+            if(escolhaDupla > 2) {
                 this->timeUltimoDesafiador = jogadorAdversario->getTimeJogador();
                 adversarios = getAdversarios(jogadorAdversario);
             }
+            else {
+                cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " aceitou !!!"; 
+            }
         }
-    } while(escolhaDupla == 2);
-    
-    std::vector<std::string> opcoesAdicionais;
-    
-    if(jogador->getTimeJogador() != this->timeUltimoDesafiador) {
-
-        if(this->pontos == 4) {
-            opcoesAdicionais.push_back("Pedir Seis!");     
-        } else if(this->pontos == 8) {
-            opcoesAdicionais.push_back("Pedir Nove!"); 
-        } else if(this->pontos == 10) {
-            opcoesAdicionais.push_back("Pedir Doze!"); 
+        else {
+            cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " correu !!!"; 
         }
-    }
+        
+    } while(escolhaDupla > 2 && alguemCorreu == false);
     
-    jogador->jogar(opcoesAdicionais);
+    if(alguemCorreu == false) {
+        std::vector<std::string> opcoesAdicionais;
+    
+        if(jogador->getTimeJogador() != this->timeUltimoDesafiador) {
+    
+            if(this->pontos == 4) {
+                opcoesAdicionais.push_back("Pedir Seis!");     
+            } else if(this->pontos == 8) {
+                opcoesAdicionais.push_back("Pedir Nove!"); 
+            } else if(this->pontos == 10) {
+                opcoesAdicionais.push_back("Pedir Doze!"); 
+            }
+        }
+        
+        jogador->jogar(opcoesAdicionais);
+    }   
+    return alguemCorreu;
 }
 
 int Rodada::getValorDesafio() {
@@ -191,4 +192,40 @@ std::list<Jogador*> Rodada::getAdversarios(Jogador* jogador) {
     }
     
     return adversarios;
+}
+
+void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
+    if(!desafioRecusado) {
+        CartaNaMesa* maiorCartaNaMesa = mesa->obterMaiorCarta();
+        Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
+        
+        Carta* maiorCarta = maiorCartaNaMesa->getCarta();
+    
+        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
+    
+        if(jogadorMaiorCarta->getTimeJogador() == 1) {
+            this->maos_ganhas_time1 += 1;
+        }
+        else {
+            this->maos_ganhas_time2 += 1;
+        }
+        
+        this->ultimoVencedor = jogadorMaiorCarta;
+ 
+        reordenarListaJogadores();
+        
+    }
+    else {
+        if(this->timeUltimoDesafiador == 1) {
+            this->maos_ganhas_time1 = 2;
+            this->maos_ganhas_time2 = 0;
+            *this->pontos_time1 += this->pontos;
+        }
+        else {
+            this->maos_ganhas_time1 = 0;
+            this->maos_ganhas_time2 = 2;
+            *this->pontos_time2 += this->pontos;
+        }
+    }
+    
 }

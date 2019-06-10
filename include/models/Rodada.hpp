@@ -40,10 +40,11 @@ class Rodada {
     Jogador* ultimoVencedor;
     
     std::list<Jogador*> getAdversarios(Jogador* jogador);
-    void desafiar(Jogador* jogador, Mesa* mesa);
+    bool desafiar(Jogador* jogador, Mesa* mesa);
     void jogarCarta(Jogador* jogador, Mesa* mesa, int jogada);
     void reordenarListaJogadores();
     
+    void computaVencedorRodada(Mesa* mesa, bool desafioRecusado);
 };
 
 #endif

@@ -81,26 +81,27 @@ int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
                 break;
         }
         
-        cout << "\n O que deseja fazer?" << endl;
-        cout << "\n 1 - Aceitar" << endl;
+        cout << "\nO que deseja fazer?" << endl;
+        
+        cout << "\nOpcao [0]: Correr!";
+        cout << "\nOpcao [1]: Aceitar!";
         
         switch(pontos) {
             case 4:
-                cout << "2 - Pedir seis!" << endl;
+                cout << "\nOpcao [2]: Pedir seis!";
                 break;
             case 8:
-                cout << "2 - Pedir nove!" << endl;
+                cout << "\nOpcao [2]: Pedir nove!";
                 break;
             case 10:
-                cout << "2 - Pedir doze!" << endl;
+                cout << "\nOpcao [2]:  Pedir doze!";
                 break;
         }
         
-        cout << "\n 3 - Correr!" << endl;
-        cout << "\n" << "Digite a opcao selecionada: " << endl;
+        cout << "\n" << "Digite a opcao selecionada: ";
         
         std::cin >> choice;    
-    } while(choice < 1 || choice > 3);
+    } while(choice < 0 || choice > 2);
     
     return choice;
 }
