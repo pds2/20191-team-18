@@ -63,7 +63,7 @@ void MainScreen::showMenu() {
 
     for(int i = 0; i < 3; i++) {
         srand((unsigned)time(NULL));
-        int posicaoNome = rand() % 10;
+        int posicaoNome = rand() % (9 + 1 - 0)) + 0;
         string nome = nomeBot[posicaoNome];
         nome += i;
         Bot* bot = new Bot(nome);
