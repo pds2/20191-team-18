@@ -61,6 +61,8 @@ void MainScreen::showMenu() {
 
     jogadores.push_back(player);
     
+    srand((unsigned)time(NULL));
+    
     int posicaoNome = rand() % 10;
     
     for(int i = 0; i < 3; i++) {
@@ -68,7 +70,6 @@ void MainScreen::showMenu() {
         if(posicaoNome > 9) {
             posicaoNome = 0;
         }
-        srand((unsigned)time(NULL));
         
         string nome = nomeBot[posicaoNome];
         Bot* bot = new Bot(nome);
