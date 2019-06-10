@@ -32,6 +32,7 @@ class UIManager{
         void menuNavigateDown();
         void highlightMenuEntry(int entry);
         void unhighlightMenuEntry(int entry);
+        void drawMenu(vector<string> menu, int startingAt);
 
         bool _stopListener;
         void startListener();
@@ -45,10 +46,11 @@ class UIManager{
         int getY_Size();
         int getX_Position();
         int getY_Position();
-        void initScreenActionListener();
 
-        void drawMenu(vector<string> menu, int startingAt);
+        void drawMenu(vector<string> menu, int startingAt, bool forceStartListener);
         int getSelectedMenuItem();
+        
+        void initScreenActionListener();
 };
 
 #endif
