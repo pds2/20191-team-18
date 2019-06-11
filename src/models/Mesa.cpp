@@ -1,5 +1,5 @@
-#include "models/Mesa.hpp" 
-#include "models/CartaNaMesa.hpp" 
+#include "../../include/models/Mesa.hpp" 
+#include "../../include/models/CartaNaMesa.hpp" 
 
 #include <list>
 #include <iostream>

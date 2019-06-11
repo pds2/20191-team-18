@@ -14270,6 +14270,7 @@ void ConsoleReporter::printTotals( Totals const& totals ) {
 
         printSummaryRow("test cases", columns, 0);
         printSummaryRow("assertions", columns, 1);
+        system("PAUSE");
     }
 }
 void ConsoleReporter::printSummaryRow(std::string const& label, std::vector<SummaryColumn> const& cols, std::size_t row) {

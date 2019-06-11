@@ -1,5 +1,5 @@
-#include "models/Humano.hpp"
-#include <models/Carta.hpp>
+#include "../../include/models/Humano.hpp"
+#include <../../include/models/Carta.hpp>
 #include <cstdlib>
 
 template<class T, std::size_t n>

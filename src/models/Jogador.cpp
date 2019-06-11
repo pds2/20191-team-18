@@ -1,5 +1,5 @@
-#include "models/Jogador.hpp"
-#include "models/Carta.hpp"
+#include "../../include/models/Jogador.hpp"
+#include "../../include/models/Carta.hpp"
 #include <iostream>
 #include <vector>
 

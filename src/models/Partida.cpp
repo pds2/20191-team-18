@@ -1,7 +1,7 @@
-#include "models/Partida.hpp"
-#include "models/Rodada.hpp" 
-#include "models/Jogador.hpp"
-#include "models/Baralho.hpp"
+#include "../../include/models/Partida.hpp"
+#include "../../include/models/Rodada.hpp" 
+#include "../../include/models/Jogador.hpp"
+#include "../../include/models/Baralho.hpp"
 #include <list>
 #include <iostream>
 

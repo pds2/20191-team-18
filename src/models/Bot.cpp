@@ -1,5 +1,5 @@
-#include "models/Bot.hpp"
-#include "models/Carta.hpp"
+#include "../../include/models/Bot.hpp"
+#include "../../include/models/Carta.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

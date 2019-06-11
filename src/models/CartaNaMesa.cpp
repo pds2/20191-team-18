@@ -1,6 +1,6 @@
-#include "models/Carta.hpp"
-#include "models/Jogador.hpp"
-#include "models/CartaNaMesa.hpp"
+#include "../../include/models/Carta.hpp"
+#include "../../include/models/Jogador.hpp"
+#include "../../include/models/CartaNaMesa.hpp"
 
 using std::string;
 

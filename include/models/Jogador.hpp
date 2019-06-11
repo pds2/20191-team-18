@@ -2,7 +2,7 @@
 #define JOGADOR_H
 
 #include <iostream>
-#include "exceptions/Exception.hpp"
+#include "../exceptions/Exception.hpp"
 #include "Carta.hpp"
 #include <vector>
 

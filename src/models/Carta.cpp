@@ -1,4 +1,4 @@
-#include "models/Carta.hpp"
+#include "../../include/models/Carta.hpp"
 
 using std::string;
 using std::toupper;

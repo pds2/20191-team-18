@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <list>
-#include "exceptions/Exception.hpp"
-#include "models/CartaNaMesa.hpp"
+#include "../exceptions/Exception.hpp"
+#include "CartaNaMesa.hpp"
 
 using std::cout;
 using std::endl;

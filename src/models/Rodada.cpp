@@ -1,8 +1,8 @@
-#include "models/Rodada.hpp" 
-#include "models/Jogador.hpp"
-#include "models/Baralho.hpp"
-#include "models/Mesa.hpp"
-#include "models/CartaNaMesa.hpp"
+#include "../../include/models/Rodada.hpp" 
+#include "../../include/models/Jogador.hpp"
+#include "../../include/models/Baralho.hpp"
+#include "../../include/models/Mesa.hpp"
+#include "../../include/models/CartaNaMesa.hpp"
 #include <list>
 #include <iostream>
 #include <exception>

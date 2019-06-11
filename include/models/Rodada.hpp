@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <list>
-#include "exceptions/Exception.hpp"
-#include "models/Jogador.hpp"
-#include "models/Mesa.hpp"
+#include "../exceptions/Exception.hpp"
+#include "Jogador.hpp"
+#include "Mesa.hpp"
 
 using std::cout;
 using std::endl;

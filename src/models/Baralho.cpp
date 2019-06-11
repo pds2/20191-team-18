@@ -1,4 +1,4 @@
-#include "models/Baralho.hpp"
+#include "../../include/models/Baralho.hpp"
 #include <queue>
 #include <iostream>
 #include <list>
