@@ -9,7 +9,7 @@ using std::endl;
 
 class MainScreen {
   public:
-    virtual void showMenu();
+    virtual void initGame();
     virtual ~MainScreen();
   protected:
     void clrscr();

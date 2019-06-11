@@ -19,36 +19,7 @@ int MainScreen::getInput() {
     return choice;
 } 
 
-void MainScreen::showMenu() {
-
-    //  int choice = 0;
-
-    //  do {
-    //     this->clrscr();
-    //     cout << "Menu Principal" << endl;
-    //     cout << "Escolha uma opção" << endl;
-    //     cout << "1 - Iniciar Jogo - Melhor de 1" << endl;
-    //     cout << "2 - Iniciar Jogo - Melhor de 3" << endl;
-    //     cout << "6 - Sair" << endl;
-    //     cout << "Escolha: ";
-        
-    //     choice = this->getInput();
-
-    //     switch(choice) {
-    //         case 1:
-    //             cout << "Iniciando Jogo - Melhor de 1!" << endl;
-    //             break;
-    //         case 2:
-    //             cout << "Iniciando Jogo - Melhor de 3!" << endl;
-    //             break;
-    //         case 6:
-    //             cout << "Saindo..." << endl;
-    //             break;
-    //         default:
-    //             break;
-    //     }  
-
-    // } while(choice!=6);
+void MainScreen::initGame() {
 
     std::list<Jogador*> jogadores;
     string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
@@ -73,8 +44,11 @@ void MainScreen::showMenu() {
                 posicaoNome = 0;
             }
             srand( (unsigned) time(NULL));
-            
+            cout << posicaoNome;
             nome = nomeBot[posicaoNome];
+            if(nome == nomeJogador) {
+                posicaoNome += 1;
+            }
         } while(nome == nomeJogador);
         
         Bot* bot = new Bot(nome);
