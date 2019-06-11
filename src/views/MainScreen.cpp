@@ -9,16 +9,6 @@ MainScreen::~MainScreen() {
 
 }
 
-void MainScreen::clrscr() {
-    system("cls");
-}
-
-int MainScreen::getInput() {
-    int choice;    
-    std::cin >> choice;
-    return choice;
-} 
-
 void MainScreen::initGame() {
 
     std::list<Jogador*> jogadores;
@@ -39,7 +29,7 @@ void MainScreen::initGame() {
     for(int i = 0; i < 3; i++) {
         string nome;
         do {
-            
+
             posicaoNome += i;
             if(posicaoNome > 9) {
                 posicaoNome = 0;
@@ -58,7 +48,6 @@ void MainScreen::initGame() {
     }
         
     Partida p = Partida(jogadores);
-    p.getPontosTime1();
     
     system("pause");
 } 

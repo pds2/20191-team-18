@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ebaralho',['~Baralho',['../class_baralho.html#ae6732f805c72b2983255fc813b2d0422',1,'Baralho']]]
+  ['partida',['Partida',['../class_partida.html#a34df2e467d28b2d1008974d2a37487df',1,'Partida']]]
 ];
