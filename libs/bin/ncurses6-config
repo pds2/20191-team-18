@@ -35,7 +35,7 @@ LANGUAGE=C;	export LANGUAGE
 LC_ALL=C;	export LC_ALL
 LC_CTYPE=C;	export LC_CTYPE
 
-prefix="/home/terror/workfolder/truco/libs"
+prefix="/projects/truco/libs"
 exec_prefix="${prefix}"
 
 bindir="${exec_prefix}/bin"
@@ -119,11 +119,11 @@ ENDECHO
 		fi
 		if test ncurses = ncurses ; then
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
-			$LIBDIR  -l${THIS} 
+			$LIBDIR  -l${THIS} -ldb
 ENDECHO
 		else
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
-			$LIBDIR  -l${THIS} -l${TINFO_LIB} 
+			$LIBDIR  -l${THIS} -l${TINFO_LIB} -ldb
 ENDECHO
 		fi
 		;;
@@ -160,10 +160,10 @@ ENDECHO
 		echo "${mandir}"
 		;;
 	--terminfo)
-		echo "/home/terror/workfolder/truco/libs/share/terminfo"
+		echo "/projects/truco/libs/share/terminfo"
 		;;
 	--terminfo-dirs)
-		echo "/home/terror/workfolder/truco/libs/share/terminfo"
+		echo "/projects/truco/libs/share/terminfo"
 		;;
 	--termpath)
 		echo ""

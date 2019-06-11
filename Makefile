@@ -5,7 +5,7 @@ CFLAGS=-std=c++11 -Wall
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
-NCURSES_COMPILE_PARAMS = -I ./libs/include -I ./libs/include/ncurses -L ./libs/lib -lncurses
+NCURSES_COMPILE_PARAMS = -I ./libs/include/ -I ./libs/include/ncurses/ -L ./libs/lib/ -lncurses -ldb
 # TEST_DIR = ./test
 
 all: main
@@ -29,7 +29,7 @@ MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cp
 
 # UI Manager
 UIManager.o: ${INCLUDE_DIR}/views/UIManager.hpp ${SRC_DIR}/views/UIManager.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/UIManager.cpp -o ${BUILD_DIR}/UIManager.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/UIManager.cpp -o ${BUILD_DIR}/UIManager.o ${NCURSES_COMPILE_PARAMS}
 
 
 ####################################################
