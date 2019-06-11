@@ -35,7 +35,7 @@ LANGUAGE=C;	export LANGUAGE
 LC_ALL=C;	export LC_ALL
 LC_CTYPE=C;	export LC_CTYPE
 
-prefix="/projects/nc/libs"
+prefix="/home/terror/workfolder/truco/libs"
 exec_prefix="${prefix}"
 
 bindir="${exec_prefix}/bin"
@@ -160,10 +160,10 @@ ENDECHO
 		echo "${mandir}"
 		;;
 	--terminfo)
-		echo "/projects/nc/libs/share/terminfo"
+		echo "/home/terror/workfolder/truco/libs/share/terminfo"
 		;;
 	--terminfo-dirs)
-		echo "/projects/nc/libs/share/terminfo"
+		echo "/home/terror/workfolder/truco/libs/share/terminfo"
 		;;
 	--termpath)
 		echo ""

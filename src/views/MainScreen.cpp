@@ -1,12 +1,17 @@
 #include "views/MainScreen.hpp"
+#include "views/UIManager.hpp"
 #include "models/Partida.hpp"
 #include "models/Carta.hpp"
 #include "models/Humano.hpp"
 #include "models/Bot.hpp"
 #include <time.h>  
 
-MainScreen::~MainScreen() {
+MainScreen::MainScreen() {
+    this->uim = new UIManager(true);
+}
 
+MainScreen::~MainScreen() {
+    delete this->uim;
 }
 
 void MainScreen::clrscr() {

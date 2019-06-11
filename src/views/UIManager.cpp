@@ -6,7 +6,7 @@
  *  usuário. Imprime telas e elementos.
  */
 
-#include "../../include/views/UIManager.hpp"
+#include "views/UIManager.hpp"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -81,6 +81,9 @@ int UIManager::getY_Size(){
 int UIManager::getX_Position(){
     int xPos, yPos;
     getyx(this->win, yPos, xPos);
+    
+    (void)yPos; //Suppress g++ warning
+
     return xPos;
 }
 
@@ -90,6 +93,9 @@ int UIManager::getX_Position(){
 int UIManager::getY_Position(){
     int xPos, yPos;
     getyx(this->win, yPos, xPos);
+    
+    (void)xPos; //Suppress g++ warning
+
     return yPos;
 }
 
@@ -152,11 +158,11 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
 
     if(!startingAt){
         this->_menuEntryPos = 0;
-    } else if(startingAt>(menu.size()-MENU_NUMBER_OF_ITEM)){
+    } else if(startingAt>((int)menu.size()-MENU_NUMBER_OF_ITEM)){
         // Implement exception
     } 
     
-    if(startingAt<=(menu.size()-MENU_NUMBER_OF_ITEM)){
+    if(startingAt<=((int)menu.size()-MENU_NUMBER_OF_ITEM)){
         this->_screenMode = SCR_MODE_MENU;
 
         if(menu.size()<=MENU_NUMBER_OF_ITEM){
@@ -252,7 +258,7 @@ void UIManager::menuNavigateUp(){
  * ao selecionado atualmente no menu
 */
 void UIManager::menuNavigateDown(){
-    if(this->_menuEntryPos < this->curMenu.size()-1){
+    if(this->_menuEntryPos < (int)this->curMenu.size()-1){
         this->_menuEntryPos++;
         int curX = this->getX_Position();
         int curY = this->getY_Position();

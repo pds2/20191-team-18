@@ -5,7 +5,7 @@ CFLAGS=-std=c++11 -Wall
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
-NCURSES_COMPILE_PARAMS = -I./libs/include -I./libs/include/ncurses -L./libs/lib -lncurses
+NCURSES_COMPILE_PARAMS = -I ./libs/include -I ./libs/include/ncurses -L ./libs/lib -lncurses
 # TEST_DIR = ./test
 
 all: main
@@ -26,6 +26,10 @@ all: main
 # Main Screen
 MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/MainScreen.cpp -o ${BUILD_DIR}/MainScreen.o 
+
+# UI Manager
+UIManager.o: ${INCLUDE_DIR}/views/UIManager.hpp ${SRC_DIR}/views/UIManager.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/UIManager.cpp -o ${BUILD_DIR}/UIManager.o
 
 
 ####################################################
@@ -100,8 +104,8 @@ main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o 
 
 # app
-main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
-	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o
+main: main.o Exceptions.o MainScreen.o UIManager.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
+	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o ${NCURSES_COMPILE_PARAMS}
 
 
 # Rule for cleaning files generated during compilation.
