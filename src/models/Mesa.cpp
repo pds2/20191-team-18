@@ -14,15 +14,21 @@ std::list<CartaNaMesa*> Mesa::obterMaiorCarta(){
     bool primeira = true;
     for (auto const& cartaNaMesa : cartasNaMesa) {
         Carta carta = *cartaNaMesa->getCarta();
-        std::list<CartaNaMesa*>::iterator itMaiorCarta = maioresCartas.begin();
-        CartaNaMesa* maiorCarta = *itMaiorCarta;
+        CartaNaMesa* maiorCarta;
         
-        if( primeira == true || (maiorCarta->getCarta()->getForca() < carta.getForca())){
+        if(!primeira) {
+            std::list<CartaNaMesa*>::iterator itMaiorCarta = maioresCartas.begin();
+            maiorCarta = *itMaiorCarta;
+        }
+        
+        if(primeira || (maiorCarta->getCarta()->getForca() < carta.getForca())){
             maioresCartas.clear();
             maioresCartas.push_back(cartaNaMesa);
             primeira = false;
         } else if(maiorCarta->getCarta()->getForca() == carta.getForca()) {
-            maioresCartas.push_back(cartaNaMesa);
+            if(maiorCarta->getJogador()->getTimeJogador() != cartaNaMesa->getJogador()->getTimeJogador()) {
+                maioresCartas.push_back(cartaNaMesa);    
+            }
         }
     }
 
