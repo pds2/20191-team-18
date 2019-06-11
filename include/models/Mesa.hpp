@@ -17,7 +17,7 @@ class Mesa {
     
     public:
         Mesa();
-        CartaNaMesa* obterMaiorCarta();          
+        std::list<CartaNaMesa*> obterMaiorCarta();          
         void addCartaNaMesa(CartaNaMesa* cartaNaMesa);
         void limpaCartasNaMesa();
 };
