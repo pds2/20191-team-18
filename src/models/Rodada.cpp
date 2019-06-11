@@ -63,9 +63,13 @@ void Rodada::controleRodada() {
     }
 
     if(this->maos_ganhas_time1 >= 2) {
+        cout << "Pontos time 1: " <<  *pontos_time1;
+        *pontos_time1 += this->pontos;
         cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
     else {
+        cout << "Pontos time 2: " <<  *pontos_time2;
+        *pontos_time2 += this->pontos;
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
 
@@ -238,11 +242,9 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
             
             if(jogadorMaiorCarta->getTimeJogador() == 1) {
                 this->maos_ganhas_time1 += 1;
-                this->pontos_time1 += this->pontos;
             }
             else {
                 this->maos_ganhas_time2 += 1;
-                this->pontos_time2 += this->pontos;
             }
             
             reordenarListaJogadores(jogadorMaiorCarta);   
@@ -260,12 +262,10 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
             } else {
                 if(this->peMesa->getTimeJogador() == 1) {
                     this->maos_ganhas_time1 = 2;
-                    this->maos_ganhas_time2 = 0;
-                    *this->pontos_time1 += this->pontos;   
+                    this->maos_ganhas_time2 = 0; 
                 } else {
                     this->maos_ganhas_time1 = 0;
                     this->maos_ganhas_time2 = 2;
-                    *this->pontos_time2 += this->pontos; 
                 }
             }
         }
@@ -274,12 +274,10 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
         if(this->timeUltimoDesafiador == 1) {
             this->maos_ganhas_time1 = 2;
             this->maos_ganhas_time2 = 0;
-            *this->pontos_time1 += this->pontos;
         }
         else {
             this->maos_ganhas_time1 = 0;
             this->maos_ganhas_time2 = 2;
-            *this->pontos_time2 += this->pontos;
         }
     }
     

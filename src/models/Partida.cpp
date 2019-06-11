@@ -31,7 +31,7 @@ void Partida::controlaPartida() {
         cout << "\n" << "Inicio da rodada "  << nRodada << "!";
         cout << "\n" << "Pontos do time 1: " << this->pontos_time1; 
         cout << "\n" << "Pontos do time 2: " << this->pontos_time2;           
-        Rodada* rodada = new Rodada(nRodada, 2, jogadores, &this->pontos_time1, &this->pontos_time2);
+        Rodada* rodada = new Rodada(nRodada, 2, jogadores, &pontos_time1, &pontos_time2);
         this->rodadas.push_back(rodada);
         this->jogadores = rodada->getOrdemJogadores();
         cout << "\n" << "Fim da rodada "  << nRodada << "!"; 
