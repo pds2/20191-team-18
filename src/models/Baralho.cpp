@@ -55,7 +55,7 @@ std::list<Carta*> Baralho::getCartas() {
 
 
 void Baralho::embaralhar() {
-    cout << "\n" << "Embaralhando -----------------------------------";
+    cout << "\n\n" << "Embaralhando -----------------------------------";
     std::list<Carta* >::iterator begin;
     begin = this->cartas.begin();
 
