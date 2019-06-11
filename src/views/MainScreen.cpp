@@ -7,11 +7,11 @@
 #include <time.h>  
 
 MainScreen::MainScreen() {
-    // this->uim = new UIManager(true);
+    this->uim = new UIManager(true);
 }
 
 MainScreen::~MainScreen() {
-    // delete this->uim;
+    delete this->uim;
 }
 
 void MainScreen::clrscr() {
@@ -30,8 +30,13 @@ void MainScreen::initGame() {
     string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
 
     string nomeJogador = "";  
-    std::cout << "Digite o seu nome para iniciar a partida: ";
-    std::cin >> nomeJogador;
+
+    uim->clearScreen();
+    uim->printString("Digite o seu nome para iniciar a partida: ", 3, 3);
+    uim->printString(">", 3, 4);
+
+    nomeJogador = uim->readString();
+    uim->clearScreen();
 
     Humano* player = new Humano(nomeJogador);
 

@@ -11,6 +11,7 @@
 #include <vector>
 #include <string>
 #include <ncurses.h>
+#include <locale.h>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ using namespace std;
  */
 UIManager::UIManager(bool shouldInitScr){
     if(shouldInitScr){
+        setlocale(LC_ALL, "");
 
         initscr();
         noecho();
@@ -322,7 +324,6 @@ int UIManager::getSelectedMenuItem(){
 * Desenha string na tela na posição indicada.
 */
 void UIManager::printString(string str_to_print, int x, int y){
-    wclear(this->win);
     this->drawBorders('@', '@');
     mvwaddstr(this->win, y, x, str_to_print.c_str());
     wrefresh(this->win);
