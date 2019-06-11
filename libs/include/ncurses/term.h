@@ -1,5 +1,5 @@
 /****************************************************************************
- * Copyright (c) 1998-2007,2008 Free Software Foundation, Inc.              *
+ * Copyright (c) 1998-2013,2017 Free Software Foundation, Inc.              *
  *                                                                          *
  * Permission is hereby granted, free of charge, to any person obtaining a  *
  * copy of this software and associated documentation files (the            *
@@ -32,7 +32,7 @@
 /*    and: Thomas E. Dickey                        1995-on                  */
 /****************************************************************************/
 
-/* $Id: MKterm.h.awk.in,v 1.50 2008/05/24 23:13:59 tom Exp $ */
+/* $Id: MKterm.h.awk.in,v 1.67 2017/04/06 00:19:26 tom Exp $ */
 
 /*
 **	term.h -- Definition of struct term
@@ -42,7 +42,7 @@
 #define NCURSES_TERM_H_incl 1
 
 #undef  NCURSES_VERSION
-#define NCURSES_VERSION "5.7"
+#define NCURSES_VERSION "6.1"
 
 #include <ncurses/ncurses_dll.h>
 
@@ -55,10 +55,16 @@ extern "C" {
  */
 
 #undef  NCURSES_CONST
-#define NCURSES_CONST /*nothing*/
+#define NCURSES_CONST const
 
 #undef  NCURSES_SBOOL
 #define NCURSES_SBOOL char
+
+#undef  NCURSES_USE_DATABASE
+#define NCURSES_USE_DATABASE 1
+
+#undef  NCURSES_USE_TERMCAP
+#define NCURSES_USE_TERMCAP 0
 
 #undef  NCURSES_XNAMES
 #define NCURSES_XNAMES 1
@@ -91,48 +97,17 @@ extern "C" {
 #include <termio.h>
 #define TTY struct termio
 
-/* Add definitions to make termio look like termios.
- * But ifdef it, since there are some implementations
- * that try to do this for us in a fake <termio.h>.
- */
-#ifndef TCSANOW
-#define TCSANOW TCSETA
-#endif
-#ifndef TCSADRAIN
-#define TCSADRAIN TCSETAW
-#endif
-#ifndef TCSAFLUSH
-#define TCSAFLUSH TCSETAF
-#endif
-#ifndef tcsetattr
-#define tcsetattr(fd, cmd, arg) ioctl(fd, cmd, arg)
-#endif
-#ifndef tcgetattr
-#define tcgetattr(fd, arg) ioctl(fd, TCGETA, arg)
-#endif
-#ifndef cfgetospeed
-#define cfgetospeed(t) ((t)->c_cflag & CBAUD)
-#endif
-#ifndef TCIFLUSH 
-#define TCIFLUSH 0
-#endif
-#ifndef TCOFLUSH 
-#define TCOFLUSH 1
-#endif
-#ifndef TCIOFLUSH 
-#define TCIOFLUSH 2
-#endif
-#ifndef tcflush
-#define tcflush(fd, arg) ioctl(fd, TCFLSH, arg)
-#endif
-
 #else /* !HAVE_TERMIO_H */
 
+#if __MINGW32__
+#  include <ncurses/ncurses_mingw.h>
+#  define TTY struct termios
+#else
 #undef TERMIOS
 #include <sgtty.h>
 #include <sys/ioctl.h>
 #define TTY struct sgttyb
-
+#endif /* MINGW32 */
 #endif /* HAVE_TERMIO_H */
 
 #endif /* HAVE_TERMIOS_H */
@@ -147,7 +122,8 @@ extern "C" {
 
 #define NAMESIZE 256
 
-#define CUR cur_term->type.
+/* The cast works because TERMTYPE is the first data in TERMINAL */
+#define CUR ((TERMTYPE *)(cur_term))->
 
 #define auto_left_margin               CUR Booleans[0]
 #define auto_right_margin              CUR Booleans[1]
@@ -692,17 +668,38 @@ typedef struct termtype {	/* in-core form of terminfo data */
 
 } TERMTYPE;
 
+/*
+ * The only reason these structures are visible is for read-only use.
+ * Programs which modify the data are not, never were, portable across
+ * curses implementations.
+ */
+#ifdef NCURSES_INTERNALS
+
+typedef TERMTYPE TERMTYPE2;
+
 typedef struct term {		/* describe an actual terminal */
     TERMTYPE	type;		/* terminal type description */
     short	Filedes;	/* file description being written to */
-    TTY		Ottyb,		/* original state of the terminal */
-		Nttyb;		/* current state of the terminal */
+    TTY		Ottyb;		/* original state of the terminal */
+    TTY		Nttyb;		/* current state of the terminal */
     int		_baudrate;	/* used to compute padding */
-    char *      _termname;      /* used for termname() */
+    char *	_termname;	/* used for termname() */
 } TERMINAL;
+#else
+typedef struct term TERMINAL;
+#endif /* NCURSES_INTERNALS */
+
+
+#if 0 && !0
+extern NCURSES_EXPORT_VAR(TERMINAL *) cur_term;
+#elif 0
+NCURSES_WRAPPED_VAR(TERMINAL *, cur_term);
+#define cur_term   NCURSES_PUBLIC_VAR(cur_term())
+#else
+extern NCURSES_EXPORT_VAR(TERMINAL *) cur_term;
+#endif
 
 #if 0 || 0
-NCURSES_WRAPPED_VAR(TERMINAL *, cur_term);
 NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, boolnames);
 NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, boolcodes);
 NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, boolfnames);
@@ -713,7 +710,6 @@ NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, strnames);
 NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, strcodes);
 NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, strfnames);
 
-#define cur_term   NCURSES_PUBLIC_VAR(cur_term())
 #define boolnames  NCURSES_PUBLIC_VAR(boolnames())
 #define boolcodes  NCURSES_PUBLIC_VAR(boolcodes())
 #define boolfnames NCURSES_PUBLIC_VAR(boolfnames())
@@ -725,8 +721,6 @@ NCURSES_WRAPPED_VAR(NCURSES_CONST char * const *, strfnames);
 #define strfnames  NCURSES_PUBLIC_VAR(strfnames())
 
 #else
-
-extern NCURSES_EXPORT_VAR(TERMINAL *) cur_term;
 
 extern NCURSES_EXPORT_VAR(NCURSES_CONST char * const ) boolnames[];
 extern NCURSES_EXPORT_VAR(NCURSES_CONST char * const ) boolcodes[];
@@ -740,17 +734,28 @@ extern NCURSES_EXPORT_VAR(NCURSES_CONST char * const ) strfnames[];
 
 #endif
 
-/* internals */
+/*
+ * These entrypoints are used only by the ncurses utilities such as tic.
+ */
+#ifdef NCURSES_INTERNALS
+
 extern NCURSES_EXPORT(int) _nc_set_tty_mode (TTY *buf);
-extern NCURSES_EXPORT(int) _nc_get_tty_mode (TTY *buf);
-extern NCURSES_EXPORT(int) _nc_read_entry (const char * const, char * const, TERMTYPE *const);
-extern NCURSES_EXPORT(int) _nc_read_file_entry (const char *const, TERMTYPE *);
-extern NCURSES_EXPORT(int) _nc_read_termtype (TERMTYPE *, char *, int);
+extern NCURSES_EXPORT(int) _nc_read_entry2 (const char * const, char * const, TERMTYPE2 *const);
+extern NCURSES_EXPORT(int) _nc_read_file_entry (const char *const, TERMTYPE2 *);
+extern NCURSES_EXPORT(int) _nc_read_termtype (TERMTYPE2 *, char *, int);
 extern NCURSES_EXPORT(char *) _nc_first_name (const char *const);
 extern NCURSES_EXPORT(int) _nc_name_match (const char *const, const char *const, const char *const);
-extern NCURSES_EXPORT(const TERMTYPE *) _nc_fallback (const char *);
 
-/* entry points */
+#endif /* NCURSES_INTERNALS */
+
+
+/*
+ * These entrypoints are used by tack.
+ */
+extern NCURSES_EXPORT(const TERMTYPE *) _nc_fallback (const char *);
+extern NCURSES_EXPORT(int) _nc_read_entry (const char * const, char * const, TERMTYPE *const);
+
+/* Normal entry points */
 extern NCURSES_EXPORT(TERMINAL *) set_curterm (TERMINAL *);
 extern NCURSES_EXPORT(int) del_curterm (TERMINAL *);
 
@@ -773,6 +778,8 @@ extern NCURSES_EXPORT(char *) tparm (NCURSES_CONST char *, long,long,long,long,l
 extern NCURSES_EXPORT(char *) tparm_varargs (NCURSES_CONST char *, ...);	/* special */
 #endif
 
+extern NCURSES_EXPORT(char *) tiparm (const char *, ...);		/* special */
+
 #endif /* __NCURSES_H */
 
 /* termcap database emulation (XPG4 uses const only for 2nd param of tgetent) */
@@ -784,6 +791,37 @@ extern NCURSES_EXPORT(int) tgetflag (NCURSES_CONST char *);
 extern NCURSES_EXPORT(int) tgetnum (NCURSES_CONST char *);
 extern NCURSES_EXPORT(int) tputs (const char *, int, int (*)(int));
 #endif /* NCURSES_TERMCAP_H_incl */
+
+/*
+ * Include curses.h before term.h to enable these extensions.
+ */
+#if defined(NCURSES_SP_FUNCS) && (NCURSES_SP_FUNCS != 0)
+
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tigetstr) (SCREEN*, NCURSES_CONST char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(putp) (SCREEN*, const char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tigetflag) (SCREEN*, NCURSES_CONST char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tigetnum) (SCREEN*, NCURSES_CONST char *);
+
+#if 1 /* NCURSES_TPARM_VARARGS */
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tparm) (SCREEN*, NCURSES_CONST char *, ...);	/* special */
+#else
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tparm) (SCREEN*, NCURSES_CONST char *, long,long,long,long,long,long,long,long,long);	/* special */
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tparm_varargs) (SCREEN*, NCURSES_CONST char *, ...);	/* special */
+#endif
+
+/* termcap database emulation (XPG4 uses const only for 2nd param of tgetent) */
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tgetstr) (SCREEN*, NCURSES_CONST char *, char **);
+extern NCURSES_EXPORT(char *)  NCURSES_SP_NAME(tgoto) (SCREEN*, const char *, int, int);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tgetent) (SCREEN*, char *, const char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tgetflag) (SCREEN*, NCURSES_CONST char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tgetnum) (SCREEN*, NCURSES_CONST char *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(tputs) (SCREEN*, const char *, int, NCURSES_SP_OUTC);
+
+extern NCURSES_EXPORT(TERMINAL *) NCURSES_SP_NAME(set_curterm) (SCREEN*, TERMINAL *);
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(del_curterm) (SCREEN*, TERMINAL *);
+
+extern NCURSES_EXPORT(int)     NCURSES_SP_NAME(restartterm) (SCREEN*, NCURSES_CONST char *, int, int *);
+#endif /* NCURSES_SP_FUNCS */
 
 #ifdef __cplusplus
 }
