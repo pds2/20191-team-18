@@ -46,7 +46,7 @@ datadir="${datarootdir}"
 mandir="${datarootdir}/man"
 
 THIS="ncurses"
-TINFO_LIB="ncurses"
+TINFO_LIB="tinfo"
 RPATH_LIST="${libdir}"
 
 includesubdir="${prefix}/include/${THIS}"
@@ -117,7 +117,7 @@ ENDECHO
 		else
 			LIBDIR=-L$libdir
 		fi
-		if test ncurses = ncurses ; then
+		if test tinfo = ncurses ; then
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
 			$LIBDIR  -l${THIS} 
 ENDECHO
