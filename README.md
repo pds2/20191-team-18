@@ -30,5 +30,5 @@ make
 ## Documentação
 
 * [Link da Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
-*Doxygen: Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
+* Doxygen: Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
           dentro do diretorio documentation/doxygen/html/index.html
