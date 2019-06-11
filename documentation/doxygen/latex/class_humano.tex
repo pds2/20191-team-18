@@ -1,0 +1,140 @@
+\hypertarget{class_humano}{}\section{Humano Class Reference}
+\label{class_humano}\index{Humano@{Humano}}
+Inheritance diagram for Humano\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_humano}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_humano_a0a77741425558703321b7a1f24bf5f8f}{Humano}} (string nome)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_humano}{Humano}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_humano_a7af6096fca83f9c64cf893156f749e22}{Humano}} (string nome, std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ cartas)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_humano}{Humano}} que recebe as cartas em sua mão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_humano_a32767bbf1ad4f6065d18f375341ac00e}{exibir\+Cartas}} ()
+\begin{DoxyCompactList}\small\item\em Exibe as cartas que o humano possui em sua mão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_humano_a9be2c952d918117be73a00f2c538834c}{exibir\+Opcoes\+Adicionais}} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais, int n\+Opcao)
+\begin{DoxyCompactList}\small\item\em Exibe as opções adicionais que o jogador têm para aquela jogada. Como, por exemplo, pedir truco, pedir seis, entre outros. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_humano_aad706f019b99747f9c49d915f678998d}{jogar}} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais) override
+\begin{DoxyCompactList}\small\item\em Controla a exibição das cartas e de opções adicionais para o jogador. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_humano_aa1cd4b8c801b73190ad1472f6fc860b1}{aceitar\+Desafio}} (\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$jogador\+Desafiante, int pontos) override
+\begin{DoxyCompactList}\small\item\em Permite ao jogador humano escolher se aceita o desafio ou não. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_humano_a0a77741425558703321b7a1f24bf5f8f}\label{class_humano_a0a77741425558703321b7a1f24bf5f8f}} 
+\index{Humano@{Humano}!Humano@{Humano}}
+\index{Humano@{Humano}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{Humano()}{Humano()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Humano\+::\+Humano (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_humano}{Humano}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_humano_a7af6096fca83f9c64cf893156f749e22}\label{class_humano_a7af6096fca83f9c64cf893156f749e22}} 
+\index{Humano@{Humano}!Humano@{Humano}}
+\index{Humano@{Humano}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{Humano()}{Humano()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Humano\+::\+Humano (\begin{DoxyParamCaption}\item[{string}]{nome,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$}]{cartas }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_humano}{Humano}} que recebe as cartas em sua mão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \\
+\hline
+{\em cartas} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_humano_aa1cd4b8c801b73190ad1472f6fc860b1}\label{class_humano_aa1cd4b8c801b73190ad1472f6fc860b1}} 
+\index{Humano@{Humano}!aceitarDesafio@{aceitarDesafio}}
+\index{aceitarDesafio@{aceitarDesafio}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{aceitarDesafio()}{aceitarDesafio()}}
+{\footnotesize\ttfamily virtual int Humano\+::aceitar\+Desafio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$}]{jogador\+Desafiante,  }\item[{int}]{pontos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Permite ao jogador humano escolher se aceita o desafio ou não. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Desafiante} & -\/ \mbox{\hyperlink{class_jogador}{Jogador}} que propos o desafio \\
+\hline
+{\em pontos} & -\/ Quantidade de pontos disputados caso o desafio seja aceito \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Resposta ao desafio 0 -\/ Correr; 1 -\/ Aceitar; 2 -\/ Aumentar; 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogador}{Jogador}}.
+
+\mbox{\Hypertarget{class_humano_a32767bbf1ad4f6065d18f375341ac00e}\label{class_humano_a32767bbf1ad4f6065d18f375341ac00e}} 
+\index{Humano@{Humano}!exibirCartas@{exibirCartas}}
+\index{exibirCartas@{exibirCartas}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{exibirCartas()}{exibirCartas()}}
+{\footnotesize\ttfamily void Humano\+::exibir\+Cartas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Exibe as cartas que o humano possui em sua mão. 
+
+\mbox{\Hypertarget{class_humano_a9be2c952d918117be73a00f2c538834c}\label{class_humano_a9be2c952d918117be73a00f2c538834c}} 
+\index{Humano@{Humano}!exibirOpcoesAdicionais@{exibirOpcoesAdicionais}}
+\index{exibirOpcoesAdicionais@{exibirOpcoesAdicionais}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{exibirOpcoesAdicionais()}{exibirOpcoesAdicionais()}}
+{\footnotesize\ttfamily void Humano\+::exibir\+Opcoes\+Adicionais (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{opcoes\+Adicionais,  }\item[{int}]{n\+Opcao }\end{DoxyParamCaption})}
+
+
+
+Exibe as opções adicionais que o jogador têm para aquela jogada. Como, por exemplo, pedir truco, pedir seis, entre outros. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcoes\+Adicionais} & -\/ Vetor com as opções a serem exibidas \\
+\hline
+{\em n\+Opcao} & -\/ Numero de opções exibidos anteriormente \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_humano_aad706f019b99747f9c49d915f678998d}\label{class_humano_aad706f019b99747f9c49d915f678998d}} 
+\index{Humano@{Humano}!jogar@{jogar}}
+\index{jogar@{jogar}!Humano@{Humano}}
+\subsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily virtual int Humano\+::jogar (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{opcoes\+Adicionais }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Controla a exibição das cartas e de opções adicionais para o jogador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcoes\+Adicionais} & -\/ Vetor com as opções adicionais de jogada além das cartas que o jogador possui \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogador}{Jogador}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pedro/\+Documents/20191-\/team-\/18/include/models/Humano.\+hpp\end{DoxyCompactItemize}

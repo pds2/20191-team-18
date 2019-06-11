@@ -41,6 +41,9 @@ void Rodada::controleRodada() {
 
     while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
         cout << "\n";
+        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << " Maos ganhas time 2: " << this->maos_ganhas_time2;
+        cout << "\n" << "Iniciando a mão " << this->mao << "!";
+        cout << "\n" << "------------------------------------------------";
         mesa->limpaCartasNaMesa();
         
         for (auto const& jogador : this->jogadores) {
@@ -52,9 +55,11 @@ void Rodada::controleRodada() {
                 break;
             }
         }
-        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << " Maos ganhas time 2: " << this->maos_ganhas_time2;
         this->computaVencedorRodada(mesa, alguemCorreu);
-        
+
+        cout << "\n" << "Fim da mão " << this->mao << "!";
+        cout << "\n" << "------------------------------------------------";
+        this->mao++;
     }
 
     if(this->maos_ganhas_time1 >= 2) {
@@ -220,7 +225,7 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
             
             Carta* maiorCarta = maiorCartaNaMesa->getCarta();
         
-            cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
+            cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a mão !!!";
             
             if(nRodada == 0) {
                 this->primeiroVencedor = jogadorMaiorCarta;
@@ -249,7 +254,7 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
                 
                 Carta* ultimaCarta = ultimaCartaEmpatada->getCarta();
         
-                cout << "\n\n Dois ou mais jogadores jogaram a carta " << ultimaCarta->getValor() << " e empataram a rodada !!!";
+                cout << "\n\n Dois ou mais jogadores jogaram a carta " << ultimaCarta->getValor() << " e empataram a mão !!!";
                 this->maos_empatadas += 1;
                 reordenarListaJogadores(jogadorEmpatado);  
             } else {

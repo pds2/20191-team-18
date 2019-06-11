@@ -1,0 +1,70 @@
+\hypertarget{class_jogador}{}\section{Jogador Class Reference}
+\label{class_jogador}\index{Jogador@{Jogador}}
+Inheritance diagram for Jogador\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogador}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_jogador_a166616aae3af6eefcc804a70d70f1359}\label{class_jogador_a166616aae3af6eefcc804a70d70f1359}} 
+{\bfseries Jogador} (string nome)
+\item 
+\mbox{\Hypertarget{class_jogador_a2c4a7000bda1bf0390b3b00c1066a71f}\label{class_jogador_a2c4a7000bda1bf0390b3b00c1066a71f}} 
+{\bfseries Jogador} (string nome, std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ cartas)
+\item 
+\mbox{\Hypertarget{class_jogador_ad99c974eb0be82064fbca936adc246d9}\label{class_jogador_ad99c974eb0be82064fbca936adc246d9}} 
+string {\bfseries get\+Nome} ()
+\item 
+\mbox{\Hypertarget{class_jogador_a01b6af5be0bb3789d1450f8a8f0e99d4}\label{class_jogador_a01b6af5be0bb3789d1450f8a8f0e99d4}} 
+void {\bfseries add\+Carta\+Mao} (\mbox{\hyperlink{class_carta}{Carta}} $\ast$carta)
+\item 
+\mbox{\Hypertarget{class_jogador_ab835948a3cc9f4876e8d5a417b8c4d2f}\label{class_jogador_ab835948a3cc9f4876e8d5a417b8c4d2f}} 
+void {\bfseries remove\+Carta\+Mao} (\mbox{\hyperlink{class_carta}{Carta}} $\ast$carta)
+\item 
+\mbox{\Hypertarget{class_jogador_a9c9a6a3b7460ccd81b800211ead01da2}\label{class_jogador_a9c9a6a3b7460ccd81b800211ead01da2}} 
+void {\bfseries remove\+Carta\+Mao} (int posicao)
+\item 
+\mbox{\Hypertarget{class_jogador_aa4efb1bca8f98a41f38397f8a2d34107}\label{class_jogador_aa4efb1bca8f98a41f38397f8a2d34107}} 
+void {\bfseries set\+Mao} (std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $>$ cartas)
+\item 
+\mbox{\Hypertarget{class_jogador_a5b275f62c069fced9f4e2bb4f575c8c4}\label{class_jogador_a5b275f62c069fced9f4e2bb4f575c8c4}} 
+\mbox{\hyperlink{class_carta}{Carta}} $\ast$ {\bfseries get\+Carta\+Mao} (int posicao)
+\item 
+\mbox{\Hypertarget{class_jogador_a653a6a493cce26a6ad32b9fefef8a47c}\label{class_jogador_a653a6a493cce26a6ad32b9fefef8a47c}} 
+std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ {\bfseries get\+Mao} ()
+\item 
+\mbox{\Hypertarget{class_jogador_acb6af0751dae0c4598c6917e3a3eec0c}\label{class_jogador_acb6af0751dae0c4598c6917e3a3eec0c}} 
+int {\bfseries get\+Numero\+Cartas} ()
+\item 
+\mbox{\Hypertarget{class_jogador_a938aa676a62494ce8b0eff5698fcf7eb}\label{class_jogador_a938aa676a62494ce8b0eff5698fcf7eb}} 
+void {\bfseries set\+Time\+Jogador} (int time\+Jogador)
+\item 
+\mbox{\Hypertarget{class_jogador_a6445980bae531aaca239735557140ffa}\label{class_jogador_a6445980bae531aaca239735557140ffa}} 
+int {\bfseries get\+Time\+Jogador} ()
+\item 
+\mbox{\Hypertarget{class_jogador_ae9be28c426f205bb1496d38324befc62}\label{class_jogador_ae9be28c426f205bb1496d38324befc62}} 
+void {\bfseries limpar\+Cartas\+Mao} ()
+\item 
+\mbox{\Hypertarget{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}\label{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}} 
+virtual int {\bfseries jogar} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais)=0
+\item 
+\mbox{\Hypertarget{class_jogador_a4eceb45cff559f97cd441da30d36769c}\label{class_jogador_a4eceb45cff559f97cd441da30d36769c}} 
+virtual int {\bfseries aceitar\+Desafio} (\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$jogador\+Desafiante, int pontos)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_jogador_ad989cab8e9aa172ddb6ed89d019a7e91}\label{class_jogador_ad989cab8e9aa172ddb6ed89d019a7e91}} 
+std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ {\bfseries mao}
+\item 
+\mbox{\Hypertarget{class_jogador_a799f588b8a5c2504c6a290e617983808}\label{class_jogador_a799f588b8a5c2504c6a290e617983808}} 
+int {\bfseries time\+Jogador}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pedro/\+Documents/20191-\/team-\/18/include/models/Jogador.\+hpp\end{DoxyCompactItemize}
