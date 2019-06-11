@@ -1,8 +1,7 @@
 #include "views/MainScreen.hpp"
-#include "models/Partida.hpp"
-#include "models/Carta.hpp"
-#include "models/Humano.hpp"
-#include "models/Bot.hpp"
+#include "controllers/Partida.hpp"
+#include "controllers/Humano.hpp"
+#include "controllers/Bot.hpp"
 #include <time.h>  
 
 MainScreen::~MainScreen() {
