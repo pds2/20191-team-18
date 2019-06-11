@@ -35,7 +35,7 @@ LANGUAGE=C;	export LANGUAGE
 LC_ALL=C;	export LC_ALL
 LC_CTYPE=C;	export LC_CTYPE
 
-prefix="/projects/truco/libs"
+prefix="/home/GRUPOTEKNISA/joaovitor/personal/truco/libs"
 exec_prefix="${prefix}"
 
 bindir="${exec_prefix}/bin"
@@ -46,7 +46,7 @@ datadir="${datarootdir}"
 mandir="${datarootdir}/man"
 
 THIS="ncurses"
-TINFO_LIB="tinfo"
+TINFO_LIB="ncurses"
 RPATH_LIST="${libdir}"
 
 includesubdir="${prefix}/include/${THIS}"
@@ -117,7 +117,7 @@ ENDECHO
 		else
 			LIBDIR=-L$libdir
 		fi
-		if test tinfo = ncurses ; then
+		if test ncurses = ncurses ; then
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
 			$LIBDIR  -l${THIS} 
 ENDECHO
@@ -160,10 +160,10 @@ ENDECHO
 		echo "${mandir}"
 		;;
 	--terminfo)
-		echo "/projects/truco/libs/share/terminfo"
+		echo "/home/GRUPOTEKNISA/joaovitor/personal/truco/libs/share/terminfo"
 		;;
 	--terminfo-dirs)
-		echo "/projects/truco/libs/share/terminfo"
+		echo "/home/GRUPOTEKNISA/joaovitor/personal/truco/libs/share/terminfo"
 		;;
 	--termpath)
 		echo ""
