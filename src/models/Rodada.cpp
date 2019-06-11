@@ -36,6 +36,8 @@ void Rodada::controleRodada() {
 
     Mesa* mesa = new Mesa();
     bool alguemCorreu = false;
+    std::list<Jogador*>::iterator itPeMesa = jogadores.end();
+    this->peMesa = *itPeMesa;
 
     while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
         cout << "\n";
@@ -50,7 +52,7 @@ void Rodada::controleRodada() {
                 break;
             }
         }
-        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << "Maos ganhas time 2: " << this->maos_ganhas_time2;
+        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << " Maos ganhas time 2: " << this->maos_ganhas_time2;
         this->computaVencedorRodada(mesa, alguemCorreu);
         
     }
@@ -74,9 +76,9 @@ bool Rodada::consolidaJogada(Jogador* jogador, Mesa* mesa, int jogada) {
     }
 }
 
-void Rodada::reordenarListaJogadores() {
+void Rodada::reordenarListaJogadores(Jogador* jogadorInicial) {
     
-    Jogador* jogadorInicial = this->ultimoVencedor;
+    // Jogador* jogadorInicial = this->ultimoVencedor;
 
     std::list<Jogador*> novaOrdemJogadores;
 
@@ -208,34 +210,70 @@ std::list<Jogador*> Rodada::getAdversarios(Jogador* jogador) {
 
 void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
     if(!desafioRecusado) {
-        CartaNaMesa* maiorCartaNaMesa = mesa->obterMaiorCarta();
-        Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
+        std::list<CartaNaMesa*> maioresCartas = mesa->obterMaiorCarta();
+        int nRodada = this->maos_ganhas_time1 + this->maos_ganhas_time2 + this->maos_empatadas;
         
-        Carta* maiorCarta = maiorCartaNaMesa->getCarta();
-    
-        cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
-    
-        if(jogadorMaiorCarta->getTimeJogador() == 1) {
-            this->maos_ganhas_time1 += 1;
-            this->pontos_time1 += this->pontos;
+        if(maioresCartas.size() == 1) {
+            std::list<CartaNaMesa*>::iterator itMaiorCarta = maioresCartas.begin();
+            CartaNaMesa* maiorCartaNaMesa = *itMaiorCarta;
+            Jogador* jogadorMaiorCarta = maiorCartaNaMesa->getJogador();
+            
+            Carta* maiorCarta = maiorCartaNaMesa->getCarta();
+        
+            cout << "\n\n" << jogadorMaiorCarta->getNome() << " jogou a carta " << maiorCarta->getValor()  << " " << maiorCarta->getNipe() << " e venceu a rodada !!!";
+            
+            if(nRodada == 0) {
+                this->primeiroVencedor = jogadorMaiorCarta;
+            }
+            
+            if(this->maos_empatadas > 0) {
+                this->maos_ganhas_time1 = 1;
+                this->maos_ganhas_time2 = 1;
+            }
+            
+            if(jogadorMaiorCarta->getTimeJogador() == 1) {
+                this->maos_ganhas_time1 += 1;
+                this->pontos_time1 += this->pontos;
+            }
+            else {
+                this->maos_ganhas_time2 += 1;
+                this->pontos_time2 += this->pontos;
+            }
+            
+            reordenarListaJogadores(jogadorMaiorCarta);   
+        } else {
+            if(nRodada == 0 || nRodada == 1) { // Rodadas 1 e 2
+                std::list<CartaNaMesa*>::iterator itMaiorCarta = maioresCartas.end();
+                CartaNaMesa* ultimaCartaEmpatada = *itMaiorCarta;
+                Jogador* jogadorEmpatado = ultimaCartaEmpatada->getJogador();
+                
+                Carta* ultimaCarta = ultimaCartaEmpatada->getCarta();
+        
+                cout << "\n\n Dois ou mais jogadores jogaram a carta " << ultimaCarta->getValor() << " e empataram a rodada !!!";
+                this->maos_empatadas += 1;
+                reordenarListaJogadores(jogadorEmpatado);  
+            } else {
+                if(this->peMesa->getTimeJogador() == 1) {
+                    this->maos_ganhas_time1 = 2;
+                    this->maos_ganhas_time2 = 0;
+                    *this->pontos_time1 += this->pontos;   
+                } else {
+                    this->maos_ganhas_time1 = 0;
+                    this->maos_ganhas_time2 = 2;
+                    *this->pontos_time2 += this->pontos; 
+                }
+            }
         }
-        else {
-            this->maos_ganhas_time2 += 1;
-            this->pontos_time2 += this->pontos;
-        }
-        
-        this->ultimoVencedor = jogadorMaiorCarta;
- 
-        reordenarListaJogadores();
-        
     }
     else {
         if(this->timeUltimoDesafiador == 1) {
-            this->maos_ganhas_time1 += 1;
+            this->maos_ganhas_time1 = 2;
+            this->maos_ganhas_time2 = 0;
             *this->pontos_time1 += this->pontos;
         }
         else {
-            this->maos_ganhas_time2 += 1;
+            this->maos_ganhas_time1 = 0;
+            this->maos_ganhas_time2 = 2;
             *this->pontos_time2 += this->pontos;
         }
     }

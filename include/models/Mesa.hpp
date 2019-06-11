@@ -33,17 +33,17 @@ class Mesa {
         Mesa();
 
         /**
-         * @brief Retorna a maior Carta que foi jogada na Mesa
+         * @brief Retorna a maior ou as maiores cartas que foram jogadas na mesa
          * 
-         * @return CartaNaMesa* - Maior carta jogada na mesa
+         * @return std::list<CartaNaMesa*> 
          */
-        CartaNaMesa* obterMaiorCarta();     
+        std::list<CartaNaMesa*> obterMaiorCarta();  
 
         /**
          * @brief Joga uma carta na mesa
          * 
          * @param cartaNaMesa - Carta a ser jogada na mesa
-         */
+         */        
         void addCartaNaMesa(CartaNaMesa* cartaNaMesa);
 
         /**
