@@ -5,5 +5,6 @@ var searchData=
   ['getforca',['getForca',['../class_carta.html#ac36b784405c86a88ed91e4ee2fd43096',1,'Carta']]],
   ['getjogador',['getJogador',['../class_carta_na_mesa.html#a2dd1806034ff0ca5cb9c02a28bee709f',1,'CartaNaMesa']]],
   ['getnipe',['getNipe',['../class_carta.html#aec19b8852f1446c615b58e3284a76bc2',1,'Carta']]],
+  ['getordemjogadores',['getOrdemJogadores',['../class_rodada.html#a16bd9d4537bd55fe5ca1fd1e7dc9659f',1,'Rodada']]],
   ['getvalor',['getValor',['../class_carta.html#a6d152881485bd02097ea3e18f63497ed',1,'Carta']]]
 ];

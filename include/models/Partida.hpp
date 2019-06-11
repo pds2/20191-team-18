@@ -13,27 +13,49 @@ using std::string;
 
 class Partida {
 
+  /**
+   * @brief Número de pontos necessarios para ganhar a partida
+   * 
+   */
   const int PONTOS_VITORIA = 12;
 
   private:
-    
+    /**
+     * @brief Pontos do time 1
+     * 
+     */
     int pontos_time1 = 0;
+
+    /**
+     * @brief Pontos do time 2
+     * 
+     */
     int pontos_time2 = 0;
 
+    /**
+     * @brief Lista com as Rodadas que compõem a partida
+     * 
+     */
     std::list<Rodada*> rodadas;
+    /**
+     * @brief Lista dos jogadores participantes da partida
+     * 
+     */
     std::list<Jogador*> jogadores;    
 
   public:
-
+    /**
+     * @brief Construtor da Partida
+     * 
+     * @param jogadores - Jogadores participantes da Partida 
+     */
     Partida(std::list<Jogador*> jogadores);
 
+    /**
+     * @brief Controla a execução da Partida
+     * 
+     */
     void controlaPartida();
-
-    int getPontosTime1();
-    int getPontosTime2();
-
-    int getMao();
-    void setMao(int mao);
 };
 
 #endif

@@ -47,14 +47,6 @@ void Partida::controlaPartida() {
     }
 }
 
-int Partida::getPontosTime1() {
-    return this->pontos_time1;
-}
-
-int Partida::getPontosTime2() {
-    return this->pontos_time2;
-}
-
 
 
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['limpacartasnamesa',['limpaCartasNaMesa',['../class_mesa.html#a77676cb0d95846a226ee905b8e5fcb53',1,'Mesa']]]
+  ['jogar',['jogar',['../class_bot.html#ab3d1a1563bada68fef705b2ca0af6386',1,'Bot::jogar()'],['../class_humano.html#aad706f019b99747f9c49d915f678998d',1,'Humano::jogar()']]]
 ];
