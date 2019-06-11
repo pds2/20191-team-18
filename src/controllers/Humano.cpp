@@ -62,21 +62,6 @@ void Humano::exibirCartas() {
 int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
     int choice;
     do {
-        switch(pontos) {
-            case 4:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo truco!" << endl;
-                break;
-            case 8:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo seis!" << endl;
-                break;
-            case 10:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo nove!" << endl;
-                break;
-            case 12:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo doze!" << endl;
-                break;
-        }
-        
         cout << "\nO que deseja fazer?" << endl;
         
         cout << "\nOpcao [0]: Correr!";

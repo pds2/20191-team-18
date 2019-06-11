@@ -63,12 +63,10 @@ void Rodada::controleRodada() {
     }
 
     if(this->maos_ganhas_time1 >= 2) {
-        cout << "Pontos time 1: " <<  *pontos_time1;
         *pontos_time1 += this->pontos;
         cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
     else {
-        cout << "Pontos time 2: " <<  *pontos_time2;
         *pontos_time2 += this->pontos;
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
@@ -130,17 +128,20 @@ void Rodada::jogarCarta(Jogador* jogador, Mesa* mesa, int jogada) {
 }
 
 bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
-    cout << "\nJogador " << jogador->getNome() << " está trucando: "; 
-    cout << "TRUCO SEU RATO! "; 
+    
+    this->exibeDesafio(jogador);
     std::list<Jogador*> adversarios = getAdversarios(jogador);
     this->timeUltimoDesafiador = jogador->getTimeJogador();
     
     int escolhaDupla  = 0;
+    int posicaoDesafiante = 0;
+    int posicaoAtual = 0;
     bool alguemCorreu = false;
     
     do {
         escolhaDupla = 0;
-        
+        posicaoAtual = 0;
+        posicaoDesafiante = 0;
         int valorDesafio = getValorDesafio();
         
         for (auto const& adversario : adversarios) {
@@ -148,10 +149,15 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
             if(result == 0) {
                 alguemCorreu = true;
             }
+            else if(result == 2) {
+                posicaoDesafiante = posicaoAtual;
+            }
             escolhaDupla += result;
+            posicaoAtual += 1;
         }
         
         std::list<Jogador*>::iterator itJogadorAdversario = adversarios.begin();
+        std::advance(itJogadorAdversario, posicaoDesafiante);
         Jogador* jogadorAdversario = *itJogadorAdversario;
         
         if(!alguemCorreu) {
@@ -160,13 +166,14 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
             if(escolhaDupla > 2) {
                 this->timeUltimoDesafiador = jogadorAdversario->getTimeJogador();
                 adversarios = getAdversarios(jogadorAdversario);
+                this->exibeDesafio(jogadorAdversario);
             }
             else {
-                cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " aceitou !!!"; 
+                cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " aceitou !!!" << endl; 
             }
         }
         else {
-            cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " correu !!!"; 
+            cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " correu !!!" << endl; 
         }
         
     } while(escolhaDupla > 2 && alguemCorreu == false);
@@ -282,3 +289,22 @@ void Rodada::computaVencedorRodada(Mesa* mesa, bool desafioRecusado) {
     }
     
 }
+
+void Rodada::exibeDesafio(Jogador* jogadorDesafiante) {
+    switch(pontos) {
+        case 2:
+            cout << "\n" << jogadorDesafiante->getNome() << " ( Time " << jogadorDesafiante->getTimeJogador() << " ) está pedindo truco!" << endl;
+            break;
+        case 4:
+            cout << "\n" << jogadorDesafiante->getNome() << " ( Time " << jogadorDesafiante->getTimeJogador() << " ) está pedindo seis!" << endl;
+            break;
+        case 8:
+            cout << "\n" << jogadorDesafiante->getNome() << " ( Time " << jogadorDesafiante->getTimeJogador() << " ) está pedindo nove!" << endl;
+            break;
+        case 10:
+            cout << "\n" << jogadorDesafiante->getNome() << " ( Time " << jogadorDesafiante->getTimeJogador() << " ) está pedindo doze!" << endl;
+            break;
+    }
+    
+}
+
