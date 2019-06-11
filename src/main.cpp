@@ -3,7 +3,7 @@
 int main() {
     MainScreen *mainScreen = new MainScreen();
 
-    mainScreen->showMenu();
+    mainScreen->initGame();
 
     delete mainScreen;
     return 0;

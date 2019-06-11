@@ -1,5 +1,5 @@
 /****************************************************************************
- * Copyright (c) 1998-2001,2006 Free Software Foundation, Inc.              *
+ * Copyright (c) 1998-2009,2017 Free Software Foundation, Inc.              *
  *                                                                          *
  * Permission is hereby granted, free of charge, to any person obtaining a  *
  * copy of this software and associated documentation files (the            *
@@ -29,9 +29,10 @@
 /****************************************************************************
  *  Author: Zeyd M. Ben-Halim <zmbenhal@netcom.com> 1995                    *
  *     and: Eric S. Raymond <esr@snark.thyrsus.com>                         *
+ *     and: Juergen Pfeifer                         1996-1999,2008          *
  ****************************************************************************/
 
-/* $Id: panel.h,v 1.10 2006/05/27 19:49:40 tom Exp $ */
+/* $Id: panel.h,v 1.12 2017/02/11 16:50:28 tom Exp $ */
 
 /* panel.h -- interface file for panels library */
 
@@ -41,12 +42,15 @@
 #include <ncurses/curses.h>
 
 typedef struct panel
+#if !NCURSES_OPAQUE_PANEL
 {
   WINDOW *win;
   struct panel *below;
   struct panel *above;
   NCURSES_CONST void *user;
-} PANEL;
+}
+#endif /* !NCURSES_OPAQUE_PANEL */
+PANEL;
 
 #if	defined(__cplusplus)
 extern "C" {
@@ -67,6 +71,13 @@ extern NCURSES_EXPORT(NCURSES_CONST void*) panel_userptr (const PANEL *);
 extern NCURSES_EXPORT(int)     move_panel (PANEL *, int, int);
 extern NCURSES_EXPORT(int)     replace_panel (PANEL *,WINDOW *);
 extern NCURSES_EXPORT(int)     panel_hidden (const PANEL *);
+
+#if NCURSES_SP_FUNCS
+extern NCURSES_EXPORT(PANEL *) ground_panel(SCREEN *);
+extern NCURSES_EXPORT(PANEL *) ceiling_panel(SCREEN *);
+
+extern NCURSES_EXPORT(void)    NCURSES_SP_NAME(update_panels) (SCREEN*);
+#endif
 
 #if	defined(__cplusplus)
 }
