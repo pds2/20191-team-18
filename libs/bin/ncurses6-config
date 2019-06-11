@@ -160,10 +160,10 @@ ENDECHO
 		echo "${mandir}"
 		;;
 	--terminfo)
-		echo "/projects/truco/libs/share/terminfo"
+		echo "${datarootdir}/terminfo"
 		;;
 	--terminfo-dirs)
-		echo "/projects/truco/libs/share/terminfo"
+		echo ""
 		;;
 	--termpath)
 		echo ""
