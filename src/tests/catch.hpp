@@ -14251,6 +14251,7 @@ void ConsoleReporter::printTotals( Totals const& totals ) {
             << pluralise(totals.assertions.passed, "assertion") << " in "
             << pluralise(totals.testCases.passed, "test case") << ')'
             << '\n';
+            system("PAUSE");
     } else {
 
         std::vector<SummaryColumn> columns;
