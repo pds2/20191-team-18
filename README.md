@@ -22,10 +22,10 @@ Grupo 18 - Truco
 make
 
 * Windows
-    build/main.exe
+    make run_windows
 
 * Linux 
-    build/main
+    make run
 
 ## Documentação
 

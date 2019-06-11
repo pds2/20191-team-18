@@ -130,28 +130,38 @@ void Rodada::jogarCarta(Jogador* jogador, Mesa* mesa, int jogada) {
 }
 
 bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
+    
     cout << "\nJogador " << jogador->getNome() << " está trucando: "; 
     cout << "TRUCO SEU RATO! "; 
     std::list<Jogador*> adversarios = getAdversarios(jogador);
+        
     this->timeUltimoDesafiador = jogador->getTimeJogador();
     
+    Jogador* jogadorAumentou = jogador;
+    int posicaoAumentou = 0, posicaoAtual = 0;;
     int escolhaDupla  = 0;
     bool alguemCorreu = false;
     
     do {
         escolhaDupla = 0;
-        
+        posicaoAumentou = 0;
         int valorDesafio = getValorDesafio();
         
         for (auto const& adversario : adversarios) {
-            int result = adversario->aceitarDesafio(jogador, valorDesafio);
+            int result = adversario->aceitarDesafio(jogadorAumentou, valorDesafio);
             if(result == 0) {
                 alguemCorreu = true;
             }
+            else if(result == 2) {
+                posicaoAumentou = posicaoAtual;
+            }
             escolhaDupla += result;
+            posicaoAtual += 1;
         }
         
         std::list<Jogador*>::iterator itJogadorAdversario = adversarios.begin();
+        std::advance(itJogadorAdversario, posicaoAumentou);
+        
         Jogador* jogadorAdversario = *itJogadorAdversario;
         
         if(!alguemCorreu) {
@@ -159,6 +169,7 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
             
             if(escolhaDupla > 2) {
                 this->timeUltimoDesafiador = jogadorAdversario->getTimeJogador();
+                jogadorAumentou = *itJogadorAdversario;
                 adversarios = getAdversarios(jogadorAdversario);
             }
             else {
