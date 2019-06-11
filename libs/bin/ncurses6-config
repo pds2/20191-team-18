@@ -119,11 +119,11 @@ ENDECHO
 		fi
 		if test ncurses = ncurses ; then
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
-			$LIBDIR  -l${THIS} -ldb
+			$LIBDIR  -l${THIS} 
 ENDECHO
 		else
 		sed -e 's,^[ ]*,,' -e 's, [ ]*, ,g' -e 's,[ ]*$,,' <<-ENDECHO
-			$LIBDIR  -l${THIS} -l${TINFO_LIB} -ldb
+			$LIBDIR  -l${THIS} -l${TINFO_LIB} 
 ENDECHO
 		fi
 		;;
