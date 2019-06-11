@@ -1,3 +1,7 @@
+#include <iostream>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include "models/Carta.hpp"
 
 using std::string;
@@ -26,6 +30,11 @@ Carta::Carta(string  valor,  string  nipe,   int forca) {
 }
 
 std::string Carta::getNipe() {
+    
+    #ifdef _WIN32
+        SetConsoleOutputCP(65001); 
+    #endif
+    
     if(nipe == COPAS) {
         return "\u2665\ufe0f";
     }
