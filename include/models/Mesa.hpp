@@ -12,13 +12,44 @@ using std::string;
 
 class Mesa {
     private:
+        /**
+         * @brief Lista de cartas que já foram jogadas na Mesa
+         * 
+         */
         std::list<CartaNaMesa*> cartasNaMesa;
+
+        /**
+         * @brief Retorna a lista de cartas que foram jodadas na Mesa
+         * 
+         * @return std::list<CartaNaMesa*> - lista de cartas que foram jogadas na Mesa
+         */
         std::list<CartaNaMesa*> getCartasMesa();
     
     public:
+        /**
+         * @brief Construtor da classe Mesa
+         * 
+         */
         Mesa();
-        CartaNaMesa* obterMaiorCarta();          
+
+        /**
+         * @brief Retorna a maior Carta que foi jogada na Mesa
+         * 
+         * @return CartaNaMesa* - Maior carta jogada na mesa
+         */
+        CartaNaMesa* obterMaiorCarta();     
+
+        /**
+         * @brief Joga uma carta na mesa
+         * 
+         * @param cartaNaMesa - Carta a ser jogada na mesa
+         */
         void addCartaNaMesa(CartaNaMesa* cartaNaMesa);
+
+        /**
+         * @brief Limpa a lista de cartas jogadas na mesa
+         * 
+         */
         void limpaCartasNaMesa();
 };
 

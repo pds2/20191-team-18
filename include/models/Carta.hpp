@@ -19,25 +19,106 @@ class Carta {
 
   public:
     
+    /**
+     * @brief Construtor da classe carta 
+     * 
+     * @param valor 
+     * @param nipe 
+     */
     Carta(string  valor,  string  nipe);
+    
+    /**
+     * @brief Construtor da classe carta 
+     * 
+     * @param valor 
+     * @param nipe 
+     */
     Carta(string  valor,  int     nipe);
+
+    /**
+     * @brief Construtor da classe carta
+     * 
+     * @param valor 
+     * @param nipe 
+     * @param forca 
+     */
     Carta(string  valor,  string  nipe,   int forca);
+
+    /**
+     * @brief Construtor da classe carta
+     * 
+     * @param valor 
+     * @param nipe 
+     * @param forca 
+     */
     Carta(string  valor,  int     nipe,   int forca);
 
+    /**
+     * @brief Retorna o nipe da carta
+     * 
+     * @return string 
+     */
     string  getNipe();
+
+    /**
+     * @brief Define o nipe da carta
+     * 
+     * @param nipe - inteiro representando o valor do nipe
+     */
     void setNipe(int nipe);
+
+    /**
+     * @brief Define o nipe da carta
+     * 
+     * @param nipe - string com o nome do nipe
+     */
     void setNipe(string nipe);
 
+    /**
+     * @brief Define o valor da Carta 
+     * 
+     * @param valor 
+     */
     void setValor(string valor);
-    string getValor();
 
+    /**
+     * @brief Retorna o valor da Carta
+     * 
+     * @return string 
+     */
+    string getValor();
+    
+    /**
+     * @brief Define qual a força da Carta
+     * 
+     * @param forca
+     */
     void setForca(int forca);
+    
+    /**
+     * @brief Retorna a força da Carta
+     * 
+     * @return int
+     */
     int getForca();
 
   private:
-
-    int nipe;
+    /**
+     * @brief Valor da figura da carta
+     * 
+     */
     string valor; 
+
+    /**
+     * @brief Nipe da carta
+     * 
+     */
+    int nipe;
+
+    /**
+     * @brief Força da carta
+     * 
+     */
     int forca = 0;
 
 };

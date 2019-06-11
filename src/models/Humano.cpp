@@ -59,10 +59,6 @@ void Humano::exibirCartas() {
     }
 }
 
-void Humano::pedirTruco() {
-    cout << "TRUCO NA MENTE";
-}
-
 int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
     int choice;
     do {
