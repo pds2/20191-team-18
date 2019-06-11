@@ -317,3 +317,44 @@ void UIManager::unhighlightMenuEntry(int entryNum){
 int UIManager::getSelectedMenuItem(){
     return this->_menuEntryPos;
 }
+
+/**
+* Desenha string na tela na posição indicada.
+*/
+void UIManager::printString(string str_to_print, int x, int y){
+    wclear(this->win);
+    this->drawBorders('@', '@');
+    mvwaddstr(this->win, y, x, str_to_print.c_str());
+    wrefresh(this->win);
+}
+
+/**
+* Lê string do teclado e retorna
+* a origem da função
+*/
+string UIManager::readString(){
+    std::string input;
+
+    nocbreak();
+    echo();
+
+    int ch = getch();
+    while( ch != '\n' ){
+        input.push_back(ch);
+        ch = getch();
+    }
+
+    cbreak();
+    noecho();
+
+    return input;
+}
+
+/**
+* Limpa tela e redesenha as bordas
+*/
+void UIManager::clearScreen(){
+    wclear(this->win);
+    this->drawBorders('@', '@');
+    wrefresh(this->win);
+}

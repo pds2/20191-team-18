@@ -7,11 +7,11 @@
 #include <time.h>  
 
 MainScreen::MainScreen() {
-    this->uim = new UIManager(true);
+    // this->uim = new UIManager(true);
 }
 
 MainScreen::~MainScreen() {
-    delete this->uim;
+    // delete this->uim;
 }
 
 void MainScreen::clrscr() {
