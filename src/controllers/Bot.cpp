@@ -1,4 +1,4 @@
-#include "models/Bot.hpp"
+#include "controllers/Bot.hpp"
 #include "models/Carta.hpp"
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,5 +1,5 @@
-#include "models/Humano.hpp"
-#include <models/Carta.hpp>
+#include "controllers/Humano.hpp"
+#include "models/Carta.hpp"
 #include <cstdlib>
 
 template<class T, std::size_t n>
@@ -64,16 +64,16 @@ int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
     do {
         switch(pontos) {
             case 4:
-                cout << jogadorDesafiante->getNome() << " está pedindo truco!" << endl;
+                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo truco!" << endl;
                 break;
             case 8:
-                cout << jogadorDesafiante->getNome() << " está pedindo seis!" << endl;
+                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo seis!" << endl;
                 break;
             case 10:
-                cout << jogadorDesafiante->getNome() << " está pedindo nove!" << endl;
+                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo nove!" << endl;
                 break;
             case 12:
-                cout << jogadorDesafiante->getNome() << " está pedindo doze!" << endl;
+                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo doze!" << endl;
                 break;
         }
         

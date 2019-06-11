@@ -5,7 +5,7 @@
 #include <list>
 #include "exceptions/Exception.hpp"
 #include "models/Jogador.hpp"
-#include "models/Rodada.hpp"
+#include "controllers/Rodada.hpp"
 
 using std::cout;
 using std::endl;

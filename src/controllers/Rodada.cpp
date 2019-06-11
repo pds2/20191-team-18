@@ -1,4 +1,4 @@
-#include "models/Rodada.hpp" 
+#include "controllers/Rodada.hpp" 
 #include "models/Jogador.hpp"
 #include "models/Baralho.hpp"
 #include "models/Mesa.hpp"
@@ -63,10 +63,12 @@ void Rodada::controleRodada() {
     }
 
     if(this->maos_ganhas_time1 >= 2) {
+        cout << "Pontos time 1: " <<  *pontos_time1;
         *pontos_time1 += this->pontos;
         cout << "\n" << "O Time 1 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
     else {
+        cout << "Pontos time 2: " <<  *pontos_time2;
         *pontos_time2 += this->pontos;
         cout << "\n" << "O Time 2 venceu a rodada e somou " << this->pontos << " pontos !!!" << endl;
     }
@@ -132,8 +134,6 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
     cout << "TRUCO SEU RATO! "; 
     std::list<Jogador*> adversarios = getAdversarios(jogador);
     this->timeUltimoDesafiador = jogador->getTimeJogador();
-    Jogador* ultimoDesafiador  = jogador;
-    Jogador* jogadorDesafio    = jogador;
     
     int escolhaDupla  = 0;
     bool alguemCorreu = false;
@@ -144,12 +144,9 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
         int valorDesafio = getValorDesafio();
         
         for (auto const& adversario : adversarios) {
-            int result = adversario->aceitarDesafio(jogadorDesafio, valorDesafio);
+            int result = adversario->aceitarDesafio(jogador, valorDesafio);
             if(result == 0) {
                 alguemCorreu = true;
-            }
-            else if(result == 2) {
-                ultimoDesafiador = adversario;
             }
             escolhaDupla += result;
         }
@@ -163,8 +160,6 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
             if(escolhaDupla > 2) {
                 this->timeUltimoDesafiador = jogadorAdversario->getTimeJogador();
                 adversarios = getAdversarios(jogadorAdversario);
-                cout << ultimoDesafiador->getNome() << jogador->getNome();
-                jogadorDesafio = ultimoDesafiador;
             }
             else {
                 cout << "\n" << "O Time " << jogadorAdversario->getTimeJogador() << " aceitou !!!"; 

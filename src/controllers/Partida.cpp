@@ -1,5 +1,5 @@
-#include "models/Partida.hpp"
-#include "models/Rodada.hpp" 
+#include "controllers/Partida.hpp"
+#include "controllers/Rodada.hpp" 
 #include "models/Jogador.hpp"
 #include "models/Baralho.hpp"
 #include <list>
