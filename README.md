@@ -19,13 +19,14 @@ Grupo 18 - Truco
 
 ## Build do Aplicativo
 
+### Windows
+
 make
+make run_windows
 
-* Windows
-    make run_windows
-
-* Linux 
-    make run
+### Linux
+make 
+make run
 
 ## Documentação
 
