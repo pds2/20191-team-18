@@ -21,15 +21,15 @@ Grupo 18 - Truco
 
 ### Windows
 
-make
-make run_windows
+> make
+> make run_windows
 
 ### Linux
-make 
-make run
 
-## Documentação
+> make 
+> make run
 
-* [Link da Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
+## [Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
+
 * Doxygen: Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
           dentro do diretorio documentation/doxygen/html/index.html
