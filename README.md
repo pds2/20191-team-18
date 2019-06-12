@@ -22,6 +22,7 @@ Grupo 18 - Truco
 ### Windows
 
 > make
+>
 > make run_windows
 
 ### Linux
