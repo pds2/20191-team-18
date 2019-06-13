@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['geralistajogadores',['geraListaJogadores',['../class_main_screen.html#a03afd01f1c0be9b08757f33c8d324ac2',1,'MainScreen']]],
   ['getcarta',['getCarta',['../class_carta_na_mesa.html#a2019e0269144f552f218ae795b7ab599',1,'CartaNaMesa']]],
   ['getcartamao',['getCartaMao',['../class_jogador.html#a5b275f62c069fced9f4e2bb4f575c8c4',1,'Jogador']]],
   ['getcartas',['getCartas',['../class_baralho.html#aa8c0c91bec112680c071abb586e8fd71',1,'Baralho']]],

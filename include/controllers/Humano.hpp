@@ -30,8 +30,9 @@ class Humano : public Jogador {
     /**
      * @brief Exibe as cartas que o humano possui em sua mão
      * 
+     * @param opcao - Indica qual o prefixo deve ser exibido ao mostrar as cartas
      */
-    void exibirCartas();
+    void exibirCartas(bool opcao);
 
     /**
      * @brief Exibe as opções adicionais que o jogador têm para aquela jogada. 

@@ -86,9 +86,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7af6096fca83f9c64cf893156f749e22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_humano.html#a7af6096fca83f9c64cf893156f749e22">Humano</a> (string nome, std::vector&lt; <a class="el" href="class_carta.html">Carta</a> * &gt; cartas)</td></tr>
 <tr class="memdesc:a7af6096fca83f9c64cf893156f749e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <a class="el" href="class_humano.html">Humano</a> que recebe as cartas em sua mão.  <a href="#a7af6096fca83f9c64cf893156f749e22">More...</a><br /></td></tr>
 <tr class="separator:a7af6096fca83f9c64cf893156f749e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32767bbf1ad4f6065d18f375341ac00e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_humano.html#a32767bbf1ad4f6065d18f375341ac00e">exibirCartas</a> ()</td></tr>
-<tr class="memdesc:a32767bbf1ad4f6065d18f375341ac00e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exibe as cartas que o humano possui em sua mão.  <a href="#a32767bbf1ad4f6065d18f375341ac00e">More...</a><br /></td></tr>
-<tr class="separator:a32767bbf1ad4f6065d18f375341ac00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44adc47b7acc857f0614c82e53a7759f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_humano.html#a44adc47b7acc857f0614c82e53a7759f">exibirCartas</a> (bool opcao)</td></tr>
+<tr class="memdesc:a44adc47b7acc857f0614c82e53a7759f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exibe as cartas que o humano possui em sua mão.  <a href="#a44adc47b7acc857f0614c82e53a7759f">More...</a><br /></td></tr>
+<tr class="separator:a44adc47b7acc857f0614c82e53a7759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9be2c952d918117be73a00f2c538834c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_humano.html#a9be2c952d918117be73a00f2c538834c">exibirOpcoesAdicionais</a> (std::vector&lt; std::string &gt; opcoesAdicionais, int nOpcao)</td></tr>
 <tr class="memdesc:a9be2c952d918117be73a00f2c538834c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exibe as opções adicionais que o jogador têm para aquela jogada. Como, por exemplo, pedir truco, pedir seis, entre outros.  <a href="#a9be2c952d918117be73a00f2c538834c">More...</a><br /></td></tr>
 <tr class="separator:a9be2c952d918117be73a00f2c538834c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,8 +262,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a32767bbf1ad4f6065d18f375341ac00e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32767bbf1ad4f6065d18f375341ac00e">&#9670;&nbsp;</a></span>exibirCartas()</h2>
+<a id="a44adc47b7acc857f0614c82e53a7759f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44adc47b7acc857f0614c82e53a7759f">&#9670;&nbsp;</a></span>exibirCartas()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,13 +271,20 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void Humano::exibirCartas </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>opcao</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Exibe as cartas que o humano possui em sua mão. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcao</td><td>- Indica qual o prefixo deve ser exibido ao mostrar as cartas </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

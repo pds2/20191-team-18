@@ -124,7 +124,7 @@ void Rodada::jogarCarta(Jogador* jogador, Mesa* mesa, int jogada) {
     CartaNaMesa* cm = new CartaNaMesa(c, jogador);
     mesa->addCartaNaMesa(cm);
     jogador->removeCartaMao(jogada);
-    cout << "\n" << jogador->getNome() << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
+    cout << "\n" << jogador->getNome() << "( Time " << jogador->getTimeJogador() << " )" << " jogou a Carta: " << c->getValor() << " " << c->getNipe();
 }
 
 bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
@@ -147,10 +147,15 @@ bool Rodada::desafiar(Jogador* jogador, Mesa* mesa) {
         for (auto const& adversario : adversarios) {
             int result = adversario->aceitarDesafio(jogador, valorDesafio);
             if(result == 0) {
+                // cout << "\n" << adversario->getNome() << "( Time " << adversario->getTimeJogador() << " )" << " correu !!!";
                 alguemCorreu = true;
             }
             else if(result == 2) {
+                // cout << "\n" << adversario->getNome() << "( Time " << adversario->getTimeJogador() << " )" << " aumentou o desafio !!!";
                 posicaoDesafiante = posicaoAtual;
+            }
+            else {
+                // cout << "\n" << adversario->getNome() << "( Time " << adversario->getTimeJogador() << " )" << " aceitou o desafio !!!";
             }
             escolhaDupla += result;
             posicaoAtual += 1;

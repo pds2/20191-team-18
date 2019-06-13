@@ -1,31 +1,50 @@
+#include <list>
+#include <iostream>
+#include <time.h>  
 #include "views/MainScreen.hpp"
 #include "controllers/Partida.hpp"
 #include "controllers/Humano.hpp"
 #include "controllers/Bot.hpp"
-#include <time.h>  
 
 MainScreen::~MainScreen() {
 
 }
 
 void MainScreen::initGame() {
+    
+    int nHumanos = 1;
+/*    
+    std::cout << "Informe o número de jogadores Humanos: ";
+    std::cin >> nHumanos;*/
+    
+    std::list<Jogador*> jogadores = geraListaJogadores(nHumanos);
+        
+    Partida p = Partida(jogadores);
+    
+    system("pause");
+} 
 
+
+std::list<Jogador*> MainScreen::geraListaJogadores(int quantidadeHumanos) {
+    
     std::list<Jogador*> jogadores;
+    
     string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
-
+    
     string nomeJogador = "";  
-    std::cout << "Digite o seu nome para iniciar a partida: ";
-    std::cin >> nomeJogador;
-
-    Humano* player = new Humano(nomeJogador);
-
-    jogadores.push_back(player);
+    
+    for(int i = 0; i < quantidadeHumanos; i++) {
+        std::cout << "Digite o seu nome: ";
+        std::cin >> nomeJogador;
+    
+        jogadores.push_back(new Humano(nomeJogador));
+    }
     
     srand((unsigned)time(NULL));
     
     int posicaoNome = rand() % 10;
     
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 4 - quantidadeHumanos; i++) {
         string nome;
         do {
 
@@ -45,8 +64,6 @@ void MainScreen::initGame() {
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
     }
-        
-    Partida p = Partida(jogadores);
     
-    system("pause");
-} 
+    return jogadores;
+}
