@@ -25,7 +25,7 @@ all: main
 
 # Main Screen
 MainScreen.o: ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/views/MainScreen.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/MainScreen.cpp -o ${BUILD_DIR}/MainScreen.o 
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/views/MainScreen.cpp -o ${BUILD_DIR}/MainScreen.o ${NCURSES_COMPILE_PARAMS}
 
 
 ####################################################
@@ -53,22 +53,30 @@ Carta.o: ${INCLUDE_DIR}/models/Carta.hpp ${SRC_DIR}/models/Carta.cpp
 # Jogador
 Jogador.o: ${INCLUDE_DIR}/models/Jogador.hpp ${SRC_DIR}/models/Jogador.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Jogador.cpp -o ${BUILD_DIR}/Jogador.o
+	
+
+####################################################
+#                                                  #
+#                   CONTROLLERS                    #
+#                                                  #
+####################################################
+
 
 # Carta
-Bot.o: ${INCLUDE_DIR}/models/Bot.hpp ${SRC_DIR}/models/Bot.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Bot.cpp -o ${BUILD_DIR}/Bot.o
+Bot.o: ${INCLUDE_DIR}/controllers/Bot.hpp ${SRC_DIR}/controllers/Bot.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Bot.cpp -o ${BUILD_DIR}/Bot.o
 
 # Carta
-Humano.o: ${INCLUDE_DIR}/models/Humano.hpp ${SRC_DIR}/models/Humano.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Humano.cpp -o ${BUILD_DIR}/Humano.o
-
+Humano.o: ${INCLUDE_DIR}/controllers/Humano.hpp ${SRC_DIR}/controllers/Humano.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Humano.cpp -o ${BUILD_DIR}/Humano.o
+	
 # Rodada
-Rodada.o: ${INCLUDE_DIR}/models/Rodada.hpp ${SRC_DIR}/models/Rodada.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Rodada.cpp -o ${BUILD_DIR}/Rodada.o
+Rodada.o: ${INCLUDE_DIR}/controllers/Rodada.hpp ${SRC_DIR}/controllers/Rodada.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Rodada.cpp -o ${BUILD_DIR}/Rodada.o
 
 # Partida
-Partida.o: ${INCLUDE_DIR}/models/Partida.hpp ${SRC_DIR}/models/Partida.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/models/Partida.cpp -o ${BUILD_DIR}/Partida.o
+Partida.o: ${INCLUDE_DIR}/controllers/Partida.hpp ${SRC_DIR}/controllers/Partida.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Partida.cpp -o ${BUILD_DIR}/Partida.o
 
 ####################################################
 #                                                  #
@@ -97,11 +105,11 @@ test: test.o Carta.o Jogador.o Bot.o Humano.o
 
 # main
 main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/main.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o 
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o ${NCURSES_COMPILE_PARAMS}
 
 # app
 main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
-	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o
+	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o ${NCURSES_COMPILE_PARAMS}
 
 
 # Rule for cleaning files generated during compilation.

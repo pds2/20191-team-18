@@ -1,88 +1,69 @@
-#include "views/MainScreen.hpp"
-#include "models/Partida.hpp"
-#include "models/Carta.hpp"
-#include "models/Humano.hpp"
-#include "models/Bot.hpp"
+#include <list>
+#include <iostream>
 #include <time.h>  
+#include "views/MainScreen.hpp"
+#include "controllers/Partida.hpp"
+#include "controllers/Humano.hpp"
+#include "controllers/Bot.hpp"
 
 MainScreen::~MainScreen() {
 
 }
 
-void MainScreen::clrscr() {
-    system("cls");
-}
-
-int MainScreen::getInput() {
-    int choice;    
-    std::cin >> choice;
-    return choice;
+void MainScreen::initGame() {
+    
+    int nHumanos = 1;
+/*    
+    std::cout << "Informe o número de jogadores Humanos: ";
+    std::cin >> nHumanos;*/
+    
+    std::list<Jogador*> jogadores = geraListaJogadores(nHumanos);
+        
+    Partida p = Partida(jogadores);
+    
+    system("pause");
 } 
 
-void MainScreen::showMenu() {
 
-    //  int choice = 0;
-
-    //  do {
-    //     this->clrscr();
-    //     cout << "Menu Principal" << endl;
-    //     cout << "Escolha uma opção" << endl;
-    //     cout << "1 - Iniciar Jogo - Melhor de 1" << endl;
-    //     cout << "2 - Iniciar Jogo - Melhor de 3" << endl;
-    //     cout << "6 - Sair" << endl;
-    //     cout << "Escolha: ";
-        
-    //     choice = this->getInput();
-
-    //     switch(choice) {
-    //         case 1:
-    //             cout << "Iniciando Jogo - Melhor de 1!" << endl;
-    //             break;
-    //         case 2:
-    //             cout << "Iniciando Jogo - Melhor de 3!" << endl;
-    //             break;
-    //         case 6:
-    //             cout << "Saindo..." << endl;
-    //             break;
-    //         default:
-    //             break;
-    //     }  
-
-    // } while(choice!=6);
-
+std::list<Jogador*> MainScreen::geraListaJogadores(int quantidadeHumanos) {
+    
     std::list<Jogador*> jogadores;
+    
     string nomeBot[10] = {"Joao", "Germano", "Chaves", "Telles", "Pedro", "Arthur", "Matheus", "Gustavo", "Gabriel", "Hector"};
-
+    
     string nomeJogador = "";  
-    std::cout << "Digite o seu nome para iniciar a partida: ";
-    std::cin >> nomeJogador;
-
-    Humano* player = new Humano(nomeJogador);
-
-    jogadores.push_back(player);
+    
+    for(int i = 0; i < quantidadeHumanos; i++) {
+        std::cout << "Digite o seu nome: ";
+        std::cin >> nomeJogador;
+    
+        jogadores.push_back(new Humano(nomeJogador));
+    }
     
     srand((unsigned)time(NULL));
     
     int posicaoNome = rand() % 10;
     
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 4 - quantidadeHumanos; i++) {
         string nome;
         do {
+
             posicaoNome += i;
             if(posicaoNome > 9) {
                 posicaoNome = 0;
             }
             srand( (unsigned) time(NULL));
-            
+
             nome = nomeBot[posicaoNome];
+            if(nome == nomeJogador) {
+                posicaoNome += 1;
+            }
+
         } while(nome == nomeJogador);
         
         Bot* bot = new Bot(nome);
         jogadores.push_back(bot);
     }
-        
-    Partida p = Partida(jogadores);
-    p.getPontosTime1();
     
-    system("pause");
-} 
+    return jogadores;
+}

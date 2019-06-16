@@ -1,0 +1,111 @@
+\hypertarget{class_bot}{}\section{Bot Class Reference}
+\label{class_bot}\index{Bot@{Bot}}
+Inheritance diagram for Bot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bot_aaae843b6e580397800522406e583f1b0}{Bot}} (string nome)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_bot}{Bot}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bot_af86af144f9ce5174c99a83f9df2b4c86}{Bot}} (string nome, std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ cartas)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_bot}{Bot}} que recebe as cartas em sua mão. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_bot_ab3d1a1563bada68fef705b2ca0af6386}{jogar}} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais) override
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro correspondete a jogada selecionada pelo \mbox{\hyperlink{class_bot}{Bot}}. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_bot_a203bfaaa13441296a94dd157fc253631}{aceitar\+Desafio}} (\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$jogador\+Desafiante, int pontos) override
+\begin{DoxyCompactList}\small\item\em Permite ao bot escolher se aceita o desafio ou não. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bot_aaae843b6e580397800522406e583f1b0}\label{class_bot_aaae843b6e580397800522406e583f1b0}} 
+\index{Bot@{Bot}!Bot@{Bot}}
+\index{Bot@{Bot}!Bot@{Bot}}
+\subsubsection{\texorpdfstring{Bot()}{Bot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Bot\+::\+Bot (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_bot}{Bot}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \\
+\hline
+{\em cartas} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bot_af86af144f9ce5174c99a83f9df2b4c86}\label{class_bot_af86af144f9ce5174c99a83f9df2b4c86}} 
+\index{Bot@{Bot}!Bot@{Bot}}
+\index{Bot@{Bot}!Bot@{Bot}}
+\subsubsection{\texorpdfstring{Bot()}{Bot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Bot\+::\+Bot (\begin{DoxyParamCaption}\item[{string}]{nome,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$}]{cartas }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_bot}{Bot}} que recebe as cartas em sua mão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \\
+\hline
+{\em cartas} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bot_a203bfaaa13441296a94dd157fc253631}\label{class_bot_a203bfaaa13441296a94dd157fc253631}} 
+\index{Bot@{Bot}!aceitarDesafio@{aceitarDesafio}}
+\index{aceitarDesafio@{aceitarDesafio}!Bot@{Bot}}
+\subsubsection{\texorpdfstring{aceitarDesafio()}{aceitarDesafio()}}
+{\footnotesize\ttfamily virtual int Bot\+::aceitar\+Desafio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$}]{jogador\+Desafiante,  }\item[{int}]{pontos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Permite ao bot escolher se aceita o desafio ou não. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Desafiante} & -\/ \mbox{\hyperlink{class_jogador}{Jogador}} que propos o desafio \\
+\hline
+{\em pontos} & -\/ Quantidade de pontos disputados caso o desafio seja aceito \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Resposta ao desafio 0 -\/ Correr; 1 -\/ Aceitar; 2 -\/ Aumentar; 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogador_a4eceb45cff559f97cd441da30d36769c}{Jogador}}.
+
+\mbox{\Hypertarget{class_bot_ab3d1a1563bada68fef705b2ca0af6386}\label{class_bot_ab3d1a1563bada68fef705b2ca0af6386}} 
+\index{Bot@{Bot}!jogar@{jogar}}
+\index{jogar@{jogar}!Bot@{Bot}}
+\subsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily virtual int Bot\+::jogar (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{opcoes\+Adicionais }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retorna um inteiro correspondete a jogada selecionada pelo \mbox{\hyperlink{class_bot}{Bot}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcoes\+Adicionais} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Jogada selecionada pelo bot 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}{Jogador}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pedromoutinho/\+Downloads/20191-\/team-\/18/include/controllers/Bot.\+hpp\end{DoxyCompactItemize}

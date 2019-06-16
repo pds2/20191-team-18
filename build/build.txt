@@ -1,0 +1,5 @@
+make
+
+Windows build/main.exe
+
+Linux build/main

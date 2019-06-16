@@ -1,0 +1,293 @@
+\hypertarget{class_jogador}{}\section{Jogador Class Reference}
+\label{class_jogador}\index{Jogador@{Jogador}}
+Inheritance diagram for Jogador\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogador}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogador_a166616aae3af6eefcc804a70d70f1359}{Jogador}} (string nome)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_jogador_a2c4a7000bda1bf0390b3b00c1066a71f}{Jogador}} (string nome, std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ cartas)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_jogador_ad99c974eb0be82064fbca936adc246d9}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o Nome do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_a01b6af5be0bb3789d1450f8a8f0e99d4}{add\+Carta\+Mao}} (\mbox{\hyperlink{class_carta}{Carta}} $\ast$carta)
+\begin{DoxyCompactList}\small\item\em Adiciona uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_ab835948a3cc9f4876e8d5a417b8c4d2f}{remove\+Carta\+Mao}} (\mbox{\hyperlink{class_carta}{Carta}} $\ast$carta)
+\begin{DoxyCompactList}\small\item\em Remove uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_a9c9a6a3b7460ccd81b800211ead01da2}{remove\+Carta\+Mao}} (int posicao)
+\begin{DoxyCompactList}\small\item\em Remove uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_aa4efb1bca8f98a41f38397f8a2d34107}{set\+Mao}} (std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $>$ cartas)
+\begin{DoxyCompactList}\small\item\em Define quais são as cartas que o \mbox{\hyperlink{class_jogador}{Jogador}} possui na mão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_carta}{Carta}} $\ast$ \mbox{\hyperlink{class_jogador_a5b275f62c069fced9f4e2bb4f575c8c4}{get\+Carta\+Mao}} (int posicao)
+\begin{DoxyCompactList}\small\item\em Retorna uma das cartas na mão do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ \mbox{\hyperlink{class_jogador_a653a6a493cce26a6ad32b9fefef8a47c}{get\+Mao}} ()
+\begin{DoxyCompactList}\small\item\em Retorna uma das cartas na mão do jogador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogador_acb6af0751dae0c4598c6917e3a3eec0c}{get\+Numero\+Cartas}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o número de cartas que o jogador possui em sua mão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_a938aa676a62494ce8b0eff5698fcf7eb}{set\+Time\+Jogador}} (int \mbox{\hyperlink{class_jogador_a799f588b8a5c2504c6a290e617983808}{time\+Jogador}})
+\begin{DoxyCompactList}\small\item\em Define qual é o time do jogador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogador_a6445980bae531aaca239735557140ffa}{get\+Time\+Jogador}} ()
+\begin{DoxyCompactList}\small\item\em Retorna qual é o time do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_ae9be28c426f205bb1496d38324befc62}{limpar\+Cartas\+Mao}} ()
+\begin{DoxyCompactList}\small\item\em Deixa o jogador sem nenhuma carta na mão. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}{jogar}} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais)=0
+\begin{DoxyCompactList}\small\item\em Metódo a ser implementado para que o \mbox{\hyperlink{class_jogador}{Jogador}} realize sua jogada. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_jogador_a4eceb45cff559f97cd441da30d36769c}{aceitar\+Desafio}} (\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$jogador\+Desafiante, int pontos)=0
+\begin{DoxyCompactList}\small\item\em Metódo a ser implementado para que o \mbox{\hyperlink{class_jogador}{Jogador}} aceite ou não os desafios propostos pelo adversário. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ \mbox{\hyperlink{class_jogador_ad989cab8e9aa172ddb6ed89d019a7e91}{mao}}
+\begin{DoxyCompactList}\small\item\em Cartas que o \mbox{\hyperlink{class_jogador}{Jogador}} possui em sua mão. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogador_a799f588b8a5c2504c6a290e617983808}{time\+Jogador}}
+\begin{DoxyCompactList}\small\item\em Time do \mbox{\hyperlink{class_jogador}{Jogador}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_jogador_a166616aae3af6eefcc804a70d70f1359}\label{class_jogador_a166616aae3af6eefcc804a70d70f1359}} 
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{Jogador()}{Jogador()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Jogador\+::\+Jogador (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+\mbox{\Hypertarget{class_jogador_a2c4a7000bda1bf0390b3b00c1066a71f}\label{class_jogador_a2c4a7000bda1bf0390b3b00c1066a71f}} 
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{Jogador()}{Jogador()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Jogador\+::\+Jogador (\begin{DoxyParamCaption}\item[{string}]{nome,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$}]{cartas }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_jogador_a4eceb45cff559f97cd441da30d36769c}\label{class_jogador_a4eceb45cff559f97cd441da30d36769c}} 
+\index{Jogador@{Jogador}!aceitarDesafio@{aceitarDesafio}}
+\index{aceitarDesafio@{aceitarDesafio}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{aceitarDesafio()}{aceitarDesafio()}}
+{\footnotesize\ttfamily virtual int Jogador\+::aceitar\+Desafio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} $\ast$}]{jogador\+Desafiante,  }\item[{int}]{pontos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Metódo a ser implementado para que o \mbox{\hyperlink{class_jogador}{Jogador}} aceite ou não os desafios propostos pelo adversário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Desafiante} & -\/ \mbox{\hyperlink{class_jogador}{Jogador}} que propos o desafio \\
+\hline
+{\em pontos} & -\/ Número de pontos do desafio \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Resposta do desafio 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_humano_aa1cd4b8c801b73190ad1472f6fc860b1}{Humano}}, and \mbox{\hyperlink{class_bot_a203bfaaa13441296a94dd157fc253631}{Bot}}.
+
+\mbox{\Hypertarget{class_jogador_a01b6af5be0bb3789d1450f8a8f0e99d4}\label{class_jogador_a01b6af5be0bb3789d1450f8a8f0e99d4}} 
+\index{Jogador@{Jogador}!addCartaMao@{addCartaMao}}
+\index{addCartaMao@{addCartaMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{addCartaMao()}{addCartaMao()}}
+{\footnotesize\ttfamily void Jogador\+::add\+Carta\+Mao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_carta}{Carta}} $\ast$}]{carta }\end{DoxyParamCaption})}
+
+
+
+Adiciona uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+\mbox{\Hypertarget{class_jogador_a5b275f62c069fced9f4e2bb4f575c8c4}\label{class_jogador_a5b275f62c069fced9f4e2bb4f575c8c4}} 
+\index{Jogador@{Jogador}!getCartaMao@{getCartaMao}}
+\index{getCartaMao@{getCartaMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{getCartaMao()}{getCartaMao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_carta}{Carta}}$\ast$ Jogador\+::get\+Carta\+Mao (\begin{DoxyParamCaption}\item[{int}]{posicao }\end{DoxyParamCaption})}
+
+
+
+Retorna uma das cartas na mão do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posicao} & -\/ Posicao da carta a ser retornada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Carta$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_jogador_a653a6a493cce26a6ad32b9fefef8a47c}\label{class_jogador_a653a6a493cce26a6ad32b9fefef8a47c}} 
+\index{Jogador@{Jogador}!getMao@{getMao}}
+\index{getMao@{getMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{getMao()}{getMao()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_carta}{Carta}}$\ast$$>$ Jogador\+::get\+Mao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna uma das cartas na mão do jogador. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Carta$\ast$$>$ -\/ Retorna a mão do \mbox{\hyperlink{class_jogador}{Jogador}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_jogador_ad99c974eb0be82064fbca936adc246d9}\label{class_jogador_ad99c974eb0be82064fbca936adc246d9}} 
+\index{Jogador@{Jogador}!getNome@{getNome}}
+\index{getNome@{getNome}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string Jogador\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o Nome do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+\begin{DoxyReturn}{Returns}
+string -\/ Nome do \mbox{\hyperlink{class_jogador}{Jogador}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_jogador_acb6af0751dae0c4598c6917e3a3eec0c}\label{class_jogador_acb6af0751dae0c4598c6917e3a3eec0c}} 
+\index{Jogador@{Jogador}!getNumeroCartas@{getNumeroCartas}}
+\index{getNumeroCartas@{getNumeroCartas}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{getNumeroCartas()}{getNumeroCartas()}}
+{\footnotesize\ttfamily int Jogador\+::get\+Numero\+Cartas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o número de cartas que o jogador possui em sua mão. 
+
+\begin{DoxyReturn}{Returns}
+int -\/ Número de cartas que o jogador possui em sua mão 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_jogador_a6445980bae531aaca239735557140ffa}\label{class_jogador_a6445980bae531aaca239735557140ffa}} 
+\index{Jogador@{Jogador}!getTimeJogador@{getTimeJogador}}
+\index{getTimeJogador@{getTimeJogador}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{getTimeJogador()}{getTimeJogador()}}
+{\footnotesize\ttfamily int Jogador\+::get\+Time\+Jogador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna qual é o time do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+\begin{DoxyReturn}{Returns}
+int -\/ Time do \mbox{\hyperlink{class_jogador}{Jogador}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}\label{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}} 
+\index{Jogador@{Jogador}!jogar@{jogar}}
+\index{jogar@{jogar}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily virtual int Jogador\+::jogar (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{opcoes\+Adicionais }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Metódo a ser implementado para que o \mbox{\hyperlink{class_jogador}{Jogador}} realize sua jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcoes\+Adicionais} & -\/ Opções adicionais de jogada além das cartas que o jogador possui na mão \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ Jogada 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_humano_aad706f019b99747f9c49d915f678998d}{Humano}}, and \mbox{\hyperlink{class_bot_ab3d1a1563bada68fef705b2ca0af6386}{Bot}}.
+
+\mbox{\Hypertarget{class_jogador_ae9be28c426f205bb1496d38324befc62}\label{class_jogador_ae9be28c426f205bb1496d38324befc62}} 
+\index{Jogador@{Jogador}!limparCartasMao@{limparCartasMao}}
+\index{limparCartasMao@{limparCartasMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{limparCartasMao()}{limparCartasMao()}}
+{\footnotesize\ttfamily void Jogador\+::limpar\+Cartas\+Mao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deixa o jogador sem nenhuma carta na mão. 
+
+\mbox{\Hypertarget{class_jogador_ab835948a3cc9f4876e8d5a417b8c4d2f}\label{class_jogador_ab835948a3cc9f4876e8d5a417b8c4d2f}} 
+\index{Jogador@{Jogador}!removeCartaMao@{removeCartaMao}}
+\index{removeCartaMao@{removeCartaMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{removeCartaMao()}{removeCartaMao()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Jogador\+::remove\+Carta\+Mao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_carta}{Carta}} $\ast$}]{carta }\end{DoxyParamCaption})}
+
+
+
+Remove uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em carta} & -\/ \mbox{\hyperlink{class_carta}{Carta}} a ser removida \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_jogador_a9c9a6a3b7460ccd81b800211ead01da2}\label{class_jogador_a9c9a6a3b7460ccd81b800211ead01da2}} 
+\index{Jogador@{Jogador}!removeCartaMao@{removeCartaMao}}
+\index{removeCartaMao@{removeCartaMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{removeCartaMao()}{removeCartaMao()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Jogador\+::remove\+Carta\+Mao (\begin{DoxyParamCaption}\item[{int}]{posicao }\end{DoxyParamCaption})}
+
+
+
+Remove uma carta a mão do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posicao} & -\/ Posição da carta a ser removida \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_jogador_aa4efb1bca8f98a41f38397f8a2d34107}\label{class_jogador_aa4efb1bca8f98a41f38397f8a2d34107}} 
+\index{Jogador@{Jogador}!setMao@{setMao}}
+\index{setMao@{setMao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{setMao()}{setMao()}}
+{\footnotesize\ttfamily void Jogador\+::set\+Mao (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $>$}]{cartas }\end{DoxyParamCaption})}
+
+
+
+Define quais são as cartas que o \mbox{\hyperlink{class_jogador}{Jogador}} possui na mão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cartas} & -\/ Cartas a serem definidas como mão do jogador \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_jogador_a938aa676a62494ce8b0eff5698fcf7eb}\label{class_jogador_a938aa676a62494ce8b0eff5698fcf7eb}} 
+\index{Jogador@{Jogador}!setTimeJogador@{setTimeJogador}}
+\index{setTimeJogador@{setTimeJogador}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{setTimeJogador()}{setTimeJogador()}}
+{\footnotesize\ttfamily void Jogador\+::set\+Time\+Jogador (\begin{DoxyParamCaption}\item[{int}]{time\+Jogador }\end{DoxyParamCaption})}
+
+
+
+Define qual é o time do jogador. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_jogador_ad989cab8e9aa172ddb6ed89d019a7e91}\label{class_jogador_ad989cab8e9aa172ddb6ed89d019a7e91}} 
+\index{Jogador@{Jogador}!mao@{mao}}
+\index{mao@{mao}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{mao}{mao}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_carta}{Carta}}$\ast$$>$ Jogador\+::mao\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cartas que o \mbox{\hyperlink{class_jogador}{Jogador}} possui em sua mão. 
+
+\mbox{\Hypertarget{class_jogador_a799f588b8a5c2504c6a290e617983808}\label{class_jogador_a799f588b8a5c2504c6a290e617983808}} 
+\index{Jogador@{Jogador}!timeJogador@{timeJogador}}
+\index{timeJogador@{timeJogador}!Jogador@{Jogador}}
+\subsubsection{\texorpdfstring{timeJogador}{timeJogador}}
+{\footnotesize\ttfamily int Jogador\+::time\+Jogador\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Time do \mbox{\hyperlink{class_jogador}{Jogador}}. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pedromoutinho/\+Downloads/20191-\/team-\/18/include/models/Jogador.\+hpp\end{DoxyCompactItemize}

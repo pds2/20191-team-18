@@ -181,6 +181,13 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
 
 }
 
+void UIManager::drawMenu(vector<string> menu, int startingAt, bool forceStartListener){
+    if(forceStartListener){
+        this->startListener();
+    }
+    this->drawMenu(menu, startingAt);
+}
+
 /**
  * Define nos endereços das variaveis
  * passadas por parametro as coord.

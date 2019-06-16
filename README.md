@@ -16,3 +16,23 @@ Grupo 18 - Truco
 * Eu, enquanto jogador, quero ter a opção de aceitar ou desistir dos desafios do adversario, para disputar ou não a respectiva quantidade de pontos.
 * Eu, enquanto jogador, quero visualizar quais rodadas foram ganhas pelo meu time, para que acompanhe o decorrer da partida.
 
+
+## Build do Aplicativo
+
+### Windows
+
+> make
+>
+> make run_windows
+
+### Linux
+
+> make 
+>
+> make run
+
+## [Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
+
+### Doxygen
+> Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
+    dentro do diretorio documentation/doxygen/html/index.html

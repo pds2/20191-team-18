@@ -8,19 +8,31 @@ Mesa::Mesa() {
     
 }
 
-CartaNaMesa* Mesa::obterMaiorCarta(){
+std::list<CartaNaMesa*> Mesa::obterMaiorCarta(){
     std::list<CartaNaMesa*> cartasNaMesa = this->getCartasMesa();
-    CartaNaMesa* maiorCarta;
+    std::list<CartaNaMesa*> maioresCartas;
     bool primeira = true;
     for (auto const& cartaNaMesa : cartasNaMesa) {
         Carta carta = *cartaNaMesa->getCarta();
-        if( primeira == true || (maiorCarta->getCarta()->getForca() < carta.getForca())){
-            maiorCarta = cartaNaMesa;
+        CartaNaMesa* maiorCarta;
+        
+        if(!primeira) {
+            std::list<CartaNaMesa*>::iterator itMaiorCarta = maioresCartas.begin();
+            maiorCarta = *itMaiorCarta;
+        }
+        
+        if(primeira || (maiorCarta->getCarta()->getForca() < carta.getForca())){
+            maioresCartas.clear();
+            maioresCartas.push_back(cartaNaMesa);
             primeira = false;
+        } else if(maiorCarta->getCarta()->getForca() == carta.getForca()) {
+            if(maiorCarta->getJogador()->getTimeJogador() != cartaNaMesa->getJogador()->getTimeJogador()) {
+                maioresCartas.push_back(cartaNaMesa);    
+            }
         }
     }
 
-    return maiorCarta;
+    return maioresCartas;
 }
 
 std::list<CartaNaMesa*> Mesa::getCartasMesa(){
