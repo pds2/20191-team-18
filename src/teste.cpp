@@ -1,8 +1,8 @@
-#define CATCH_CONFIG_MAIN
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../src/models/Carta.cpp"
 #include "../src/models/Mesa.cpp"
 #include "../src/models/CartaNaMesa.cpp"
-#include "../src/models/Bot.cpp"
+#include "../src/controllers/Bot.cpp"
 #include "../src/models/Jogador.cpp"
 #include "../src/models/Baralho.cpp"
 #include "../src/tests/catch.hpp"
@@ -52,15 +52,10 @@ TEST_CASE("Testa se a mesa retorna a maior carta"){
     CartaNaMesa* cm2 = new CartaNaMesa(seteCopas, player2);
     mesa->addCartaNaMesa(cm);
     mesa->addCartaNaMesa(cm2);
-    CartaNaMesa* c = mesa->obterMaiorCarta();
-    Carta* maiorCarta = c->getCarta();
-    Jogador* jogador = c->getJogador();    
-    SECTION("seção para validar se a maior carta foi retornada certa"){
-        REQUIRE(maiorCarta->getForca() == 14);
-        REQUIRE(maiorCarta->getValor() == "4");
-    }
-
-    SECTION("Seçãp para validar se o jogador da maior carta foi retornado corretamente"){
-        REQUIRE(jogador->getNome() == "Gabriel");
-    }    
+    std::list<CartaNaMesa*> c = mesa->obterMaiorCarta();
+    Carta* maiorCarta = c.front()->getCarta();
+    Jogador* jogador = c.front()->getJogador();    
+    REQUIRE(maiorCarta->getForca() == 14);
+    REQUIRE(maiorCarta->getValor() == "4");
+    REQUIRE(jogador->getNome() == "Gabriel");
 }
