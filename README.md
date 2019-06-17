@@ -19,17 +19,19 @@ Grupo 18 - Truco
 
 ## Build do Aplicativo
 
+### Linux
+
+> make
+
 ### Windows
 
 > make
 >
 > make run_windows
 
-### Linux
+## Tests 
 
-> make 
->
-> make run
+> make test
 
 ## [Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
 

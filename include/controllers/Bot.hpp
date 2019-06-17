@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "models/Jogador.hpp"
+#include "../models/Jogador.hpp"
 
 using std::cout;
 using std::endl;

@@ -1,13 +1,12 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../src/models/Carta.cpp"
-#include "../src/models/Mesa.cpp"
-#include "../src/models/CartaNaMesa.cpp"
-#include "../src/controllers/Bot.cpp"
-#include "../src/models/Jogador.cpp"
-#include "../src/models/Baralho.cpp"
-#include "../src/tests/catch.hpp"
+#include "../include/tests/doctest.h"
+#include "../include/models/Carta.hpp"
+#include "../include/models/Mesa.hpp"
+#include "../include/models/CartaNaMesa.hpp"
+#include "../include/controllers/Bot.hpp"
+#include "../include/models/Jogador.hpp"
+#include "../include/models/Baralho.hpp"
 #include <list>
-
 
 bool checkCartas(Carta* cartaPraValidar, std::list<Carta*> baralho){
     for (auto const& carta : baralho) {
@@ -17,6 +16,10 @@ bool checkCartas(Carta* cartaPraValidar, std::list<Carta*> baralho){
     }
 
     return false;
+}
+
+TEST_CASE("1: Construtor do Aquecedor") {
+    CHECK_NOTHROW(Carta("7", 0, 13));
 }
 
 TEST_CASE( "Testa se as manilhas estão no baralho" ) {
@@ -55,7 +58,7 @@ TEST_CASE("Testa se a mesa retorna a maior carta"){
     std::list<CartaNaMesa*> c = mesa->obterMaiorCarta();
     Carta* maiorCarta = c.front()->getCarta();
     Jogador* jogador = c.front()->getJogador();    
-    REQUIRE(maiorCarta->getForca() == 14);
-    REQUIRE(maiorCarta->getValor() == "4");
-    REQUIRE(jogador->getNome() == "Gabriel");
+    CHECK(maiorCarta->getForca() == 14);
+    CHECK(maiorCarta->getValor() == "4");
+    CHECK(jogador->getNome() == "Gabriel");
 }

@@ -2,6 +2,7 @@ CC=g++
 C=gcc
 CFLAGS=-std=c++11 -Wall
 
+PROGRAM  = ./program
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
@@ -94,22 +95,22 @@ Exceptions.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${SRC_DIR}/exceptions/Exce
 #                                                  #
 ####################################################
 
+# test
+test.o: ${SRC_DIR}/teste.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/teste.cpp -o ${BUILD_DIR}/test/main.o ${NCURSES_COMPILE_PARAMS}
 #test
-test.o: ${TEST_DIR}/main.cpp
-	make clean
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${TEST_DIR}/*.cpp
-	mv *.o ${TEST_DIR}
-
-test: test.o Carta.o Jogador.o Bot.o Humano.o
-	${CC} ${CFLAGS} -o ${TEST_DIR}/main ${TEST_DIR}/*.o ${BUILD_DIR}/*.o 
+test: test.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
+	${CC} ${CFLAGS} ${SRC_DIR}/teste.cpp -o ${BUILD_DIR}/test/main ${BUILD_DIR}/*.o 
+	${BUILD_DIR}/test/main 
 
 # main
-main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.hpp ${SRC_DIR}/main.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o ${NCURSES_COMPILE_PARAMS}
+main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.hpp ${PROGRAM}/main.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${PROGRAM}/main.cpp -o ${BUILD_DIR}/program/main.o ${NCURSES_COMPILE_PARAMS}
 
 # app
 main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
-	${CC} ${CFLAGS} -o ${BUILD_DIR}/main ${BUILD_DIR}/*.o ${NCURSES_COMPILE_PARAMS}
+	${CC} ${CFLAGS} -o ${BUILD_DIR}/program/main ${BUILD_DIR}/*.o ${BUILD_DIR}/program/*.o ${NCURSES_COMPILE_PARAMS}
+	${BUILD_DIR}/program/main 
 
 
 # Rule for cleaning files generated during compilation.
@@ -123,10 +124,10 @@ clean_windows:
 	del /S "%dir%\build\*.o"    
 
 run:
-	./build/main
+	./build/program/main
 
 run_windows:
-	./build/main.exe
+	./build/program/main.exe
 
 cleantest: 
 	rm -rf ${TEST_DIR}/*.o    
