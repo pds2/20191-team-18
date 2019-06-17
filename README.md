@@ -19,15 +19,7 @@ Grupo 18 - Truco
 
 ## Build do Aplicativo
 
-### Linux
-
 > make
-
-### Windows
-
-> make
->
-> make run_windows
 
 ## Tests 
 
