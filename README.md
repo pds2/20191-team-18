@@ -19,16 +19,14 @@ Grupo 18 - Truco
 
 ## Build do Aplicativo
 
-make
+> make
 
-* Windows
-    build/main.exe
+## Tests 
 
-* Linux 
-    build/main
+> make test
 
-## Documentação
+## [Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
 
-* [Link da Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
-* Doxygen: Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
-          dentro do diretorio documentation/doxygen/html/index.html
+### Doxygen
+> Para visualizar a documentação doxygen é necessario abrir o arquivo index.html 
+    dentro do diretorio documentation/doxygen/html/index.html

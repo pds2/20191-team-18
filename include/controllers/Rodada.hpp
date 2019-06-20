@@ -191,6 +191,14 @@ class Rodada {
      * @param desafioRecusado 
      */
     void computaVencedorRodada(Mesa* mesa, bool desafioRecusado);
+    
+    
+    /** 
+     * @brief Exibe o desafio relativo a quantidade de pontos atual
+     * 
+     * @param jogador 
+     */
+    void exibeDesafio(Jogador* jogadorDesafiante);
 };
 
 #endif

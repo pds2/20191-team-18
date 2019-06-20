@@ -2,7 +2,7 @@
 #define CARTA_H
 
 #include <iostream>
-#include "exceptions/Exception.hpp"
+#include "../exceptions/Exception.hpp"
 
 using std::cout;
 using std::endl;

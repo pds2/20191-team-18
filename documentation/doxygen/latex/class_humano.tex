@@ -13,7 +13,7 @@ Inheritance diagram for Humano\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_humano}{Humano}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_humano_a7af6096fca83f9c64cf893156f749e22}{Humano}} (string nome, std\+::vector$<$ \mbox{\hyperlink{class_carta}{Carta}} $\ast$ $>$ cartas)
 \begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{class_humano}{Humano}} que recebe as cartas em sua mão. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_humano_a32767bbf1ad4f6065d18f375341ac00e}{exibir\+Cartas}} ()
+void \mbox{\hyperlink{class_humano_a44adc47b7acc857f0614c82e53a7759f}{exibir\+Cartas}} (bool opcao)
 \begin{DoxyCompactList}\small\item\em Exibe as cartas que o humano possui em sua mão. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_humano_a9be2c952d918117be73a00f2c538834c}{exibir\+Opcoes\+Adicionais}} (std\+::vector$<$ std\+::string $>$ opcoes\+Adicionais, int n\+Opcao)
 \begin{DoxyCompactList}\small\item\em Exibe as opções adicionais que o jogador têm para aquela jogada. Como, por exemplo, pedir truco, pedir seis, entre outros. \end{DoxyCompactList}\item 
@@ -82,18 +82,23 @@ int -\/ Resposta ao desafio 0 -\/ Correr; 1 -\/ Aceitar; 2 -\/ Aumentar;
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_jogador}{Jogador}}.
+Implements \mbox{\hyperlink{class_jogador_a4eceb45cff559f97cd441da30d36769c}{Jogador}}.
 
-\mbox{\Hypertarget{class_humano_a32767bbf1ad4f6065d18f375341ac00e}\label{class_humano_a32767bbf1ad4f6065d18f375341ac00e}} 
+\mbox{\Hypertarget{class_humano_a44adc47b7acc857f0614c82e53a7759f}\label{class_humano_a44adc47b7acc857f0614c82e53a7759f}} 
 \index{Humano@{Humano}!exibirCartas@{exibirCartas}}
 \index{exibirCartas@{exibirCartas}!Humano@{Humano}}
 \subsubsection{\texorpdfstring{exibirCartas()}{exibirCartas()}}
-{\footnotesize\ttfamily void Humano\+::exibir\+Cartas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Humano\+::exibir\+Cartas (\begin{DoxyParamCaption}\item[{bool}]{opcao }\end{DoxyParamCaption})}
 
 
 
 Exibe as cartas que o humano possui em sua mão. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em opcao} & -\/ Indica qual o prefixo deve ser exibido ao mostrar as cartas \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_humano_a9be2c952d918117be73a00f2c538834c}\label{class_humano_a9be2c952d918117be73a00f2c538834c}} 
 \index{Humano@{Humano}!exibirOpcoesAdicionais@{exibirOpcoesAdicionais}}
 \index{exibirOpcoesAdicionais@{exibirOpcoesAdicionais}!Humano@{Humano}}
@@ -131,10 +136,10 @@ int
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_jogador}{Jogador}}.
+Implements \mbox{\hyperlink{class_jogador_a8af760d8531f7d4e78fc767adcff0cb6}{Jogador}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/pedromoutinho/\+Documents/20191-\/team-\/18/include/controllers/Humano.\+hpp\end{DoxyCompactItemize}
+C\+:/\+Users/pedromoutinho/\+Downloads/20191-\/team-\/18/include/controllers/Humano.\+hpp\end{DoxyCompactItemize}

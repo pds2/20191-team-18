@@ -1,6 +1,6 @@
+#include <cstdlib>
 #include "controllers/Humano.hpp"
 #include "models/Carta.hpp"
-#include <cstdlib>
 
 template<class T, std::size_t n>
 constexpr std::size_t size(T (&)[n])
@@ -19,7 +19,7 @@ int Humano::jogar(std::vector<std::string> opcoesAdicionais) {
     int choice = -1;
     int nCartas = this->mao.size();
 
-    exibirCartas();
+    exibirCartas(true);
     exibirOpcoesAdicionais(opcoesAdicionais, nCartas);
     
     do {
@@ -35,10 +35,6 @@ int Humano::jogar(std::vector<std::string> opcoesAdicionais) {
     return choice;
 }
 
-/*
-    Exibe as opções adicionais do jogador que pode ser pedir truco, pedir seis,
-    pedir nove e pedir doze
- */
 void Humano::exibirOpcoesAdicionais(std::vector<std::string> opcoesAdicionais, int nOpcao) {
     int sizeOpcoes = opcoesAdicionais.size();
     for(int i = nOpcao, j = 0; j < sizeOpcoes; i++, j++) {
@@ -46,8 +42,8 @@ void Humano::exibirOpcoesAdicionais(std::vector<std::string> opcoesAdicionais, i
     }
 }
 
-void Humano::exibirCartas() {
-
+void Humano::exibirCartas(bool opcao) {
+    string prefix = (opcao) ? "Opcao" : "Carta"; 
     if(this->mao.size() == 0) {
         throw Exception::JogadorSemCartas();
     }
@@ -55,29 +51,15 @@ void Humano::exibirCartas() {
     cout << "\n\n" << this->getNome() << ", voce possui as seguintes cartas:" << endl;
 
     for(int i = 0; i < (int) mao.size(); i++) {
-        cout << "\n" << "Opcao [" << i << "]: " << mao[i]->getValor() << " " << mao[i]->getNipe();
+        cout << "\n" <<  prefix <<" [" << i << "]: " << mao[i]->getValor() << " " << mao[i]->getNipe();
     }
 }
 
 int Humano::aceitarDesafio(Jogador* jogadorDesafiante, int pontos) {
     int choice;
+    exibirCartas(false);
     do {
-        switch(pontos) {
-            case 4:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo truco!" << endl;
-                break;
-            case 8:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo seis!" << endl;
-                break;
-            case 10:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo nove!" << endl;
-                break;
-            case 12:
-                cout << "\n" << jogadorDesafiante->getNome() << " está pedindo doze!" << endl;
-                break;
-        }
-        
-        cout << "\nO que deseja fazer?" << endl;
+        cout << "\n\nO que deseja fazer?" << endl;
         
         cout << "\nOpcao [0]: Correr!";
         cout << "\nOpcao [1]: Aceitar!";
