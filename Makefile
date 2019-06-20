@@ -6,7 +6,7 @@ PROGRAM  = ./program
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
-NCURSES_COMPILE_PARAMS = -static -D_GNU_SOURCE -D_DEFAULT_SOURCE -I ./libs/include/ -I ./libs/include/ncurses/ -L ./libs/lib/ -lncurses -ltinfo
+NCURSES_COMPILE_PARAMS = -lncurses
 # TEST_DIR = ./test
 
 all: main
@@ -112,7 +112,7 @@ main.o: ${INCLUDE_DIR}/exceptions/Exception.hpp ${INCLUDE_DIR}/views/MainScreen.
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${PROGRAM}/main.cpp -o ${BUILD_DIR}/program/main.o ${NCURSES_COMPILE_PARAMS}
 
 # app
-main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o
+main: main.o Exceptions.o MainScreen.o Partida.o Rodada.o Humano.o Mesa.o Baralho.o CartaNaMesa.o Carta.o Bot.o Jogador.o UIManager.o
 	${CC} ${CFLAGS} -o ${BUILD_DIR}/program/main ${BUILD_DIR}/*.o ${BUILD_DIR}/program/*.o ${NCURSES_COMPILE_PARAMS}
 	${BUILD_DIR}/program/main 
 
