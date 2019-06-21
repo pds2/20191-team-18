@@ -24,10 +24,12 @@ void MainScreen::initGame() {
     std::cin >> nHumanos;*/
     
     std::list<Jogador*> jogadores = geraListaJogadores(nHumanos);
-        
-    Partida p = Partida(jogadores);
     
-    system("pause");
+    Partida p = Partida(jogadores);
+
+    this->uim->clearScreen();
+    this->uim->printString("Pressione qualquer tecla para sair...", 3, 3);
+    getch();
 } 
 
 
@@ -39,12 +41,12 @@ std::list<Jogador*> MainScreen::geraListaJogadores(int quantidadeHumanos) {
     
     string nomeJogador = "";  
 
-    uim->clearScreen();
-    uim->printString("Digite o seu nome para iniciar a partida: ", 3, 3);
-    uim->printString(">", 3, 4);
+    this->uim->clearScreen();
+    this->uim->printString("Digite o seu nome para iniciar a partida: ", 3, 3);
+    this->uim->printString(">", 3, 4);
 
-    nomeJogador = uim->readString();
-    uim->clearScreen();
+    nomeJogador = this->uim->readString();
+    this->uim->clearScreen();
 
     Humano* player = new Humano(nomeJogador);
 
