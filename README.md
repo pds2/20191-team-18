@@ -25,6 +25,13 @@ Grupo 18 - Truco
 
 > make test
 
+## Interface gráfica
+
+> git checkout implementacao_ncurses
+> make clean
+> make
+> make run
+
 ## [Documentação](https://github.com/pds2/20191-team-18/tree/master/documentation)
 
 ### Doxygen
