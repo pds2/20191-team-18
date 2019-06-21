@@ -53,7 +53,7 @@ std::list<Jogador*> MainScreen::geraListaJogadores(int quantidadeHumanos) {
     nomeJogador = this->uim->readString();
     this->uim->clearScreen();
 
-    Humano* player = new Humano(nomeJogador);
+    Humano* player = new Humano(nomeJogador, this->uim);
 
     jogadores.push_back(player);
     

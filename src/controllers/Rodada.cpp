@@ -51,8 +51,6 @@ void Rodada::controleRodada() {
         this->uim->printString("Mãos Time 2: ", 33, 26);
         this->uim->printString(std::to_string(this->maos_ganhas_time2), 46, 26);
 
-        getch();
-
         mesa->limpaCartasNaMesa();
         
         for (auto const& jogador : this->jogadores) {
@@ -68,7 +66,7 @@ void Rodada::controleRodada() {
 
         this->uim->printString("Fim da mão   !     ", 50, 3);
         this->uim->printString(std::to_string(this->mao), 62, 3);
-        
+
         this->mao++;
     }
 

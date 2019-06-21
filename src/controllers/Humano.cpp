@@ -1,12 +1,15 @@
 #include <cstdlib>
 #include "controllers/Humano.hpp"
 #include "models/Carta.hpp"
+#include "views/UIManager.hpp"
 
 template<class T, std::size_t n>
 constexpr std::size_t size(T (&)[n])
 { return n; }
 
-Humano::Humano(string nome) : Jogador(nome) {}
+Humano::Humano(string nome, UIManager* manager) : Jogador(nome) {
+    this->uim = manager;
+}
 Humano::Humano(string nome, std::vector<Carta*> cartas) : Jogador(nome, cartas) {};
 
 /* 
@@ -21,6 +24,8 @@ int Humano::jogar(std::vector<std::string> opcoesAdicionais) {
 
     exibirCartas(true);
     exibirOpcoesAdicionais(opcoesAdicionais, nCartas);
+    
+    getch();
     
     do {
         cout << "\n" << "Digite a opcao selecionada: " << endl;
@@ -37,8 +42,14 @@ int Humano::jogar(std::vector<std::string> opcoesAdicionais) {
 
 void Humano::exibirOpcoesAdicionais(std::vector<std::string> opcoesAdicionais, int nOpcao) {
     int sizeOpcoes = opcoesAdicionais.size();
+    this->uim->printString("Opções: ", 3, 9+nOpcao);
+
+    nOpcao++;
+
     for(int i = nOpcao, j = 0; j < sizeOpcoes; i++, j++) {
-        cout << "\n" << "Opcao [" << i << "]: "  << opcoesAdicionais[j];
+        this->uim->printString("[ _ ] -> ", 5, 9+i);
+        this->uim->printString(std::to_string(i), 7, 9+i);
+        this->uim->printString(opcoesAdicionais[j], 15, 9+i);
     }
 }
 
@@ -48,10 +59,15 @@ void Humano::exibirCartas(bool opcao) {
         throw Exception::JogadorSemCartas();
     }
 
-    cout << "\n\n" << this->getNome() << ", voce possui as seguintes cartas:" << endl;
+    this->uim->printString(this->getNome(), 3, 7);
+    this->uim->printString("Cartas: ", 3, 8);
+    
 
     for(int i = 0; i < (int) mao.size(); i++) {
-        cout << "\n" <<  prefix <<" [" << i << "]: " << mao[i]->getValor() << " " << mao[i]->getNipe();
+        this->uim->printString("[ _ ] -> ", 5, 9+i);
+        this->uim->printString(std::to_string(i), 7, 9+i);
+        this->uim->printString(mao[i]->getValor(), 15, 9+i);
+        this->uim->printString(mao[i]->getNipe(), 16, 9+i);
     }
 }
 

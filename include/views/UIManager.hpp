@@ -47,6 +47,7 @@ class UIManager{
         int getX_Position();
         int getY_Position();
         void clearScreen();
+        void moveCursor(int, int);
 
         void drawMenu(vector<string> menu, int startingAt, bool forceStartListener);
         int getSelectedMenuItem();

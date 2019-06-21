@@ -73,7 +73,7 @@ Bot.o: ${INCLUDE_DIR}/controllers/Bot.hpp ${SRC_DIR}/controllers/Bot.cpp
 
 # Carta
 Humano.o: ${INCLUDE_DIR}/controllers/Humano.hpp ${SRC_DIR}/controllers/Humano.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Humano.cpp -o ${BUILD_DIR}/Humano.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Humano.cpp -o ${BUILD_DIR}/Humano.o ${NCURSES_COMPILE_PARAMS}
 	
 # Rodada
 Rodada.o: ${INCLUDE_DIR}/controllers/Rodada.hpp ${SRC_DIR}/controllers/Rodada.cpp

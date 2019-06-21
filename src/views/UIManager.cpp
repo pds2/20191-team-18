@@ -366,3 +366,7 @@ void UIManager::clearScreen(){
 void UIManager::resizeScreen(){
     system("resize -s 30 120");
 }
+
+void UIManager::moveCursor(int x, int y){
+    move(y, x);
+}

@@ -4,20 +4,22 @@
 #include <iostream>
 #include <vector>
 #include "../models/Jogador.hpp"
+#include "../views/UIManager.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
 
 class Humano : public Jogador {
-
+  private:
+    UIManager* uim;
   public:
     /**
      * @brief Construtor da classe Humano
      * 
      * @param nome 
      */
-    Humano(string nome);
+    Humano(string nome, UIManager*);
 
     /**
      * @brief Construtor da classe Humano que recebe as cartas em sua mão
