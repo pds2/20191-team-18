@@ -10,3 +10,6 @@ utilizando o doctest para rodar os nossos testes unitários.
 ## Merge de branchs ## 
 
 *  Os testes unitários estavam em uma branch separada e agora já fizemos o merge com a master.
+
+## Interface gráfica agora funciona em um branch separado ##
+* adicionado tecla esc que sai do jogo e compilação do ncurses pra rodar em qualquer pc.
