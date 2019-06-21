@@ -6,6 +6,7 @@
 #include "exceptions/Exception.hpp"
 #include "models/Jogador.hpp"
 #include "controllers/Rodada.hpp"
+#include "views/UIManager.hpp"
 
 using std::cout;
 using std::endl;
@@ -43,13 +44,17 @@ class Partida {
      */
     std::list<Jogador*> jogadores;    
 
+    /**
+     * @brief Gerenciador de interface
+     */
+    UIManager* uim;
   public:
     /**
      * @brief Construtor da Partida
      * 
      * @param jogadores - Jogadores participantes da Partida 
      */
-    Partida(std::list<Jogador*> jogadores);
+    Partida(std::list<Jogador*> jogadores, UIManager*);
 
     /**
      * @brief Controla a execução da Partida

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstring>
 #include <ncurses.h>
 #include <locale.h>
 
@@ -21,6 +22,8 @@ using namespace std;
 UIManager::UIManager(bool shouldInitScr){
     if(shouldInitScr){
         setlocale(LC_ALL, "");
+
+        this->resizeScreen();
 
         initscr();
         noecho();
@@ -164,7 +167,7 @@ void UIManager::drawMenu(vector<string> menu, int startingAt=0){
         // Implement exception
     } 
     
-    if(startingAt<=((int)menu.size()-MENU_NUMBER_OF_ITEM)){
+    if((MENU_NUMBER_OF_ITEM-(int)menu.size())<=0 || startingAt<=(MENU_NUMBER_OF_ITEM-(int)menu.size())){
         this->_screenMode = SCR_MODE_MENU;
 
         if(menu.size()<=MENU_NUMBER_OF_ITEM){
@@ -358,4 +361,8 @@ void UIManager::clearScreen(){
     wclear(this->win);
     this->drawBorders('@', '@');
     wrefresh(this->win);
+}
+
+void UIManager::resizeScreen(){
+    system("resize -s 30 120");
 }

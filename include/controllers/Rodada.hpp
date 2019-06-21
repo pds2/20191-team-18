@@ -6,6 +6,7 @@
 #include "exceptions/Exception.hpp"
 #include "models/Jogador.hpp"
 #include "models/Mesa.hpp"
+#include "views/UIManager.hpp"
 
 using std::cout;
 using std::endl;
@@ -23,7 +24,7 @@ class Rodada {
      * @param pontos_time1 
      * @param pontos_time2 
      */
-    Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2);
+    Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2, UIManager*);
 
     /**
      * @brief Realiza o contorle da rodada
@@ -199,6 +200,11 @@ class Rodada {
      * @param jogador 
      */
     void exibeDesafio(Jogador* jogadorDesafiante);
+
+    /**
+     * @brief Gerenciador de interface
+     */
+    UIManager* uim;
 };
 
 #endif

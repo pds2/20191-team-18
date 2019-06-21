@@ -1,5 +1,6 @@
 #include <list>
 #include <iostream>
+#include <vector>
 #include <time.h>  
 #include "views/MainScreen.hpp"
 #include "views/UIManager.hpp"
@@ -23,10 +24,14 @@ void MainScreen::initGame() {
     std::cout << "Informe o número de jogadores Humanos: ";
     std::cin >> nHumanos;*/
     
-    std::list<Jogador*> jogadores = geraListaJogadores(nHumanos);
-    
-    Partida p = Partida(jogadores);
+    int menuChoice = this->mainMenu();
 
+    if(!menuChoice){
+        std::list<Jogador*> jogadores = geraListaJogadores(nHumanos);
+        
+        Partida p = Partida(jogadores, this->uim);
+    } 
+    
     this->uim->clearScreen();
     this->uim->printString("Pressione qualquer tecla para sair...", 3, 3);
     getch();
@@ -78,4 +83,11 @@ std::list<Jogador*> MainScreen::geraListaJogadores(int quantidadeHumanos) {
     }
     
     return jogadores;
+}
+
+int MainScreen::mainMenu(){
+    this->uim->drawBorders('@', '@');
+    std::vector<string> menu = {"Iniciar Jogo", "Sair"};
+    this->uim->drawMenu(menu, MENU_BEGIN, true);
+    return this->uim->getSelectedMenuItem();
 }

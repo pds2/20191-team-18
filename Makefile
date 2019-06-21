@@ -6,7 +6,7 @@ PROGRAM  = ./program
 BUILD_DIR = ./build
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
-NCURSES_COMPILE_PARAMS = -lncurses
+NCURSES_COMPILE_PARAMS = -lncursesw
 # TEST_DIR = ./test
 
 all: main
@@ -77,11 +77,11 @@ Humano.o: ${INCLUDE_DIR}/controllers/Humano.hpp ${SRC_DIR}/controllers/Humano.cp
 	
 # Rodada
 Rodada.o: ${INCLUDE_DIR}/controllers/Rodada.hpp ${SRC_DIR}/controllers/Rodada.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Rodada.cpp -o ${BUILD_DIR}/Rodada.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Rodada.cpp -o ${BUILD_DIR}/Rodada.o ${NCURSES_COMPILE_PARAMS}
 
 # Partida
 Partida.o: ${INCLUDE_DIR}/controllers/Partida.hpp ${SRC_DIR}/controllers/Partida.cpp
-	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Partida.cpp -o ${BUILD_DIR}/Partida.o
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/ -c ${SRC_DIR}/controllers/Partida.cpp -o ${BUILD_DIR}/Partida.o ${NCURSES_COMPILE_PARAMS}
 
 ####################################################
 #                                                  #

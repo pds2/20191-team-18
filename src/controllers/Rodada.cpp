@@ -1,4 +1,5 @@
 #include "controllers/Rodada.hpp" 
+#include "views/UIManager.hpp" 
 #include "models/Jogador.hpp"
 #include "models/Baralho.hpp"
 #include "models/Mesa.hpp"
@@ -7,9 +8,10 @@
 #include <iostream>
 #include <exception>
 
-Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2) {    
+Rodada::Rodada(int numero, int pontos, std::list<Jogador*> jogadores, int* pontos_time1, int* pontos_time2, UIManager* manager) {    
     Baralho baralhoPartida;
     baralhoPartida.embaralhar();
+    this->uim = manager;
     this->baralho = baralhoPartida.getCartas();
     this->numero = numero;
     this->pontos = pontos;
@@ -40,10 +42,17 @@ void Rodada::controleRodada() {
     this->peMesa = *itPeMesa;
 
     while(this->maos_ganhas_time1 < 2 && this->maos_ganhas_time2 < 2) {
-        cout << "\n";
-        cout << "\n" << "Mãos ganhas time 1: " << this->maos_ganhas_time1 << " Maos ganhas time 2: " << this->maos_ganhas_time2;
-        cout << "\n" << "Iniciando a mão " << this->mao << "!";
-        cout << "\n" << "------------------------------------------------";
+        this->uim->printString("Mão: ", 3, 26);
+        this->uim->printString(std::to_string(this->mao), 8, 26);
+
+        this->uim->printString("Mãos Time 1: ", 15, 26);
+        this->uim->printString(std::to_string(this->maos_ganhas_time1), 28, 26);
+
+        this->uim->printString("Mãos Time 2: ", 33, 26);
+        this->uim->printString(std::to_string(this->maos_ganhas_time2), 46, 26);
+
+        getch();
+
         mesa->limpaCartasNaMesa();
         
         for (auto const& jogador : this->jogadores) {
@@ -57,8 +66,9 @@ void Rodada::controleRodada() {
         }
         this->computaVencedorRodada(mesa, alguemCorreu);
 
-        cout << "\n" << "Fim da mão " << this->mao << "!";
-        cout << "\n" << "------------------------------------------------";
+        this->uim->printString("Fim da mão   !     ", 50, 3);
+        this->uim->printString(std::to_string(this->mao), 62, 3);
+        
         this->mao++;
     }
 

@@ -25,7 +25,6 @@ class UIManager{
         int _menuEntryPos;
         int _menuStartDrawPos;
         vector<string> curMenu;
-        void drawBorders(char vChar, char hChar);
         void getMenuDrawPosition(int &y, int &x);
         void menuNavigate(int pressedKey);
         void menuNavigateUp();
@@ -37,6 +36,7 @@ class UIManager{
         bool _stopListener;
         void startListener();
         void stopListener();
+        void resizeScreen();
     public:
         UIManager(bool shouldInitScr);
         virtual ~UIManager();
@@ -55,6 +55,7 @@ class UIManager{
 
         void printString(string str_to_print, int x, int y);
         string readString();
+        void drawBorders(char vChar, char hChar);
 };
 
 #endif

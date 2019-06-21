@@ -44,8 +44,20 @@ class MainScreen {
      */
     void clrscr();
     int getInput();
+
+    /**
+     * @brief Desenha menu principal
+     *
+     * @return Seleção do menu
+     */
+    int mainMenu();
   private:
+
+    /**
+     * @brief Gerenciador de interface
+     */
   	UIManager* uim;
+
 };
 
 #endif
